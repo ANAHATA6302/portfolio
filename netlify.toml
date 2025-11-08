@@ -1,10 +1,7 @@
 [build]
-# This command sources the 'asdf' version manager to load Java 17,
-# then runs your gradle build.
-command = "source $HOME/.asdf/asdf.sh && ./gradlew jsBrowserDistribution --no-daemon"
+# This command sources the correct path for asdf,
+# which then reads your .tool-versions file to set up Java 17.
+command = "source /opt/build/build-image/etc/asdf.sh && ./gradlew jsBrowserDistribution --no-daemon"
 
 # Directory to publish
 publish = "composeApp/build/dist/js/productionExecutable/"
-
-# We don't need the [build.environment] block anymore
-# because the .tool-versions file handles the Java version.
