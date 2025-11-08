@@ -1,10 +1,10 @@
 [build]
-# We can remove --no-daemon now
 command = "./gradlew jsBrowserDistribution"
 publish = "composeApp/build/dist/js/productionExecutable/"
 
 [build.environment]
-# Set the exact Java path Netlify needs
-JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64"
-# Force Node.js to a compatible version
+# We still need this to avoid Node 22+ issues
 NODE_VERSION = "18"
+# We REMOVE the JAVA_HOME variable
+# The Aptfile will install Java 17, and the
+# build environment should find it automatically.
