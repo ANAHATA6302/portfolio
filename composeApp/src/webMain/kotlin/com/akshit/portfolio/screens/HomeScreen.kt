@@ -23,6 +23,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.akshit.portfolio.common.FadeIn
 import com.akshit.portfolio.common.HomeFooter
+import com.akshit.portfolio.common.SetPageTitle
 import com.akshit.portfolio.navigation.ProjectsScreen
 import com.akshit.portfolio.theme.*
 import isSmallScreen
@@ -33,6 +34,7 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun HomeScreen() {
+    SetPageTitle(stringResource(Res.string.header_home))
     val isSm = isSmallScreen()
     val scrollState = rememberScrollState()
 

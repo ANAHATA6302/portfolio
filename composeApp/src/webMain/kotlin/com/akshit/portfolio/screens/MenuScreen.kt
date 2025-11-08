@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.akshit.portfolio.common.FadeIn
+import com.akshit.portfolio.common.SetPageTitle
 import com.akshit.portfolio.navigation.AboutScreen
 import com.akshit.portfolio.navigation.ContactScreen
 import com.akshit.portfolio.navigation.ProjectsScreen
@@ -27,6 +28,7 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun MenuScreen() {
+    SetPageTitle("MENU")
     val isSm = isSmallScreen()
     val navigator = LocalNavigator.currentOrThrow
 

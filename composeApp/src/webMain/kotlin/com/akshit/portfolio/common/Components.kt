@@ -15,6 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kotlinx.browser.document
+
+@Composable
+fun SetPageTitle(title: String) {
+    LaunchedEffect(title) {
+        document.title = "$title | Akshit Nahata"
+    }
+}
 
 @Composable
 fun AppHeaderDivider() {

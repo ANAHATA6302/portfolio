@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.akshit.portfolio.common.FadeIn
 import com.akshit.portfolio.common.Footer
+import com.akshit.portfolio.common.SetPageTitle
 import com.akshit.portfolio.theme.*
 import isSmallScreen
 import org.jetbrains.compose.resources.painterResource
@@ -33,6 +34,7 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun ProjectsScreen() {
+    SetPageTitle("PROJECTS")
     val isSm = isSmallScreen()
 
     Column(
