@@ -1,10 +1,10 @@
 [build]
-# Set the Java home directly in the build command
-command = "./gradlew -Dorg.gradle.java.home=$JAVA_HOME jsBrowserDistribution --no-daemon"
+# This command sources the 'asdf' version manager to load Java 17,
+# then runs your gradle build.
+command = "source $HOME/.asdf/asdf.sh && ./gradlew jsBrowserDistribution --no-daemon"
 
 # Directory to publish
 publish = "composeApp/build/dist/js/productionExecutable/"
 
-[build.environment]
-# This sets the $JAVA_HOME variable that the command will use
-JAVA_VERSION = "17"
+# We don't need the [build.environment] block anymore
+# because the .tool-versions file handles the Java version.
