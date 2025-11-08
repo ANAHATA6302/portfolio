@@ -25,6 +25,7 @@ fun AppHeaderDivider() {
         DividerDefaults.Thickness,
         Color.Black.copy(0.5f)
     )
+    //
 }
 
 @Composable
