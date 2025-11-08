@@ -94,6 +94,7 @@ private fun MenuItem(
                 verticalAlignment = Alignment.Top
             ) {
                 Text(
+                    fontFamily = Inter,
                     text = number,
                     fontWeight = FontWeight.Normal,
                     fontSize = if (isSm) 20.sp else 32.sp,
@@ -101,6 +102,7 @@ private fun MenuItem(
                     modifier = Modifier.padding(end = 16.dp)
                 )
                 Text(
+                    fontFamily = Antonio,
                     text = title,
                     fontWeight = FontWeight.Bold,
                     fontSize = if (isSm) 60.sp else 120.sp,

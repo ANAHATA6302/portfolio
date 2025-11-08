@@ -48,6 +48,7 @@ private fun ExternalLink(
 ) {
     Text(
         text = text,
+        fontFamily = Georama,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
         color = AppBlack,
@@ -85,6 +86,7 @@ fun HomeFooter() {
             ) {
                 Text(
                     text = stringResource(Res.string.footer_lets_talk),
+                    fontFamily = Inter,
                     fontWeight = FontWeight.Bold,
                     fontSize = 48.sp,
                     color = AppBlack,
@@ -101,6 +103,7 @@ fun HomeFooter() {
                 ) {
                     Text(
                         stringResource(Res.string.email),
+                        fontFamily = Inter,
                         color = AppWhite,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium
@@ -115,6 +118,7 @@ fun HomeFooter() {
             ) {
                 Text(
                     text = stringResource(Res.string.footer_lets_talk),
+                    fontFamily = Inter,
                     fontWeight = FontWeight.Bold,
                     fontSize = 80.sp,
                     color = AppBlack
@@ -129,6 +133,7 @@ fun HomeFooter() {
                 ) {
                     Text(
                         stringResource(Res.string.email),
+                        fontFamily = Inter,
                         color = AppWhite,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Medium
@@ -225,6 +230,7 @@ fun Footer(isContactPage: Boolean = false) {
             ) {
                 Text(
                     text = stringResource(Res.string.email),
+                    fontFamily = Georama,
                     fontWeight = FontWeight.Normal,
                     fontSize = if (isSm) 20.sp else 24.sp,
                     color = AppGreen,
@@ -239,6 +245,7 @@ fun Footer(isContactPage: Boolean = false) {
                 ) {
                     Text(
                         text = stringResource(Res.string.footer_lets_talk),
+                        fontFamily = Antonio,
                         fontWeight = FontWeight.Normal,
                         fontSize = if (isSm) 60.sp else 80.sp,
                         color = AppDark,
@@ -265,11 +272,13 @@ fun Footer(isContactPage: Boolean = false) {
                 Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                     Column {
                         Text(
+                            fontFamily = Georama,
                             text = stringResource(Res.string.footer_get_in_touch),
                             fontSize = 18.sp,
                             color = AppDark
                         )
                         Text(
+                            fontFamily = Georama,
                             text = stringResource(Res.string.email),
                             fontSize = 18.sp,
                             color = AppDark,
@@ -283,6 +292,7 @@ fun Footer(isContactPage: Boolean = false) {
                                 stringResource(Res.string.link_instagram),
                             )
                             Text(
+                                fontFamily = Georama,
                                 text = ",",
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 18.sp,
@@ -300,6 +310,7 @@ fun Footer(isContactPage: Boolean = false) {
                     }
                     Row {
                         Text(
+                            fontFamily = Georama,
                             text = "Designed by ",
                             fontSize = 18.sp,
                             color = AppDark
@@ -309,6 +320,7 @@ fun Footer(isContactPage: Boolean = false) {
                             stringResource(Res.string.link_figma_eric),
                         )
                         Text(
+                            fontFamily = Georama,
                             text = " ©2024",
                             fontSize = 18.sp,
                             color = AppDark
@@ -324,11 +336,13 @@ fun Footer(isContactPage: Boolean = false) {
                         horizontalAlignment = Alignment.Start
                     ) {
                         Text(
+                            fontFamily = Georama,
                             text = stringResource(Res.string.footer_get_in_touch),
                             fontSize = 18.sp,
                             color = AppDark
                         )
                         Text(
+                            fontFamily = Georama,
                             text = stringResource(Res.string.email),
                             fontSize = 18.sp,
                             color = AppDark,
@@ -345,6 +359,7 @@ fun Footer(isContactPage: Boolean = false) {
                                 stringResource(Res.string.link_instagram),
                             )
                             Text(
+                                fontFamily = Georama,
                                 text = ",",
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 18.sp,
@@ -365,6 +380,7 @@ fun Footer(isContactPage: Boolean = false) {
                         horizontalAlignment = Alignment.End
                     ) {
                         Text(
+                            fontFamily = Georama,
                             text = stringResource(Res.string.footer_designed_by),
                             fontSize = 18.sp,
                             color = AppDark

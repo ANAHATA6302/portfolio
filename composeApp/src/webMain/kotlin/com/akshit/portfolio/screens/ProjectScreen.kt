@@ -77,6 +77,7 @@ private fun HeroSection(isSm: Boolean) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
+                        fontFamily = Antonio,
                         text = stringResource(Res.string.projects_hero_android).uppercase(),
                         fontWeight = FontWeight.Black,
                         fontSize = 64.sp,
@@ -87,6 +88,7 @@ private fun HeroSection(isSm: Boolean) {
                         modifier = Modifier.fillMaxWidth()
                     )
                     Text(
+                        fontFamily = BebasNeue,
                         text = stringResource(Res.string.projects_hero_engineer).uppercase(),
                         fontWeight = FontWeight.Thin,
                         fontSize = 58.sp,
@@ -120,6 +122,7 @@ private fun HeroSection(isSm: Boolean) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
+                        fontFamily = Antonio,
                         text = stringResource(Res.string.projects_hero_android).uppercase(),
                         fontWeight = FontWeight.Black,
                         fontSize = 200.sp,
@@ -130,6 +133,7 @@ private fun HeroSection(isSm: Boolean) {
                         modifier = Modifier.fillMaxWidth()
                     )
                     Text(
+                        fontFamily = BebasNeue,
                         text = stringResource(Res.string.projects_hero_engineer).uppercase(),
                         fontWeight = FontWeight(20),
                         fontSize = 170.sp,
@@ -163,12 +167,14 @@ private fun ProjectIntroSection(isSm: Boolean) {
         Text(
             text = stringResource(Res.string.projects_section_title),
             fontWeight = FontWeight.Medium,
+            fontFamily = Inter,
             fontSize = if (isSm) 60.sp else 150.sp,
             lineHeight = 1.em
         )
         Text(
             text = stringResource(Res.string.projects_section_desc),
             fontWeight = FontWeight.Light,
+            fontFamily = Inter,
             fontSize = if (isSm) 24.sp else 32.sp,
             lineHeight = 1.2.em,
             modifier = Modifier.padding(vertical = 40.dp)
@@ -286,6 +292,7 @@ private fun ProjectInfoCard(
         )
         Text(
             text = title,
+            fontFamily = Inter,
             fontWeight = FontWeight.Bold,
             fontSize = if (isSm) 40.sp else 50.sp,
             color = Color.Black,
@@ -293,6 +300,7 @@ private fun ProjectInfoCard(
         )
         Text(
             text = description,
+            fontFamily = Inter,
             fontWeight = FontWeight.Light,
             fontSize = 24.sp,
             color = Color.Black,

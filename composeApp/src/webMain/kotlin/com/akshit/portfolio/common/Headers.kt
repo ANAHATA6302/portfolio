@@ -34,6 +34,11 @@ import com.akshit.portfolio.theme.AppBlack
 import com.akshit.portfolio.theme.AppDark
 import com.akshit.portfolio.theme.AppGreen
 import com.akshit.portfolio.theme.AppWhite
+import com.akshit.portfolio.theme.Inter
+import com.akshit.portfolio.theme.Antonio
+import com.akshit.portfolio.theme.BebasNeue
+import com.akshit.portfolio.theme.Syne
+import com.akshit.portfolio.theme.Georama
 import isSmallScreen
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -75,6 +80,7 @@ fun Header(navigator: Navigator) {
                 Text(
                     modifier = Modifier.padding(start = 12.dp),
                     text = stringResource(Res.string.header_logo_text),
+                    fontFamily = Antonio,
                     fontWeight = FontWeight.Bold,
                     fontSize = 36.sp,
                     color = AppBlack
@@ -103,6 +109,7 @@ fun Header(navigator: Navigator) {
                 ) {
                     Text(
                         text = stringResource(Res.string.header_lets_talk),
+                        fontFamily = Inter,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Medium
                     )
@@ -143,6 +150,7 @@ fun MenuHeader(navigator: Navigator) {
                 Text(
                     modifier = Modifier.padding(start = 12.dp),
                     text = stringResource(Res.string.header_logo_text),
+                    fontFamily = Antonio,
                     fontWeight = FontWeight.Bold,
                     fontSize = 36.sp,
                     color = AppWhite
@@ -151,6 +159,7 @@ fun MenuHeader(navigator: Navigator) {
 
             Text(
                 text = stringResource(Res.string.header_home),
+                fontFamily = BebasNeue,
                 fontWeight = FontWeight.Bold,
                 fontSize = 36.sp,
                 color = AppWhite,
@@ -171,6 +180,7 @@ fun MenuHeader(navigator: Navigator) {
                 ) {
                     Text(
                         text = stringResource(Res.string.header_lets_talk),
+                        fontFamily = Inter,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Medium
                     )
@@ -204,6 +214,7 @@ fun SecondHeader(navigator: Navigator) {
         ) {
             Text(
                 text = stringResource(Res.string.header_name),
+                fontFamily = Georama,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
                 color = AppDark
@@ -217,6 +228,7 @@ fun SecondHeader(navigator: Navigator) {
                 if (!isSm) {
                     Text(
                         text = stringResource(Res.string.header_connect),
+                        fontFamily = Inter,
                         fontWeight = FontWeight.Medium,
                         fontSize = 18.sp,
                         color = AppBlack,
@@ -233,6 +245,7 @@ fun SecondHeader(navigator: Navigator) {
                     ) {
                         Text(
                             text = stringResource(Res.string.email),
+                            fontFamily = Inter,
                             fontSize = 16.sp,
                         )
                         Image(
@@ -257,6 +270,7 @@ fun SecondHeader(navigator: Navigator) {
                 }
                 Text(
                     text = stringResource(Res.string.header_menu),
+                    fontFamily = Inter,
                     fontWeight = FontWeight.Medium,
                     fontSize = 18.sp,
                     color = AppDark

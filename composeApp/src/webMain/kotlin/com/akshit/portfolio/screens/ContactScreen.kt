@@ -126,6 +126,7 @@ private fun HeroContactSection() {
 @Composable
 private fun ContactHeroText(isSm: Boolean) {
     Text(
+        fontFamily = Georama,
         text = stringResource(Res.string.contact_hero_text),
         fontWeight = FontWeight.Normal,
         fontSize = if (isSm) 30.sp else 42.sp,
@@ -152,6 +153,7 @@ private fun EmailCtaBlock(
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
+                fontFamily = Georama,
                 text = emailString,
                 fontSize = if (isSm) 20.sp else 32.sp,
                 color = AppBlack,
@@ -175,7 +177,7 @@ private fun EmailCtaBlock(
                 contentPadding = PaddingValues(0.dp)
             ) {
                 Icon(
-                    painter = painterResource(Res.drawable.email), // Use your new icon
+                    painter = painterResource(Res.drawable.email),
                     contentDescription = "",
                     modifier = Modifier.size(if (isSm) 24.dp else 32.dp)
                 )

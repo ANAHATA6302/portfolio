@@ -64,6 +64,7 @@ fun HomeScreen() {
                     ) {
                         val fontSize = 60.sp
                         Text(
+                            fontFamily = Inter,
                             text = stringResource(Res.string.home_name_first),
                             fontWeight = FontWeight.Black,
                             fontSize = fontSize,
@@ -77,6 +78,7 @@ fun HomeScreen() {
                         )
                         Spacer(Modifier.height(12.dp))
                         Text(
+                            fontFamily = Inter,
                             text = stringResource(Res.string.home_name_last),
                             fontWeight = FontWeight.Black,
                             fontSize = fontSize,
@@ -92,6 +94,7 @@ fun HomeScreen() {
                     ) {
                         val fontSize = 90.sp
                         Text(
+                            fontFamily = Inter,
                             text = stringResource(Res.string.home_name_first),
                             fontWeight = FontWeight.Black,
                             fontSize = fontSize,
@@ -105,6 +108,7 @@ fun HomeScreen() {
                         )
                         Spacer(Modifier.width(12.dp))
                         Text(
+                            fontFamily = Inter,
                             text = stringResource(Res.string.home_name_last),
                             fontWeight = FontWeight.Black,
                             fontSize = fontSize,
@@ -121,6 +125,7 @@ fun HomeScreen() {
                 if (isSm) {
                     Column(modifier = bannerModifier) {
                         Text(
+                            fontFamily = Inter,
                             text = stringResource(Res.string.home_banner_title),
                             fontWeight = FontWeight.ExtraBold,
                             fontSize = 48.sp,
@@ -129,6 +134,7 @@ fun HomeScreen() {
                             lineHeight = 52.sp
                         )
                         Text(
+                            fontFamily = Inter,
                             text = stringResource(Res.string.home_banner_subtitle),
                             fontWeight = FontWeight.Normal,
                             fontSize = 20.sp,
@@ -143,6 +149,7 @@ fun HomeScreen() {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
+                            fontFamily = Inter,
                             text = stringResource(Res.string.home_banner_title),
                             fontWeight = FontWeight.ExtraBold,
                             fontSize = 76.sp,
@@ -151,6 +158,7 @@ fun HomeScreen() {
                             lineHeight = 80.sp
                         )
                         Text(
+                            fontFamily = Inter,
                             text = stringResource(Res.string.home_banner_subtitle),
                             fontWeight = FontWeight.Normal,
                             fontSize = 32.sp,
@@ -162,6 +170,7 @@ fun HomeScreen() {
                 }
                 Column(modifier = Modifier.padding(top = if (isSm) 80.dp else 144.dp)) {
                     Text(
+                        fontFamily = Inter,
                         text = stringResource(Res.string.home_projects_title),
                         fontWeight = FontWeight.ExtraBold,
                         fontSize = if (isSm) 60.sp else 80.sp,
@@ -258,6 +267,7 @@ fun ProjectCard(
             modifier = Modifier.height(282.dp)
         )
         Text(
+            fontFamily = Inter,
             text = title,
             fontWeight = FontWeight.Medium,
             fontSize = if (isSm) 32.sp else 40.sp,
@@ -276,6 +286,7 @@ private fun ExperienceSection() {
             .padding(top = if (isSm) 80.dp else 144.dp)
     ) {
         Text(
+            fontFamily = Inter,
             text = stringResource(Res.string.home_experience_title),
             fontWeight = FontWeight.ExtraBold,
             fontSize = if (isSm) 60.sp else 80.sp,
@@ -317,6 +328,7 @@ private fun ExperienceItem(title: String, date: String, company: String) {
         if (isSm) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
+                    fontFamily = Inter,
                     text = title,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 28.sp,
@@ -327,6 +339,7 @@ private fun ExperienceItem(title: String, date: String, company: String) {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Text(
+                        fontFamily = Inter,
                         text = date,
                         fontSize = 18.sp,
                         color = AppBlack,
@@ -337,6 +350,7 @@ private fun ExperienceItem(title: String, date: String, company: String) {
                             .weight(1f)
                     )
                     Text(
+                        fontFamily = Inter,
                         text = company,
                         fontSize = 18.sp,
                         color = AppBlack,
@@ -354,6 +368,7 @@ private fun ExperienceItem(title: String, date: String, company: String) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    fontFamily = Inter,
                     text = title,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 36.sp,
@@ -371,6 +386,7 @@ private fun ExperienceItem(title: String, date: String, company: String) {
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
+                            fontFamily = Inter,
                             text = date,
                             fontSize = 24.sp,
                             color = AppBlack,
@@ -378,6 +394,7 @@ private fun ExperienceItem(title: String, date: String, company: String) {
                         )
                     }
                     Text(
+                        fontFamily = Inter,
                         text = company,
                         fontSize = 24.sp,
                         color = AppBlack,

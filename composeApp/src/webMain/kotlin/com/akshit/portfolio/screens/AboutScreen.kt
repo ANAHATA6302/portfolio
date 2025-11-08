@@ -63,6 +63,7 @@ private fun HeroAboutSection(isSm: Boolean) {
             .widthIn(max = 800.dp)
     ) {
         Text(
+            fontFamily = Georama,
             text = stringResource(Res.string.about_location),
             color = AppGreen,
             fontSize = 20.sp,
@@ -79,6 +80,7 @@ private fun HeroAboutSection(isSm: Boolean) {
             horizontalArrangement = Arrangement.spacedBy(if (isSm) 16.dp else 24.dp)
         ) {
             Text(
+                fontFamily = Antonio,
                 text = stringResource(Res.string.about_hero_title),
                 fontWeight = FontWeight.Bold,
                 fontSize = if (isSm) 40.sp else 64.sp,
@@ -104,6 +106,7 @@ private fun WorkExperienceIntroSection(isSm: Boolean) {
             .padding(top = 176.dp)
     ) {
         Text(
+            fontFamily = BebasNeue,
             text = stringResource(Res.string.about_work_exp_title),
             fontWeight = FontWeight.Bold,
             fontSize = if (isSm) 48.sp else 84.sp,
@@ -111,6 +114,7 @@ private fun WorkExperienceIntroSection(isSm: Boolean) {
             lineHeight = 1.em
         )
         Text(
+            fontFamily = Georama,
             text = stringResource(Res.string.about_work_exp_desc),
             color = AppDark,
             fontSize = if (isSm) 18.sp else 32.sp,
@@ -185,6 +189,7 @@ private fun ExperienceItem(
         if (isSm) {
             Column {
                 Text(
+                    fontFamily = Antonio,
                     text = title,
                     fontWeight = FontWeight.Medium,
                     fontSize = 32.sp,
@@ -194,6 +199,7 @@ private fun ExperienceItem(
                 Text(
                     text = "$company \n $date",
                     color = AppGreen,
+                    fontFamily = Georama,
                     fontSize = 18.sp,
                     lineHeight = 1.2.em,
                     textAlign = TextAlign.Start,
@@ -207,6 +213,7 @@ private fun ExperienceItem(
                 verticalAlignment = Alignment.Top
             ) {
                 Text(
+                    fontFamily = Antonio,
                     text = title,
                     fontWeight = FontWeight.Medium,
                     fontSize = 48.sp,
@@ -216,6 +223,7 @@ private fun ExperienceItem(
                 )
                 Text(
                     text = "$company \n $date",
+                    fontFamily = Georama,
                     color = AppGreen,
                     fontSize = 20.sp,
                     lineHeight = 1.2.em,
@@ -234,6 +242,7 @@ private fun ExperienceItem(
                     .padding(24.dp)
             ) {
                 Text(
+                    fontFamily = Inter,
                     text = description,
                     color = AppDark,
                     fontSize = 18.sp,
