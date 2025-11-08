@@ -1,6 +1,6 @@
 [build]
-# Command to run
-command = "./gradlew jsBrowserDistribution"
+# Tell gradle to run without using the background daemon
+command = "./gradlew jsBrowserDistribution --no-daemon"
 
 # Directory to publish
 publish = "composeApp/build/dist/js/productionExecutable/"
