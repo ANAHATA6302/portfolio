@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="app_name">Akshit's Portfolio</string>
+    <string name="email">akshit6302@gmail.com</string>
+
+    <!-- Header -->
+    <string name="header_logo_text">AN</string>
+    <string name="header_lets_talk">Let’s talk</string>
+    <string name="header_home">HOME</string>
+    <string name="header_name">Akshit</string>
+    <string name="header_connect">Let’s Connect</string>
+    <string name="header_menu">Menu</string>
+
+    <!-- Menu Screen -->
+    <string name="menu_01">01</string>
+    <string name="menu_02">02</string>
+    <string name="menu_03">03</string>
+    <string name="menu_projects">Projects</string>
+    <string name="menu_about">About me</string>
+    <string name="menu_contact">Contact</string>
+
+    <!-- Home Screen -->
+    <string name="home_name_first">Akshit</string>
+    <string name="home_name_last">Nahata</string>
+    <string name="home_banner_title">Android Engineer</string>
+    <string name="home_banner_subtitle">I create art that is both aesthetically pleasing and emotionally resonant. I also design user interfaces that are intuitive and user-friendly.</string>
+    <string name="home_projects_title">Projects</string>
+    <string name="project_level_shoes">Level Shoes</string>
+    <string name="project_potterpedia">PotterPedia</string>
+    <string name="project_truth_or_dare">Truth Or Dare</string>
+    <string name="project_portfolio">Portfolio</string>
+    <string name="project_jlr_one_app">Jaguar Land Rover - OneApp</string>
+    <string name="project_unexpectedly">Unexpectedly</string>
+    <string name="home_experience_title">Experience</string>
+    <string name="exp_1_title">Android Engineer</string>
+    <string name="exp_1_date">2023 - Present</string>
+    <string name="exp_1_company">Jaguar LandRover</string>
+    <string name="exp_2_title">Contract Android Engineer</string>
+    <string name="exp_2_date">Sept - Dec 2022</string>
+    <string name="exp_2_company">IDS Logic</string>
+    <string name="exp_3_title">Android Engineer</string>
+    <string name="exp_3_date">2021 - 2022</string>
+    <string name="exp_3_company">Freelancer</string>
+
+    <!-- Footer -->
+    <string name="footer_lets_talk">Let’s Talk</string>
+    <string name="footer_get_in_touch">Hey get in touch</string>
+    <string name="footer_instagram">Instagram</string>
+    <string name="footer_linkedin">LinkedIn</string>
+    <string name="footer_buy_coffee">BuyCoffee</string>
+    <string name="footer_designed_by">Designed by </string>
+    <string name="footer_eric_web">© ericandtheweb</string>
+    <string name="footer_eric_web_mobile">ericandtheweb</string>
+    <string name="footer_copyright">©2024</string>
+
+    <!-- Socials -->
+    <string name="link_email" translatable="false">mailto:akshit6302@gmail.com</string>
+    <string name="link_instagram" translatable="false">https://www.instagram.com/ak__it/?hl=en</string>
+    <string name="link_linkedin" translatable="false">https://www.linkedin.com/in/akshit-nahata-06948a13b/</string>
+    <string name="link_buy_coffee" translatable="false">https://www.buymeacoffee.com/akshit6302</string>
+    <string name="link_figma_eric" translatable="false">https://www.figma.com/@ericandtheweb</string>
+    <string name="link_level_shoes" translatable="false">https://play.google.com/store/apps/details?id=com.levelshoes&amp;pcampaignid=web_share</string>
+    <string name="link_potterpedia" translatable="false">https://play.google.com/store/apps/details?id=com.akshit.potterpedia</string>
+
+    <!-- Contact Screen -->
+    <string name="contact_copy_email">Copy \n Email</string>
+    <string name="contact_copy_email_link">Copy Email</string>
+    <string name="contact_hero_text">I'm open for projects, feel free to contact me to see how we can collaborate</string>
+    <string name="content_desc_author_image">Author Image</string>
+
+    <!-- About Screen -->
+    <string name="about_location">Based \n Manchester, UK.</string>
+    <string name="about_hero_title">I’m an \n Android \n Engineer</string>
+    <string name="content_desc_author_close">Close-up photo of the author</string>
+    <string name="about_work_exp_title">Work Experience</string>
+    <string name="about_work_exp_desc">My portfolio showcases several professional Android apps available on the Google Play Store, that demonstrate my expertise in utilising a wide range of tools and technologies.</string>
+    <string name="exp_desc_jlr">As an Android Engineer at Jaguar LandRover, I designed and delivered core remote vehicle features, such as door and cabin control, using Jetpack Compose, LiveData, and Koin. I accelerated time-to-market by implementing the first direct vehicle communication feature, which eliminated legacy bottlenecks. I also championed security-first engineering through threat modelling and secure coding practices. Beyond my technical contributions, I acted as the Android representative in cross-platform architecture reviews, partnered with product managers on Agile roadmaps, and created a comprehensive training project to onboard new engineers.</string>
+    <string name="exp_desc_ids">As a Contract Android Engineer at IDS Logic, I collaborated directly with stakeholders, including the Mall of Dubai, to identify and address key user pain points, contributing to a 20% increase in user satisfaction. I streamlined the checkout experience by 50% by implementing Google OneTap Sign-in and Google Pay. My role also involved enhancing overall app performance by optimizing navigation graphs, integrating in-app purchases and ExoPlayer, and resolving production bugs, which included overcoming complex Google Pay API integration challenges to ensure a secure user experience.</string>
+    <string name="exp_desc_freelance">As a freelance Android Engineer, I successfully developed and launched multiple applications on the Google Play Store, managing the full project lifecycle for diverse clients. I demonstrated technical proficiency by implementing custom features, including WebRTC and ExoPlayer, to enhance user experience. I also leveraged Firebase and the Google Play Console for efficient project management and app delivery.</string>
+
+    <!-- Projects Screen -->
+
+    <string name="projects_hero_android">Android</string>
+    <string name="projects_hero_engineer">ENGINEER</string>
+    <string name="projects_hero_subtitle">Nice to see you here! I am an\nAndroid Engineer Based in Manchester, UK.</string>
+    <string name="projects_section_title">Projects</string>
+    <string name="projects_section_desc">I am proud to present my portfolio that showcases a wide range of projects I have worked on across different industries.</string>
+    <string name="project_level_title">LevelShoes</string>
+    <string name="project_level_desc">Level Shoes has blended the worlds of digital and physical to provide seamless experiences to consumers wherever and however they are engaging with the brand\"</string>
+    <string name="project_level_author">- Rania Masri, CTO Chalhoub Group.</string>
+    <string name="project_potterpedia_title">PotterPedia</string>
+    <string name="project_potterpedia_desc">PotterPedia: An offline-first Android app (Jetpack Compose) displaying Harry Potter character info fetched from an API. Includes search, dark/light themes, and a scalable architecture for optimal performance.</string>
+    <string name="project_unexpectedly_title">UnExpectedly</string>
+    <string name="project_unexpectedly_desc">Unexpectedly is a captivating dating Android app. It leverages advanced technology to create meaningful connections in unexpected ways.</string>
+    <string name="project_truth_or_dare_title">Truth Or Dare</string>
+    <string name="project_truth_or_dare_desc">An interactive multiplayer game which leverages users imagination and link it to the amount of fun they can have with this application.</string>
+    <string name="content_desc_project_icon">Project Icon</string>
+    <string name="project_portfolio_desc">This personal portfolio is a showcase of my work, built entirely with Kotlin Multiplatform. The responsive, modern UI is crafted with Compose for Web, demonstrating my skills in building beautiful, declarative interfaces from a single Kotlin codebase. The project is hosted live on Netlify.</string>
+    <string name="project_portfolio_title">Portfolio</string>
+    <string name="project_one_app_title">OneApp</string>
+    <string name="project_one_app_desc">OneApp is JLR's state-of-the-art connectivity solution, transforming the smartphone into a true remote command center. It provides a seamless digital bridge to the vehicle, offering a suite of advanced features that redefine the ownership experience and allow drivers to interact with their car in ways never before imagined.</string>
+</resources>
