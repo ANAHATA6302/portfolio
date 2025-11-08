@@ -1,4 +1,10 @@
 [build]
-# We keep --no-daemon just to be safe
-command = "./gradlew jsBrowserDistribution --no-daemon"
+# We can remove --no-daemon now
+command = "./gradlew jsBrowserDistribution"
 publish = "composeApp/build/dist/js/productionExecutable/"
+
+[build.environment]
+# Set the exact Java path Netlify needs
+JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64"
+# Force Node.js to a compatible version
+NODE_VERSION = "18"
