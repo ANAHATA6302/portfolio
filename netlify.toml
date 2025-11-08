@@ -1,7 +1,4 @@
 [build]
-# This command sources the correct path for asdf,
-# which then reads your .tool-versions file to set up Java 17.
-command = "source /opt/build/build-image/etc/asdf.sh && ./gradlew jsBrowserDistribution --no-daemon"
-
-# Directory to publish
+# We keep --no-daemon just to be safe
+command = "./gradlew jsBrowserDistribution --no-daemon"
 publish = "composeApp/build/dist/js/productionExecutable/"

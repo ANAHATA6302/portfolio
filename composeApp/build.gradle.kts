@@ -1,4 +1,4 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
@@ -8,6 +8,11 @@ plugins {
 }
 
 kotlin {
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
     js {
         browser()
         binaries.executable()
