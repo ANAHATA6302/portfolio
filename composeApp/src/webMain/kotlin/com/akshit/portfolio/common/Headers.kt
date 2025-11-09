@@ -86,6 +86,9 @@ fun Header(navigator: Navigator) {
                     color = AppBlack
                 )
             }
+            if (isSm) {
+                Spacer(Modifier.weight(1f))
+            }
 
             Image(
                 painter = painterResource(Res.drawable.menu),
@@ -95,9 +98,7 @@ fun Header(navigator: Navigator) {
                     .clickable { navigator.push(MenuScreen) }
             )
 
-            if (isSm) {
-                Spacer(Modifier.size(width = 147.dp, height = 50.dp))
-            } else {
+            if (!isSm) {
                 Button(
                     onClick = { navigator.push(ContactScreen) },
                     shape = RoundedCornerShape(50.dp),
@@ -139,7 +140,7 @@ fun MenuHeader(navigator: Navigator) {
                 .fillMaxWidth()
                 .padding(20.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.Start
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
@@ -156,6 +157,7 @@ fun MenuHeader(navigator: Navigator) {
                     color = AppWhite
                 )
             }
+            Spacer(Modifier.weight(1f))
 
             Text(
                 text = stringResource(Res.string.header_home),
@@ -166,9 +168,8 @@ fun MenuHeader(navigator: Navigator) {
                 modifier = Modifier.clickable { navigator.popAll() }
             )
 
-            if (isSm) {
-                Spacer(Modifier.size(width = 147.dp, height = 50.dp))
-            } else {
+            if (!isSm) {
+                Spacer(Modifier.weight(1f))
                 Button(
                     onClick = { navigator.push(ContactScreen) },
                     shape = RoundedCornerShape(50.dp),
@@ -263,6 +264,7 @@ fun SecondHeader(navigator: Navigator) {
                 modifier = Modifier.clickable { navigator.push(MenuScreen) }
             ) {
                 if (isSm) {
+                    Spacer(Modifier.weight(1f))
                     Image(
                         painter = painterResource(Res.drawable.plus),
                         contentDescription = stringResource(Res.string.header_menu)
