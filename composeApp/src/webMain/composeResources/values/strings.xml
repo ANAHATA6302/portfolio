@@ -86,7 +86,7 @@
     <string name="projects_section_title">Projects</string>
     <string name="projects_section_desc">I am proud to present my portfolio that showcases a wide range of projects I have worked on across different industries.</string>
     <string name="project_level_title">LevelShoes</string>
-    <string name="project_level_desc">Level Shoes has blended the worlds of digital and physical to provide seamless experiences to consumers wherever and however they are engaging with the brand\"</string>
+    <string name="project_level_desc">Level Shoes has blended the worlds of digital and physical to provide seamless experiences to consumers wherever and however they are engaging with the brand"</string>
     <string name="project_level_author">- Rania Masri, CTO Chalhoub Group.</string>
     <string name="project_potterpedia_title">PotterPedia</string>
     <string name="project_potterpedia_desc">PotterPedia: An offline-first Android app (Jetpack Compose) displaying Harry Potter character info fetched from an API. Includes search, dark/light themes, and a scalable architecture for optimal performance.</string>

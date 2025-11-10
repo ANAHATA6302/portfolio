@@ -20,6 +20,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.akshit.portfolio.theme.*
 import isSmallScreen
 import kotlinx.browser.window
@@ -40,6 +42,8 @@ import portfolio.composeapp.generated.resources.link_figma_eric
 import portfolio.composeapp.generated.resources.link_instagram
 import portfolio.composeapp.generated.resources.link_linkedin
 
+
+private const val LINKEDIN_LINK = "https://www.linkedin.com/in/akshit-nahata-06948a13b/"
 @Composable
 private fun ExternalLink(
     text: String,
@@ -81,7 +85,11 @@ fun HomeFooter() {
     ) {
         if (isSm) {
             Column(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .clickable {
+                        window.open(url = LINKEDIN_LINK, target = "_blank")
+                    }
+                    .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
@@ -112,7 +120,10 @@ fun HomeFooter() {
             }
         } else {
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .clickable {
+                        window.open(url = LINKEDIN_LINK, target = "_blank")
+                    }.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -238,6 +249,9 @@ fun Footer(isContactPage: Boolean = false) {
                 )
                 Row(
                     modifier = Modifier
+                        .clickable {
+                            window.open(url = LINKEDIN_LINK, target = "_blank")
+                        }
                         .fillMaxWidth()
                         .padding(top = 16.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
