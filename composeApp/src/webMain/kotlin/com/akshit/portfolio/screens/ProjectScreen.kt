@@ -1,329 +1,382 @@
 package com.akshit.portfolio.screens
 
-import androidx.compose.foundation.HorizontalScrollbar
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollbarStyle
-import androidx.compose.foundation.background
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.*
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.rememberScrollbarAdapter
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.akshit.portfolio.common.FadeIn
 import com.akshit.portfolio.common.Footer
 import com.akshit.portfolio.common.SetPageTitle
 import com.akshit.portfolio.theme.*
 import isSmallScreen
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import portfolio.composeapp.generated.resources.*
 
 @Composable
-fun ProjectsScreen() {
-    SetPageTitle("PROJECTS")
-    val isSm = isSmallScreen()
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .background(AppWhite)
-            .padding(top = if (isSm) 70.dp else 90.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        FadeIn {
-            Column(
-                modifier = Modifier
-                    .widthIn(max = 1000.dp)
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Spacer(Modifier.height(20.dp))
-                HeroSection(isSm)
-                ProjectIntroSection(isSm)
-            }
-        }
-        ProjectsHorizontalList(isSm)
-        Footer()
-    }
-}
-
-@Composable
-private fun HeroSection(isSm: Boolean) {
-    if (isSm) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 5.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Column {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        fontFamily = Antonio,
-                        text = stringResource(Res.string.projects_hero_android).uppercase(),
-                        fontWeight = FontWeight.Black,
-                        fontSize = 64.sp,
-                        color = AppGreen,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 1.em,
-                        letterSpacing = 4.sp,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Text(
-                        fontFamily = BebasNeue,
-                        text = stringResource(Res.string.projects_hero_engineer).uppercase(),
-                        fontWeight = FontWeight.Thin,
-                        fontSize = 58.sp,
-                        color = AppGreen,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 1.em,
-                        letterSpacing = 4.sp,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
-            }
-            Image(
-                painter = painterResource(Res.drawable.blazerAuthor),
-                contentDescription = stringResource(Res.string.content_desc_author_image),
-                modifier = Modifier
-                    .fillMaxWidth(0.23f)
-                    .rotate(350f)
-                    .padding(vertical = 16.dp)
-            )
-        }
-    } else {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 5.dp),
-            contentAlignment = Alignment.TopCenter
-        ) {
-            Column {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        fontFamily = Antonio,
-                        text = stringResource(Res.string.projects_hero_android).uppercase(),
-                        fontWeight = FontWeight.Black,
-                        fontSize = 200.sp,
-                        color = AppGreen,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 1.em,
-                        letterSpacing = 8.sp,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Text(
-                        fontFamily = BebasNeue,
-                        text = stringResource(Res.string.projects_hero_engineer).uppercase(),
-                        fontWeight = FontWeight(20),
-                        fontSize = 170.sp,
-                        color = AppGreen,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 1.em,
-                        letterSpacing = 8.sp,
-                    )
-                }
-            }
-            Image(
-                painter = painterResource(Res.drawable.blazerAuthor),
-                contentDescription = stringResource(Res.string.content_desc_author_image),
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .fillMaxWidth(0.23f)
-                    .rotate(350f)
-            )
-        }
-    }
-}
-
-@Composable
-private fun ProjectIntroSection(isSm: Boolean) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .padding(top = if (isSm) 0.dp else 56.dp)
-    ) {
-        Text(
-            text = stringResource(Res.string.projects_section_title),
-            fontWeight = FontWeight.Medium,
-            fontFamily = Inter,
-            fontSize = if (isSm) 60.sp else 150.sp,
-            lineHeight = 1.em
-        )
-        Text(
-            text = stringResource(Res.string.projects_section_desc),
-            fontWeight = FontWeight.Light,
-            fontFamily = Inter,
-            fontSize = if (isSm) 24.sp else 32.sp,
-            lineHeight = 1.2.em,
-            modifier = Modifier.padding(vertical = 40.dp)
-        )
-    }
-}
-
-@Composable
-private fun ProjectsHorizontalList(isSm: Boolean) {
-    val projectList = listOf(
-        ProjectInfo(
-            title = stringResource(Res.string.project_one_app_title),
-            description = stringResource(Res.string.project_one_app_desc),
-            color = AppLGreen
-        ),
-        ProjectInfo(
-            title = stringResource(Res.string.project_level_title),
-            description = stringResource(Res.string.project_level_desc),
-            author = stringResource(Res.string.project_level_author),
-            color = AppYellow
-        ),
-        ProjectInfo(
-            title = stringResource(Res.string.project_portfolio_title),
-            description = stringResource(Res.string.project_portfolio_desc),
-            author = stringResource(Res.string.project_level_author),
-            color = AppLGreen
-        ),
-        ProjectInfo(
-            title = stringResource(Res.string.project_unexpectedly_title),
-            description = stringResource(Res.string.project_unexpectedly_desc),
-            color = AppYellow
-        ),
-        ProjectInfo(
-            title = stringResource(Res.string.project_potterpedia_title),
-            description = stringResource(Res.string.project_potterpedia_desc),
-            color = AppLGreen
-        ),
-        ProjectInfo(
-            title = stringResource(Res.string.project_truth_or_dare_title),
-            description = stringResource(Res.string.project_truth_or_dare_desc),
-            color = AppYellow
-        )
+private fun Modifier.rimLight(): Modifier = this.drawWithContent {
+    drawContent()
+    drawLine(
+        brush = Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.2f), Color.Transparent)),
+        start = Offset(0f, 0f),
+        end = Offset(size.width, 0f),
+        strokeWidth = 1.dp.toPx()
     )
+}
+
+@Composable
+fun ProjectsScreen() {
+    SetPageTitle("ENGINEERING // WORKS")
+    val isSm = isSmallScreen()
+    val scrollState = rememberScrollState()
 
     Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .background(AppBlack)
-            .padding(vertical = 40.dp),
-        contentAlignment = Alignment.TopCenter
+            .fillMaxSize()
+            .background(BackgroundDark)
     ) {
+        // High-end Technical Background
+        EngineeringArchitecturalBackground()
+
         Column(
             modifier = Modifier
-                .widthIn(max = 1000.dp)
-                .fillMaxWidth(),
+                .fillMaxSize()
+                .verticalScroll(scrollState),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val listState = rememberLazyListState()
+            FadeIn {
+                Column(
+                    modifier = Modifier
+                        .widthIn(max = 1400.dp)
+                        .fillMaxWidth()
+                        .padding(horizontal = if (isSm) 20.dp else 40.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(Modifier.height(if (isSm) 100.dp else 180.dp))
+                    
+                    TechnicalHeroSection(isSm)
+                    
+                    Spacer(Modifier.height(if (isSm) 60.dp else 140.dp))
 
-            LazyRow(
-                state = listState,
-                modifier = Modifier.fillMaxWidth(),
-                contentPadding = PaddingValues(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(20.dp)
-            ) {
-                items(projectList) { project ->
-                    ProjectInfoCard(
-                        isSm = isSm,
-                        title = project.title,
-                        description = project.description,
-                        author = project.author,
-                        bgColor = project.color
-                    )
+                    TechnicalProjectGallery(isSm)
+
+                    Footer()
                 }
             }
+        }
+    }
+}
 
-            HorizontalScrollbar(
+@Composable
+private fun EngineeringArchitecturalBackground() {
+    val infiniteTransition = rememberInfiniteTransition()
+    val rotation by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(60000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        )
+    )
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        Canvas(modifier = Modifier.fillMaxSize().graphicsLayer { alpha = 0.05f }) {
+            val gridSpacing = 50.dp.toPx()
+            for (x in 0..size.width.toInt() step gridSpacing.toInt()) {
+                drawLine(Color.White, Offset(x.toFloat(), 0f), Offset(x.toFloat(), size.height), strokeWidth = 1f)
+            }
+            for (y in 0..size.height.toInt() step gridSpacing.toInt()) {
+                drawLine(Color.White, Offset(0f, y.toFloat()), Offset(size.width, y.toFloat()), strokeWidth = 1f)
+            }
+        }
+
+        Box(
+            modifier = Modifier
+                .size(if (isSmallScreen()) 600.dp else 1200.dp)
+                .offset(x = (-300).dp, y = (-200).dp)
+                .graphicsLayer { rotationZ = rotation }
+                .background(Brush.radialGradient(listOf(GlowIndigo.copy(alpha = 0.2f), Color.Transparent)), CircleShape)
+                .blur(150.dp)
+        )
+        Box(
+            modifier = Modifier
+                .size(if (isSmallScreen()) 500.dp else 1000.dp)
+                .align(Alignment.BottomEnd)
+                .offset(x = 200.dp, y = 200.dp)
+                .graphicsLayer { rotationZ = -rotation }
+                .background(Brush.radialGradient(listOf(GlowPink.copy(alpha = 0.15f), Color.Transparent)), CircleShape)
+                .blur(120.dp)
+        )
+        Box(
+            modifier = Modifier
+                .size(if (isSmallScreen()) 400.dp else 800.dp)
+                .align(Alignment.CenterEnd)
+                .offset(x = 100.dp)
+                .background(Brush.radialGradient(listOf(GlowCyan.copy(alpha = 0.12f), Color.Transparent)), CircleShape)
+                .blur(100.dp)
+        )
+    }
+}
+
+@Composable
+private fun TechnicalHeroSection(isSm: Boolean) {
+    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+        Text(
+            text = "ENGINEER",
+            style = TextStyle(
+                fontFamily = Syne,
+                fontWeight = FontWeight.Black,
+                fontSize = if (isSm) 50.sp else 220.sp, 
+                color = Color.White.copy(alpha = 0.02f)
+            ),
+            maxLines = 1,
+            softWrap = false,
+            modifier = Modifier.offset(y = if (isSm) (-15).dp else (-60).dp)
+        )
+
+        Column {
+            Text(
+                text = "01 / ARCHITECTURE",
+                style = TextStyle(
+                    fontFamily = Inter,
+                    fontWeight = FontWeight.Black,
+                    fontSize = if (isSm) 10.sp else 16.sp,
+                    color = GlowIndigo,
+                    letterSpacing = 4.sp
+                ),
+                maxLines = 1,
+                softWrap = false
+            )
+            Spacer(Modifier.height(if (isSm) 8.dp else 16.dp))
+            Text(
+                text = "SELECTED\nWORKS.",
+                style = TextStyle(
+                    fontFamily = Syne,
+                    fontWeight = FontWeight.Black,
+                    fontSize = if (isSm) 36.sp else 140.sp, 
+                    lineHeight = if (isSm) 30.sp else 130.sp,
+                    color = TextPrimary
+                ),
+                maxLines = 2,
+                softWrap = false
+            )
+            Spacer(Modifier.height(24.dp))
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .padding(top = 24.dp),
-                adapter = rememberScrollbarAdapter(listState),
-                style = ScrollbarStyle(
-                    minimalHeight = 8.dp,
-                    thickness = 8.dp,
-                    shape = RoundedCornerShape(4.dp),
-                    hoverDurationMillis = 0,
-                    unhoverColor = AppWhite.copy(alpha = 0.3f),
-                    hoverColor = AppWhite.copy(alpha = 0.5f)
-                )
+                    .width(if (isSm) 80.dp else 400.dp)
+                    .height(2.dp)
+                    .background(Brush.linearGradient(listOf(GlowIndigo, GlowPink, Color.Transparent)))
             )
         }
     }
 }
 
 @Composable
-private fun ProjectInfoCard(
-    isSm: Boolean,
-    title: String,
-    description: String,
-    author: String? = null,
-    bgColor: Color,
-) {
-    val scrollState = rememberScrollState()
+private fun TechnicalProjectGallery(isSm: Boolean) {
+    // Re-ordered and all projects included
+    val projects = listOf(
+        ProjectArtInfo(
+            "01",
+            stringResource(Res.string.project_one_app_title),
+            "ENTERPRISE_ARCHITECTURE",
+            stringResource(Res.string.project_one_app_desc),
+            listOf("KOTLIN", "JETPACK COMPOSE", "MVVM", "KOTLIN"),
+            GlowIndigo
+        ),
+        ProjectArtInfo(
+            "02",
+            stringResource(Res.string.project_level_title),
+            "E-COMMERCE_ENGINE",
+            stringResource(Res.string.project_level_desc),
+            listOf("ANDROID SDK", "FIREBASE", "G-PAY"),
+            GlowPurple
+        ),
+        ProjectArtInfo(
+            "03",
+            stringResource(Res.string.project_portfolio_title),
+            "KMP_VISUALS",
+            stringResource(Res.string.project_portfolio_desc),
+            listOf("KOTLIN MULTIPLATFORM", "COMPOSE WEB", "WASM"),
+            GlowPink
+        ),
+        ProjectArtInfo(
+            "04",
+            stringResource(Res.string.project_potterpedia_title),
+            "CLEAN_ARCHITECTURE",
+            stringResource(Res.string.project_potterpedia_desc),
+            listOf("OFFLINE-FIRST", "API INTEGRATION", "MVVM"),
+            GlowCyan
+        ),
+        ProjectArtInfo(
+            "05",
+            stringResource(Res.string.project_unexpectedly_title),
+            "SOCIAL_EXPERIENCE",
+            stringResource(Res.string.project_unexpectedly_desc),
+            listOf("WEBRTC", "EXOPLAYER", "REAL-TIME"),
+            GlowAmber
+        ),
+        ProjectArtInfo(
+            "06",
+            stringResource(Res.string.project_truth_or_dare_title),
+            "INTERACTIVE_SYSTEM",
+            stringResource(Res.string.project_truth_or_dare_desc),
+            listOf("GAME LOGIC", "UI MOTION", "INTERACTIVE"),
+            GlowIndigo
+        )
+    )
+
     Column(
         modifier = Modifier
-            .width(if (isSm) 300.dp else 450.dp)
-            .height(520.dp)
-            .background(bgColor, RoundedCornerShape(16.dp))
-            .padding(horizontal = 24.dp, vertical = 40.dp)
+            .fillMaxWidth()
+            .padding(vertical = if (isSm) 40.dp else 120.dp),
+        verticalArrangement = Arrangement.spacedBy(if (isSm) 40.dp else 100.dp)
     ) {
-        Image(
-            painter = painterResource(Res.drawable.projecticon1),
-            contentDescription = stringResource(Res.string.content_desc_project_icon),
-            modifier = Modifier.width(if (isSm) 150.dp else 200.dp)
-        )
-        Text(
-            text = title,
-            fontFamily = Inter,
-            fontWeight = FontWeight.Bold,
-            fontSize = if (isSm) 40.sp else 50.sp,
-            color = Color.Black,
-            modifier = Modifier.padding(top = 40.dp)
-        )
-        Text(
-            text = description,
-            fontFamily = Inter,
-            fontWeight = FontWeight.Light,
-            fontSize = 24.sp,
-            color = Color.Black,
-            lineHeight = 1.3.em,
-            modifier = Modifier
-                .verticalScroll(scrollState)
-                .padding(top = 24.dp)
-        )
-        if (author != null) {
-            Text(
-                text = author,
-                fontWeight = FontWeight.Light,
-                fontSize = 24.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(top = 40.dp)
-            )
+        projects.forEach { project ->
+            HighEndWorkCard(project, isSm)
         }
     }
 }
 
-private data class ProjectInfo(
+@Composable
+private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
+    var isHovered by remember { mutableStateOf(false) }
+    val scale by animateFloatAsState(if (isHovered) 1.01f else 1f)
+
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
+            }
+            .hoverable(remember { MutableInteractionSource() })
+            .clickable { },
+        shape = RoundedCornerShape(if (isSm) 24.dp else 48.dp),
+        color = GlassWhite,
+        border = BorderStroke(1.dp, GlassBorder)
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(if (isSm) 24.dp else 64.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1.5f)) {
+                Text(
+                    text = project.tag,
+                    style = TextStyle(
+                        fontFamily = Inter,
+                        fontWeight = FontWeight.Black,
+                        color = project.accent,
+                        fontSize = if (isSm) 10.sp else 12.sp,
+                        letterSpacing = 1.sp
+                    ),
+                    maxLines = 1,
+                    softWrap = false
+                )
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = project.title.uppercase(),
+                    style = TextStyle(
+                        fontFamily = Syne,
+                        fontWeight = FontWeight.Black,
+                        fontSize = if (isSm) 24.sp else 54.sp, 
+                        color = TextPrimary,
+                        lineHeight = if (isSm) 28.sp else 58.sp
+                    ),
+                    maxLines = 2,
+                    softWrap = true
+                )
+
+                Spacer(Modifier.height(if (isSm) 16.dp else 32.dp))
+
+                Text(
+                    text = project.desc,
+                    style = TextStyle(
+                        fontFamily = Inter,
+                        fontWeight = FontWeight.Light,
+                        fontSize = if (isSm) 14.sp else 22.sp,
+                        color = TextSecondary,
+                        lineHeight = if (isSm) 20.sp else 36.sp
+                    ),
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis
+                )
+
+                Spacer(Modifier.height(if (isSm) 20.dp else 40.dp))
+
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    project.stack.forEach { tech ->
+                        Surface(
+                            shape = RoundedCornerShape(4.dp),
+                            color = project.accent.copy(alpha = 0.1f),
+                            border = BorderStroke(1.dp, project.accent.copy(alpha = 0.2f))
+                        ) {
+                            Text(
+                                text = tech,
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
+                                style = TextStyle(
+                                    fontFamily = Inter,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = if (isSm) 8.sp else 10.sp,
+                                    color = project.accent,
+                                    letterSpacing = 1.sp
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+
+            if (!isSm) {
+                // LARGE NUMBER ON THE RIGHT
+                Text(
+                    text = project.id,
+                    style = TextStyle(
+                        fontFamily = Syne,
+                        fontWeight = FontWeight.Black,
+                        fontSize = 180.sp,
+                        color = project.accent.copy(alpha = 0.1f)
+                    ),
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(start = 40.dp),
+                    textAlign = TextAlign.End,
+                    maxLines = 1,
+                    softWrap = false
+                )
+            }
+        }
+    }
+}
+
+private data class ProjectArtInfo(
+    val id: String,
     val title: String,
-    val description: String,
-    val author: String? = null,
-    val color: Color
+    val tag: String,
+    val desc: String,
+    val stack: List<String>,
+    val accent: Color
 )

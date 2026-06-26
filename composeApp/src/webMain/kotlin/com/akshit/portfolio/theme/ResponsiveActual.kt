@@ -25,10 +25,6 @@ private fun rememberWindowWidth(): Int {
     return width
 }
 
-/**
- * This is the "actual" web-specific implementation
- * of the "expect" function in common code.
- */
 @Composable
 fun isSmallScreen(): Boolean {
     val width = rememberWindowWidth()

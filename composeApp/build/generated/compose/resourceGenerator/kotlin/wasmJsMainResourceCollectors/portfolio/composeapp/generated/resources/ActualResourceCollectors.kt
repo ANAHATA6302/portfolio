@@ -35,5 +35,6 @@ internal actual val Res.allPluralStringResources: Map<String, PluralStringResour
 
 internal actual val Res.allFontResources: Map<String, FontResource> by lazy {
   val map = mutableMapOf<String, FontResource>()
+  _collectWebMainFont0Resources(map)
   return@lazy map
 }

@@ -1,411 +1,157 @@
 package com.akshit.portfolio.common
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
 import com.akshit.portfolio.theme.*
 import isSmallScreen
 import kotlinx.browser.window
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import portfolio.composeapp.generated.resources.Res
-import portfolio.composeapp.generated.resources.bigArrow
 import portfolio.composeapp.generated.resources.email
-import portfolio.composeapp.generated.resources.footer_buy_coffee
-import portfolio.composeapp.generated.resources.footer_designed_by
-import portfolio.composeapp.generated.resources.footer_eric_web
-import portfolio.composeapp.generated.resources.footer_get_in_touch
-import portfolio.composeapp.generated.resources.footer_instagram
-import portfolio.composeapp.generated.resources.footer_lets_talk
-import portfolio.composeapp.generated.resources.footer_linkedin
-import portfolio.composeapp.generated.resources.link_buy_coffee
-import portfolio.composeapp.generated.resources.link_figma_eric
 import portfolio.composeapp.generated.resources.link_instagram
 import portfolio.composeapp.generated.resources.link_linkedin
-
+import portfolio.composeapp.generated.resources.link_buy_coffee
 
 private const val LINKEDIN_LINK = "https://www.linkedin.com/in/akshit-nahata-06948a13b/"
-@Composable
-private fun ExternalLink(
-    text: String,
-    url: String,
-    modifier: Modifier = Modifier
-) {
-    Text(
-        text = text,
-        fontFamily = Georama,
-        fontWeight = FontWeight.Bold,
-        fontSize = 18.sp,
-        color = AppBlack,
-        textDecoration = TextDecoration.Underline,
-        modifier = modifier.clickable {
-            window.open(url = url, target = "_blank")
-        }
-    )
-}
 
-
-/**
- * The Home Page Footer, from HomeFooter.jsx
- */
 @Composable
 fun HomeFooter() {
-    val isSm = isSmallScreen()
-    val clipboardManager = LocalClipboardManager.current
-
-    val email = stringResource(Res.string.email)
-    val copyToClipboard: (String) -> Unit = { textToCopy ->
-        clipboardManager.setText(AnnotatedString(textToCopy))
-    }
-    Column(
-        modifier = Modifier
-            .padding(top = 144.dp, bottom = 40.dp)
-            .fillMaxWidth()
-            .background(AppBBlue, RoundedCornerShape(48.dp))
-            .padding(if (isSm) 24.dp else 48.dp)
-    ) {
-        if (isSm) {
-            Column(
-                modifier = Modifier
-                    .clickable {
-                        window.open(url = LINKEDIN_LINK, target = "_blank")
-                    }
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = stringResource(Res.string.footer_lets_talk),
-                    fontFamily = Inter,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 48.sp,
-                    color = AppBlack,
-                    textAlign = TextAlign.Center
-                )
-                Spacer(Modifier.height(24.dp))
-                Button(
-                    onClick = { copyToClipboard(email) },
-                    shape = RoundedCornerShape(50.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = AppGreen),
-                    modifier = Modifier
-                        .height(67.dp)
-                        .fillMaxWidth()
-                ) {
-                    Text(
-                        stringResource(Res.string.email),
-                        fontFamily = Inter,
-                        color = AppWhite,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
-            }
-        } else {
-            Row(
-                modifier = Modifier
-                    .clickable {
-                        window.open(url = LINKEDIN_LINK, target = "_blank")
-                    }.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(Res.string.footer_lets_talk),
-                    fontFamily = Inter,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 80.sp,
-                    color = AppBlack
-                )
-                Button(
-                    onClick = { copyToClipboard(email) },
-                    shape = RoundedCornerShape(50.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = AppGreen),
-                    modifier = Modifier
-                        .height(67.dp)
-                        .widthIn(min = 230.dp, max = 331.dp)
-                ) {
-                    Text(
-                        stringResource(Res.string.email),
-                        fontFamily = Inter,
-                        color = AppWhite,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
-            }
-        }
-        HorizontalDivider(
-            modifier = Modifier.padding(vertical = 40.dp),
-            thickness = 1.dp,
-            color = AppDark
-        )
-
-        if (isSm) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(20.dp)
-            ) {
-                ExternalLink(
-                    stringResource(Res.string.footer_instagram),
-                    stringResource(Res.string.link_instagram),
-                )
-                ExternalLink(
-                    stringResource(Res.string.footer_linkedin),
-                    stringResource(Res.string.link_linkedin),
-                )
-                ExternalLink(
-                    stringResource(Res.string.footer_buy_coffee),
-                    stringResource(Res.string.link_buy_coffee),
-                )
-
-                Spacer(Modifier.height(20.dp))
-
-                ExternalLink(
-                    stringResource(Res.string.footer_eric_web),
-                    stringResource(Res.string.link_figma_eric),
-                )
-            }
-        } else {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
-                    ExternalLink(
-                        stringResource(Res.string.footer_instagram),
-                        stringResource(Res.string.link_instagram),
-                    )
-                    ExternalLink(
-                        stringResource(Res.string.footer_linkedin),
-                        stringResource(Res.string.link_linkedin),
-                    )
-                    ExternalLink(
-                        stringResource(Res.string.footer_buy_coffee),
-                        stringResource(Res.string.link_buy_coffee),
-                    )
-                }
-                ExternalLink(
-                    stringResource(Res.string.footer_eric_web),
-                    stringResource(Res.string.link_figma_eric),
-                )
-            }
-        }
-    }
+    Footer()
 }
 
-/**
- * The main site Footer, from Footer.jsx (Renamed from GenericFooter)
- * @param isContactPage Set to true to hide the "Let's Talk" section.
- */
 @Composable
 fun Footer(isContactPage: Boolean = false) {
     val isSm = isSmallScreen()
     val clipboardManager = LocalClipboardManager.current
-
     val email = stringResource(Res.string.email)
-    val copyToClipboard: (String) -> Unit = { textToCopy ->
-        clipboardManager.setText(AnnotatedString(textToCopy))
-    }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp),
+            .padding(top = 100.dp, bottom = 40.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (!isContactPage) {
-            Column(
+            Surface(
                 modifier = Modifier
-                    .widthIn(max = 1000.dp)
+                    .widthIn(max = 1400.dp)
                     .fillMaxWidth()
-                    .padding(top = 250.dp, bottom = 124.dp)
+                    .padding(horizontal = 24.dp),
+                shape = RoundedCornerShape(48.dp),
+                color = GlassWhite,
+                border = BorderStroke(1.dp, GlassBorder)
             ) {
-                Text(
-                    text = stringResource(Res.string.email),
-                    fontFamily = Georama,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = if (isSm) 20.sp else 24.sp,
-                    color = AppGreen,
-                    modifier = Modifier.clickable { copyToClipboard(email) }
-                )
-                Row(
-                    modifier = Modifier
-                        .clickable {
-                            window.open(url = LINKEDIN_LINK, target = "_blank")
-                        }
-                        .fillMaxWidth()
-                        .padding(top = 16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.Bottom
+                Column(
+                    modifier = Modifier.padding(if (isSm) 40.dp else 80.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = stringResource(Res.string.footer_lets_talk),
-                        fontFamily = Antonio,
-                        fontWeight = FontWeight.Normal,
-                        fontSize = if (isSm) 60.sp else 80.sp,
-                        color = AppDark,
-                        lineHeight = 0.9.em
+                        text = "READY TO START?",
+                        style = TextStyle(
+                            fontFamily = Inter,
+                            fontWeight = FontWeight.Bold,
+                            color = GlowPink,
+                            letterSpacing = 4.sp
+                        )
                     )
-                    Image(
-                        painter = painterResource(Res.drawable.bigArrow),
-                        contentDescription = "Arrow",
-                        modifier = Modifier
-                            .size(if (isSm) 32.dp else 40.dp)
-                            .padding(bottom = 12.dp)
+                    Spacer(Modifier.height(16.dp))
+                    Text(
+                        text = "LET'S COLLABORATE",
+                        style = TextStyle(
+                            fontFamily = Syne,
+                            fontWeight = FontWeight.Black,
+                            fontSize = if (isSm) 32.sp else 72.sp,
+                            color = TextPrimary,
+                            textAlign = TextAlign.Center
+                        )
                     )
+                    Spacer(Modifier.height(48.dp))
+                    Button(
+                        onClick = { clipboardManager.setText(AnnotatedString(email)) },
+                        colors = ButtonDefaults.buttonColors(containerColor = GlowIndigo),
+                        shape = RoundedCornerShape(20.dp),
+                        modifier = Modifier.height(60.dp).widthIn(min = 200.dp)
+                    ) {
+                        Text(
+                            text = "COPY EMAIL",
+                            style = TextStyle(fontFamily = Inter, fontWeight = FontWeight.Bold, letterSpacing = 2.sp)
+                        )
+                    }
                 }
             }
         }
 
-        Column(
+        Spacer(Modifier.height(80.dp))
+
+        // Bottom Links
+        Row(
             modifier = Modifier
-                .widthIn(max = 1000.dp)
+                .widthIn(max = 1400.dp)
                 .fillMaxWidth()
-                .padding(bottom = 20.dp)
+                .padding(horizontal = 24.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            if (isSm) {
-                Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
-                    Column {
-                        Text(
-                            fontFamily = Georama,
-                            text = stringResource(Res.string.footer_get_in_touch),
-                            fontSize = 18.sp,
-                            color = AppDark
-                        )
-                        Text(
-                            fontFamily = Georama,
-                            text = stringResource(Res.string.email),
-                            fontSize = 18.sp,
-                            color = AppDark,
-                            modifier = Modifier.clickable { copyToClipboard(email) }
-                        )
-                    }
-                    Column {
-                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                            ExternalLink(
-                                stringResource(Res.string.footer_instagram),
-                                stringResource(Res.string.link_instagram),
-                            )
-                            Text(
-                                fontFamily = Georama,
-                                text = ",",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 18.sp,
-                                color = AppDark
-                            )
-                            ExternalLink(
-                                stringResource(Res.string.footer_linkedin),
-                                stringResource(Res.string.link_linkedin),
-                            )
-                        }
-                        ExternalLink(
-                            stringResource(Res.string.footer_buy_coffee),
-                            stringResource(Res.string.link_buy_coffee),
-                        )
-                    }
-                    Row {
-                        Text(
-                            fontFamily = Georama,
-                            text = "Designed by ",
-                            fontSize = 18.sp,
-                            color = AppDark
-                        )
-                        ExternalLink(
-                            stringResource(Res.string.footer_eric_web),
-                            stringResource(Res.string.link_figma_eric),
-                        )
-                        Text(
-                            fontFamily = Georama,
-                            text = " ©2024",
-                            fontSize = 18.sp,
-                            color = AppDark
-                        )
-                    }
-                }
-            } else {
-                Row(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Column(
-                        modifier = Modifier.weight(1f),
-                        horizontalAlignment = Alignment.Start
-                    ) {
-                        Text(
-                            fontFamily = Georama,
-                            text = stringResource(Res.string.footer_get_in_touch),
-                            fontSize = 18.sp,
-                            color = AppDark
-                        )
-                        Text(
-                            fontFamily = Georama,
-                            text = stringResource(Res.string.email),
-                            fontSize = 18.sp,
-                            color = AppDark,
-                            modifier = Modifier.clickable { copyToClipboard(email) }
-                        )
-                    }
-                    Column(
-                        modifier = Modifier.weight(1f),
-                        horizontalAlignment = Alignment.Start
-                    ) {
-                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                            ExternalLink(
-                                stringResource(Res.string.footer_instagram),
-                                stringResource(Res.string.link_instagram),
-                            )
-                            Text(
-                                fontFamily = Georama,
-                                text = ",",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 18.sp,
-                                color = AppDark
-                            )
-                            ExternalLink(
-                                stringResource(Res.string.footer_linkedin),
-                                stringResource(Res.string.link_linkedin),
-                            )
-                        }
-                        ExternalLink(
-                            stringResource(Res.string.footer_buy_coffee),
-                            stringResource(Res.string.link_buy_coffee),
-                        )
-                    }
-                    Column(
-                        modifier = Modifier.weight(1f),
-                        horizontalAlignment = Alignment.End
-                    ) {
-                        Text(
-                            fontFamily = Georama,
-                            text = stringResource(Res.string.footer_designed_by),
-                            fontSize = 18.sp,
-                            color = AppDark
-                        )
-                        ExternalLink(
-                            stringResource(Res.string.footer_eric_web),
-                            stringResource(Res.string.link_figma_eric),
-                        )
-                    }
-                }
+            Column {
+                Text(
+                    text = "©2026 AKSHIT NAHATA",
+                    style = TextStyle(fontFamily = Inter, fontWeight = FontWeight.Bold, fontSize = 12.sp, color = TextTertiary)
+                )
+                Text(
+                    text = "BUILT WITH COMPOSE MULTIPLATFORM",
+                    style = TextStyle(fontFamily = Inter, fontSize = 10.sp, color = GlowIndigo)
+                )
+            }
+
+            Row(horizontalArrangement = Arrangement.spacedBy(if (isSm) 12.dp else 24.dp)) {
+                SocialLink("LI", LINKEDIN_LINK)
+                SocialLink("IG", stringResource(Res.string.link_instagram))
             }
         }
+    }
+}
+
+@Composable
+private fun SocialLink(label: String, url: String) {
+    Box(
+        modifier = Modifier
+            .size(44.dp)
+            .clip(CircleShape)
+            .background(GlassWhite)
+            .border(1.dp, GlassBorder, CircleShape)
+            .clickable { window.open(url, "_blank") },
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = label,
+            style = TextStyle(
+                fontFamily = Syne, 
+                fontWeight = FontWeight.Black, 
+                fontSize = if (label == "☕") 18.sp else 14.sp, 
+                color = TextPrimary
+            )
+        )
     }
 }

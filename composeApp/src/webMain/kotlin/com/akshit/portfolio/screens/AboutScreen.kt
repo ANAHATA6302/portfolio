@@ -1,22 +1,26 @@
 package com.akshit.portfolio.screens
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.akshit.portfolio.common.FadeIn
 import com.akshit.portfolio.common.Footer
@@ -29,71 +33,184 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun AboutMeScreen() {
-    SetPageTitle("ABOUT")
+    SetPageTitle("ABOUT // IDENTITY")
     val isSm = isSmallScreen()
-    Column(
+    
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .background(AppWhite)
-            .padding(top = if (isSm) 70.dp else 90.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(BackgroundDark)
     ) {
-        FadeIn {
-            Column(
-                modifier = Modifier
-                    .widthIn(max = 1000.dp)
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                HeroAboutSection(isSm)
-                WorkExperienceIntroSection(isSm)
-                ExperienceListSection(isSm)
-                Footer()
+        // Shared engineering-grade background consistency
+        EngineeringAboutBackground()
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(top = if (isSm) 120.dp else 160.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            FadeIn {
+                Column(
+                    modifier = Modifier
+                        .widthIn(max = 1400.dp)
+                        .fillMaxWidth()
+                        .padding(horizontal = 24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    ArtisticAboutHero(isSm)
+                    
+                    Spacer(Modifier.height(if (isSm) 60.dp else 120.dp))
+                    
+                    WorkExperienceIntroSection(isSm)
+                    
+                    ExperienceTimelineShowcase(isSm)
+                    
+                    Footer()
+                }
             }
         }
     }
 }
 
 @Composable
-private fun HeroAboutSection(isSm: Boolean) {
-    Column(
-        modifier = Modifier
-            .widthIn(max = 800.dp)
-    ) {
-        Text(
-            fontFamily = Georama,
-            text = stringResource(Res.string.about_location),
-            color = AppGreen,
-            fontSize = 20.sp,
-            textAlign = TextAlign.End,
-            modifier = Modifier
-                .align(Alignment.End)
-                .padding(top = 16.dp)
+private fun EngineeringAboutBackground() {
+    val infiniteTransition = rememberInfiniteTransition()
+    val rotation by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(40000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
         )
+    )
 
-        Spacer(Modifier.height(16.dp))
+    Box(modifier = Modifier.fillMaxSize()) {
+        Canvas(modifier = Modifier.fillMaxSize().graphicsLayer { alpha = 0.04f }) {
+            val steps = 50.dp.toPx()
+            for (i in 0..size.width.toInt() step steps.toInt()) {
+                drawLine(Color.White, androidx.compose.ui.geometry.Offset(i.toFloat(), 0f), androidx.compose.ui.geometry.Offset(i.toFloat(), size.height))
+            }
+            for (i in 0..size.height.toInt() step steps.toInt()) {
+                drawLine(Color.White, androidx.compose.ui.geometry.Offset(0f, i.toFloat()), androidx.compose.ui.geometry.Offset(size.width, i.toFloat()))
+            }
+        }
 
-        Row(
-            verticalAlignment = Alignment.Bottom,
-            horizontalArrangement = Arrangement.spacedBy(if (isSm) 16.dp else 24.dp)
+        Box(
+            modifier = Modifier
+                .size(if (isSmallScreen()) 600.dp else 1000.dp)
+                .offset(x = 200.dp, y = (-200).dp)
+                .graphicsLayer { rotationZ = rotation }
+                .background(Brush.radialGradient(listOf(GlowPurple.copy(alpha = 0.12f), Color.Transparent)), CircleShape)
+                .blur(150.dp)
+        )
+        Box(
+            modifier = Modifier
+                .size(if (isSmallScreen()) 500.dp else 800.dp)
+                .align(Alignment.BottomStart)
+                .offset(x = (-100).dp, y = 100.dp)
+                .graphicsLayer { rotationZ = -rotation }
+                .background(Brush.radialGradient(listOf(GlowIndigo.copy(alpha = 0.1f), Color.Transparent)), CircleShape)
+                .blur(120.dp)
+        )
+    }
+}
+
+@Composable
+private fun ArtisticAboutHero(isSm: Boolean) {
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = if (isSm) Alignment.Center else Alignment.TopStart
+    ) {
+        // IMAGE AS BACKDROP
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth(if (isSm) 0.85f else 0.5f)
+                .aspectRatio(1f)
+                .align(if (isSm) Alignment.Center else Alignment.TopEnd)
+                .graphicsLayer { 
+                    rotationZ = if (isSm) 5f else 10f
+                    alpha = if (isSm) 0.4f else 0.7f // Made more transparent on mobile for text visibility
+                },
+            shape = RoundedCornerShape(if (isSm) 32.dp else 64.dp),
+            color = Color.White.copy(alpha = 0.08f),
+            border = BorderStroke(1.dp, Color.White.copy(alpha = 0.15f))
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Image(
+                    painter = painterResource(Res.drawable.authCloseImage),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize(0.85f)
+                        .clip(RoundedCornerShape(if (isSm) 24.dp else 48.dp))
+                )
+            }
+        }
+
+        // TEXT OVERLAPPING IMAGE
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = if (isSm) 0.dp else 60.dp),
+            horizontalAlignment = if (isSm) Alignment.CenterHorizontally else Alignment.Start
         ) {
             Text(
-                fontFamily = Antonio,
-                text = stringResource(Res.string.about_hero_title),
-                fontWeight = FontWeight.Bold,
-                fontSize = if (isSm) 40.sp else 64.sp,
-                color = AppGreen,
-                textAlign = TextAlign.End,
-                lineHeight = 1.1.em,
-                modifier = Modifier.weight(if (isSm) 0.5f else 0.6f)
+                text = "I BUILD",
+                style = TextStyle(
+                    fontFamily = Syne,
+                    fontWeight = FontWeight.ExtraLight,
+                    fontSize = if (isSm) 32.sp else 80.sp,
+                    color = TextPrimary,
+                    letterSpacing = if (isSm) 4.sp else 12.sp
+                ),
+                maxLines = 1,
+                softWrap = false
             )
-            Image(
-                painter = painterResource(Res.drawable.authCloseImage),
-                contentDescription = stringResource(Res.string.content_desc_author_close),
-                modifier = Modifier.weight(if (isSm) 0.5f else 0.4f)
+            Text(
+                text = "DIGITAL",
+                style = TextStyle(
+                    fontFamily = Syne,
+                    fontWeight = FontWeight.Black,
+                    fontSize = if (isSm) 48.sp else 120.sp,
+                    color = GlowPink,
+                    lineHeight = if (isSm) 44.sp else 110.sp
+                ),
+                maxLines = 1,
+                softWrap = false
             )
+            Text(
+                text = "EXPERIENCES",
+                style = TextStyle(
+                    fontFamily = Syne,
+                    fontWeight = FontWeight.Black,
+                    fontSize = if (isSm) 40.sp else 100.sp,
+                    color = TextPrimary,
+                    lineHeight = if (isSm) 38.sp else 90.sp
+                ),
+                maxLines = 1,
+                softWrap = false
+            )
+            
+            Spacer(Modifier.height(40.dp))
+            
+            Surface(
+                color = GlowIndigo.copy(alpha = 0.1f),
+                shape = RoundedCornerShape(12.dp),
+                border = BorderStroke(1.dp, GlowIndigo.copy(alpha = 0.3f))
+            ) {
+            Text(
+                text = stringResource(Res.string.about_location).uppercase(),
+                style = TextStyle(
+                    fontFamily = Inter,
+                    fontWeight = FontWeight.Bold,
+                    color = GlowIndigo,
+                    letterSpacing = 2.sp,
+                    fontSize = 12.sp
+                ),
+                modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)
+            )
+            }
         }
     }
 }
@@ -103,158 +220,163 @@ private fun WorkExperienceIntroSection(isSm: Boolean) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 176.dp)
+            .padding(vertical = if (isSm) 40.dp else 80.dp)
     ) {
         Text(
-            fontFamily = BebasNeue,
-            text = stringResource(Res.string.about_work_exp_title),
-            fontWeight = FontWeight.Bold,
-            fontSize = if (isSm) 48.sp else 84.sp,
-            color = AppGreen,
-            lineHeight = 1.em
+            text = "CAREER_TIMELINE",
+            style = TextStyle(
+                fontFamily = Syne,
+                fontWeight = FontWeight.Black,
+                fontSize = if (isSm) 28.sp else 64.sp,
+                color = TextPrimary
+            ),
+            maxLines = 1,
+            softWrap = false
         )
+        Spacer(Modifier.height(if (isSm) 16.dp else 24.dp))
         Text(
-            fontFamily = Georama,
             text = stringResource(Res.string.about_work_exp_desc),
-            color = AppDark,
-            fontSize = if (isSm) 18.sp else 32.sp,
-            fontWeight = FontWeight.Normal,
-            lineHeight = 1.2.em,
-            modifier = Modifier.padding(top = 12.dp)
+            style = TextStyle(
+                fontFamily = Inter,
+                fontWeight = FontWeight.Light,
+                fontSize = if (isSm) 16.sp else 28.sp,
+                color = TextSecondary,
+                lineHeight = if (isSm) 24.sp else 44.sp
+            ),
+            softWrap = true
         )
     }
 }
 
 @Composable
-private fun ExperienceListSection(isSm: Boolean) {
+private fun ExperienceTimelineShowcase(isSm: Boolean) {
     val jlrKey = "jlr"
     var expandedItem by remember { mutableStateOf<String?>(jlrKey) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 166.dp)
-    ) {
-
-        ExperienceItem(
-            isSm = isSm,
-            title = stringResource(Res.string.exp_1_title),
-            company = stringResource(Res.string.exp_1_company),
-            date = stringResource(Res.string.exp_1_date),
-            description = stringResource(Res.string.exp_desc_jlr),
-            isExpanded = expandedItem == jlrKey,
-            onClick = { expandedItem = if (expandedItem == jlrKey) null else jlrKey }
-        )
-
-        val idsKey = "ids"
-        ExperienceItem(
-            isSm = isSm,
-            title = stringResource(Res.string.exp_2_title),
-            company = stringResource(Res.string.exp_2_company),
-            date = stringResource(Res.string.exp_2_date),
-            description = stringResource(Res.string.exp_desc_ids),
-            isExpanded = expandedItem == idsKey,
-            onClick = { expandedItem = if (expandedItem == idsKey) null else idsKey }
-        )
-
-        val freelanceKey = "freelance"
-        ExperienceItem(
-            isSm = isSm,
-            title = stringResource(Res.string.exp_3_title),
-            company = stringResource(Res.string.exp_3_company),
-            date = stringResource(Res.string.exp_3_date),
-            description = stringResource(Res.string.exp_desc_freelance),
-            isExpanded = expandedItem == freelanceKey,
-            onClick = { expandedItem = if (expandedItem == freelanceKey) null else freelanceKey }
-        )
+    Column(modifier = Modifier.fillMaxWidth().padding(bottom = 100.dp)) {
+        listOf(
+            ExperienceData("01", stringResource(Res.string.exp_1_title), stringResource(Res.string.exp_1_company), stringResource(Res.string.exp_1_date), stringResource(Res.string.exp_desc_jlr), GlowIndigo, jlrKey),
+            ExperienceData("02", stringResource(Res.string.exp_2_title), stringResource(Res.string.exp_2_company), stringResource(Res.string.exp_2_date), stringResource(Res.string.exp_desc_ids), GlowPurple, "ids"),
+            ExperienceData("03", stringResource(Res.string.exp_3_title), stringResource(Res.string.exp_3_company), stringResource(Res.string.exp_3_date), stringResource(Res.string.exp_desc_freelance), GlowPink, "freelance")
+        ).forEach { data ->
+            ArtisticTimelineItem(
+                isSm = isSm,
+                data = data,
+                isExpanded = expandedItem == data.key,
+                onClick = { expandedItem = if (expandedItem == data.key) null else data.key }
+            )
+        }
     }
 }
 
 @Composable
-private fun ExperienceItem(
+private fun ArtisticTimelineItem(
     isSm: Boolean,
-    title: String,
-    company: String,
-    date: String,
-    description: String,
+    data: ExperienceData,
     isExpanded: Boolean,
     onClick: () -> Unit
 ) {
-    Column(
+    val scale by animateFloatAsState(if (isExpanded) 1.01f else 1f)
+    
+    Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 28.dp)
-            .clickable { onClick() }
+            .padding(vertical = 12.dp)
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
+            },
+        shape = RoundedCornerShape(if (isSm) 24.dp else 32.dp),
+        color = if (isExpanded) GlassWhite else Color.Transparent,
+        border = BorderStroke(1.dp, if (isExpanded) data.accent.copy(alpha = 0.3f) else GlassBorder),
+        onClick = onClick
     ) {
-        if (isSm) {
-            Column {
-                Text(
-                    fontFamily = Antonio,
-                    text = title,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 32.sp,
-                    color = AppBlack,
-                    lineHeight = 1.1.em
-                )
-                Text(
-                    text = "$company \n $date",
-                    color = AppGreen,
-                    fontFamily = Georama,
-                    fontSize = 18.sp,
-                    lineHeight = 1.2.em,
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier.padding(top = 20.dp)
-                )
-            }
-        } else {
+        Column(modifier = Modifier.padding(if (isSm) 20.dp else 48.dp)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Top
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    fontFamily = Antonio,
-                    text = title,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 48.sp,
-                    color = AppBlack,
-                    lineHeight = 1.1.em,
-                    modifier = Modifier.weight(0.7f)
-                )
-                Text(
-                    text = "$company \n $date",
-                    fontFamily = Georama,
-                    color = AppGreen,
-                    fontSize = 20.sp,
-                    lineHeight = 1.2.em,
-                    textAlign = TextAlign.End,
-                    modifier = Modifier.weight(0.3f)
-                )
+                // FIXED WIDTH DATE SECTION (Aligned with Home Screen: 130dp/300dp)
+                Surface(
+                    modifier = Modifier.width(if (isSm) 120.dp else 280.dp),
+                    shape = RoundedCornerShape(20.dp),
+                    color = data.accent.copy(alpha = 0.15f),
+                    border = BorderStroke(1.dp, data.accent.copy(alpha = 0.4f))
+                ) {
+                    Text(
+                        text = data.date,
+                        style = TextStyle(
+                            fontFamily = Inter, 
+                            fontWeight = FontWeight.ExtraBold, 
+                            fontSize = if (isSm) 14.sp else 24.sp, 
+                            color = data.accent, 
+                            letterSpacing = 1.sp,
+                            textAlign = TextAlign.Center
+                        ),
+                        modifier = Modifier.padding(vertical = if (isSm) 12.dp else 16.dp),
+                        maxLines = 1,
+                        softWrap = false
+                    )
+                }
+
+                Spacer(Modifier.width(if (isSm) 20.dp else 48.dp))
+
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = data.title.uppercase(),
+                        style = TextStyle(
+                            fontFamily = Syne,
+                            fontWeight = FontWeight.Black,
+                            fontSize = if (isSm) 18.sp else 36.sp,
+                            color = TextPrimary,
+                            lineHeight = if (isSm) 22.sp else 40.sp
+                        ),
+                        maxLines = 2,
+                        softWrap = true,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        text = data.company,
+                        style = TextStyle(
+                            fontFamily = Inter,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = if (isSm) 14.sp else 24.sp,
+                            color = GlowCyan
+                        ),
+                        maxLines = 1,
+                        softWrap = false
+                    )
+                }
+            }
+
+            AnimatedVisibility(visible = isExpanded) {
+                Column(modifier = Modifier.padding(top = 32.dp)) {
+                    Box(modifier = Modifier.fillMaxWidth().height(1.dp).background(GlassBorder))
+                    Spacer(Modifier.height(24.dp))
+                    Text(
+                        text = data.description,
+                        style = TextStyle(
+                            fontFamily = Inter,
+                            fontWeight = FontWeight.Light,
+                            fontSize = if (isSm) 15.sp else 22.sp,
+                            lineHeight = if (isSm) 24.sp else 36.sp,
+                            color = TextPrimary
+                        ),
+                        softWrap = true
+                    )
+                }
             }
         }
-
-        AnimatedVisibility(visible = isExpanded) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 24.dp)
-                    .background(AppBBlue, RoundedCornerShape(24.dp))
-                    .padding(24.dp)
-            ) {
-                Text(
-                    fontFamily = Inter,
-                    text = description,
-                    color = AppDark,
-                    fontSize = 18.sp,
-                    lineHeight = 1.4.em
-                )
-            }
-        }
-
-        HorizontalDivider(
-            modifier = Modifier.padding(top = 28.dp),
-            thickness = 1.dp,
-            color = AppBlack
-        )
     }
 }
+
+private data class ExperienceData(
+    val id: String,
+    val title: String,
+    val company: String,
+    val date: String,
+    val description: String,
+    val accent: Color,
+    val key: String
+)

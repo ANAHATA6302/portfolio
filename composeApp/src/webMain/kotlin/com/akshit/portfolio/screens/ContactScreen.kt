@@ -1,27 +1,26 @@
 package com.akshit.portfolio.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.akshit.portfolio.common.FadeIn
 import com.akshit.portfolio.common.Footer
@@ -34,64 +33,95 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun ContactScreen() {
-    SetPageTitle("Contact")
+    SetPageTitle("CONNECT")
     val isSm = isSmallScreen()
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .background(AppWhite)
-            .padding(top = if (isSm) 70.dp else 90.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(BackgroundDark)
     ) {
-        FadeIn {
-            Column(
-                modifier = Modifier
-                    .widthIn(max = 1000.dp)
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                HeroContactSection()
-                Footer(isContactPage = true)
+        // Unique Contact Glows
+        ContactBackgroundGlows()
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(top = if (isSm) 60.dp else 100.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            FadeIn {
+                Column(
+                    modifier = Modifier
+                        .widthIn(max = 1200.dp)
+                        .fillMaxWidth()
+                        .padding(horizontal = 24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    ArtisticContactHero(isSm)
+                    Footer(isContactPage = true)
+                }
             }
         }
     }
 }
 
 @Composable
-private fun HeroContactSection() {
-    val isSm = isSmallScreen()
+private fun ContactBackgroundGlows() {
+    val infiniteTransition = rememberInfiniteTransition()
+    val pulse by infiniteTransition.animateFloat(
+        initialValue = 0.8f,
+        targetValue = 1.2f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(4000, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
 
+    Box(modifier = Modifier.fillMaxSize()) {
+        Box(
+            modifier = Modifier
+                .size(700.dp)
+                .align(Alignment.Center)
+                .graphicsLayer { scaleX = pulse; scaleY = pulse }
+                .background(Brush.radialGradient(listOf(GlowPink.copy(alpha = 0.08f), Color.Transparent)), CircleShape)
+                .blur(100.dp)
+        )
+    }
+}
+
+@Composable
+private fun ArtisticContactHero(isSm: Boolean) {
     val sectionModifier = Modifier
         .fillMaxWidth()
-        .padding(
-            top = if (isSm) 80.dp else 120.dp,
-            bottom = 120.dp,
-            start = 24.dp,
-            end = 24.dp
-        )
+        .padding(vertical = if (isSm) 60.dp else 120.dp)
 
     if (isSm) {
         Column(
             modifier = sectionModifier,
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(48.dp)
+            verticalArrangement = Arrangement.spacedBy(60.dp)
         ) {
-            Image(
-                painter = painterResource(Res.drawable.blazerAuthor),
-                contentDescription = stringResource(Res.string.content_desc_author_image),
+            Box(
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
-                    .rotate(10f)
-            )
+                    .aspectRatio(1f)
+                    .clip(RoundedCornerShape(40.dp))
+                    .background(GlassWhite)
+                    .border(1.dp, GlassBorder, RoundedCornerShape(40.dp))
+                    .padding(16.dp)
+            ) {
+                Image(
+                    painter = painterResource(Res.drawable.blazerAuthor),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(24.dp)).rotate(5f)
+                )
+            }
 
-            ContactHeroText(isSm = true)
+            ContactHeroTypography(isSm = true)
 
-            EmailCtaBlock(
-                isSm = true,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
+            ArtisticEmailCta(isSm = true)
         }
     } else {
         Row(
@@ -100,86 +130,127 @@ private fun HeroContactSection() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Column(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(40.dp)
+                modifier = Modifier.weight(1.2f),
+                verticalArrangement = Arrangement.spacedBy(60.dp)
             ) {
-                ContactHeroText(isSm = false)
-                EmailCtaBlock(
-                    isSm = false,
-                    modifier = Modifier.align(Alignment.Start)
-                )
+                ContactHeroTypography(isSm = false)
+                ArtisticEmailCta(isSm = false)
             }
 
-            Spacer(Modifier.width(48.dp))
-
-            Image(
-                painter = painterResource(Res.drawable.blazerAuthor),
-                contentDescription = stringResource(Res.string.content_desc_author_image),
+            Box(
                 modifier = Modifier
-                    .weight(0.7f)
-                    .rotate(10f)
-            )
+                    .weight(0.8f)
+                    .aspectRatio(0.8f)
+                    .graphicsLayer { rotationZ = 5f }
+                    .clip(RoundedCornerShape(60.dp))
+                    .background(GlassWhite)
+                    .border(1.dp, GlassBorder, RoundedCornerShape(60.dp))
+                    .padding(24.dp)
+            ) {
+                Image(
+                    painter = painterResource(Res.drawable.blazerAuthor),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(36.dp))
+                )
+            }
         }
     }
 }
 
 @Composable
-private fun ContactHeroText(isSm: Boolean) {
-    Text(
-        fontFamily = Georama,
-        text = stringResource(Res.string.contact_hero_text),
-        fontWeight = FontWeight.Normal,
-        fontSize = if (isSm) 30.sp else 42.sp,
-        color = if (isSm) Color(0xFFFDA5B1) else AppGreen,
-        lineHeight = 1.2.em,
-        textAlign = if (isSm) TextAlign.Center else TextAlign.Start
-    )
+private fun ContactHeroTypography(isSm: Boolean) {
+    Column {
+        Text(
+            text = "LET'S BUILD",
+            style = TextStyle(
+                fontFamily = Syne,
+                fontWeight = FontWeight.Black,
+                fontSize = if (isSm) 56.sp else 110.sp,
+                color = TextPrimary,
+                lineHeight = if (isSm) 52.sp else 100.sp
+            )
+        )
+        Text(
+            text = "SOMETHING",
+            style = TextStyle(
+                fontFamily = Syne,
+                fontWeight = FontWeight.ExtraLight,
+                fontSize = if (isSm) 48.sp else 100.sp,
+                color = GlowIndigo,
+                letterSpacing = if (isSm) 4.sp else 12.sp
+            ),
+            modifier = Modifier.offset(y = if (isSm) (-10).dp else (-20).dp)
+        )
+        Text(
+            text = "ICONIC.",
+            style = TextStyle(
+                fontFamily = Syne,
+                fontWeight = FontWeight.Black,
+                fontSize = if (isSm) 56.sp else 110.sp,
+                color = GlowPink,
+                lineHeight = if (isSm) 52.sp else 100.sp
+            ),
+            modifier = Modifier.offset(y = if (isSm) (-20).dp else (-40).dp)
+        )
+        
+        Spacer(Modifier.height(24.dp))
+        
+        Text(
+            text = stringResource(Res.string.contact_hero_text),
+            style = TextStyle(
+                fontFamily = Inter,
+                fontWeight = FontWeight.Light,
+                fontSize = if (isSm) 18.sp else 28.sp,
+                color = TextSecondary,
+                lineHeight = if (isSm) 28.sp else 42.sp
+            ),
+            textAlign = if (isSm) TextAlign.Center else TextAlign.Start,
+            modifier = Modifier.widthIn(max = 600.dp)
+        )
+    }
 }
 
 @Composable
-private fun EmailCtaBlock(
-    isSm: Boolean,
-    modifier: Modifier = Modifier
-) {
+private fun ArtisticEmailCta(isSm: Boolean) {
     val clipboardManager = LocalClipboardManager.current
     val emailString = stringResource(Res.string.email)
+    var isCopied by remember { mutableStateOf(false) }
 
-    Box(
-        modifier = modifier.fillMaxWidth(),
-        contentAlignment = if (isSm) Alignment.Center else Alignment.CenterStart
+    Surface(
+        modifier = Modifier
+            .wrapContentSize()
+            .clickable { 
+                clipboardManager.setText(AnnotatedString(emailString))
+                isCopied = true
+            },
+        shape = RoundedCornerShape(24.dp),
+        color = GlassWhite,
+        border = BorderStroke(1.dp, GlowIndigo)
     ) {
         Row(
+            modifier = Modifier.padding(horizontal = 40.dp, vertical = 24.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            Text(
-                fontFamily = Georama,
-                text = emailString,
-                fontSize = if (isSm) 20.sp else 32.sp,
-                color = AppBlack,
-                modifier = Modifier
-                    .clickable {  }
-                    .padding(end = if (isSm) 32.dp else 48.dp)
+            Icon(
+                painter = painterResource(Res.drawable.email),
+                contentDescription = null,
+                modifier = Modifier.size(32.dp),
+                tint = if (isCopied) GlowPink else GlowIndigo
             )
-
-            Button(
-                onClick = {
-                    clipboardManager.setText(AnnotatedString(emailString))
-                },
-                shape = CircleShape,
-                modifier = Modifier
-                    .size(if (isSm) 80.dp else 98.dp)
-                    .offset(x = if (isSm) (-32).dp else (-48).dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = if (isSm) Color(0xFFD7D7D5) else AppDark,
-                    contentColor = if (isSm) AppBlack else AppWhite
-                ),
-                contentPadding = PaddingValues(0.dp)
-            ) {
-                Icon(
-                    painter = painterResource(Res.drawable.email),
-                    contentDescription = "",
-                    modifier = Modifier.size(if (isSm) 24.dp else 32.dp)
+            Column {
+                Text(
+                    text = if (isCopied) "COPIED TO CLIPBOARD" else "GET IN TOUCH",
+                    style = TextStyle(fontFamily = Inter, fontWeight = FontWeight.Bold, fontSize = 12.sp, color = GlowPink, letterSpacing = 2.sp)
+                )
+                Text(
+                    text = emailString,
+                    style = TextStyle(
+                        fontFamily = Syne, 
+                        fontWeight = FontWeight.Bold, 
+                        fontSize = if (isSm) 18.sp else 24.sp, 
+                        color = TextPrimary
+                    )
                 )
             }
         }

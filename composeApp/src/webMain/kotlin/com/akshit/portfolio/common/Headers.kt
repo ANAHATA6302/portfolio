@@ -1,283 +1,219 @@
 package com.akshit.portfolio.common
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.Navigator
 import com.akshit.portfolio.navigation.ContactScreen
 import com.akshit.portfolio.navigation.MenuScreen
-import com.akshit.portfolio.theme.AppBlack
-import com.akshit.portfolio.theme.AppDark
-import com.akshit.portfolio.theme.AppGreen
-import com.akshit.portfolio.theme.AppWhite
-import com.akshit.portfolio.theme.Inter
-import com.akshit.portfolio.theme.Antonio
-import com.akshit.portfolio.theme.BebasNeue
-import com.akshit.portfolio.theme.Syne
-import com.akshit.portfolio.theme.Georama
+import com.akshit.portfolio.theme.*
 import isSmallScreen
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import portfolio.composeapp.generated.resources.*
 
 @Composable
-private fun AppHeaderDivider(color: Color = AppBlack.copy(alpha = 0.2f)) {
-    HorizontalDivider(
-        modifier = Modifier
-            .widthIn(max = 955.dp)
-            .fillMaxWidth(),
-        thickness = 1.dp,
-        color = color
-    )
+private fun Modifier.rimLight(): Modifier = this.drawWithContent {
+    drawContent()
 }
 
 @Composable
 fun Header(navigator: Navigator) {
     val isSm = isSmallScreen()
 
-    Column(
-        modifier = Modifier.fillMaxWidth().background(AppWhite),
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = if (isSm) 12.dp else 24.dp)
+            .padding(bottom = if (isSm) 12.dp else 24.dp),
+        contentAlignment = Alignment.Center
     ) {
-        Row(
+        Surface(
             modifier = Modifier
-                .widthIn(max = 1000.dp)
-                .fillMaxWidth()
-                .padding(20.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+                .widthIn(max = 1400.dp)
+                .fillMaxWidth(if (isSm) 0.95f else 1f)
+                .height(if (isSm) 56.dp else 80.dp)
+                .rimLight(),
+            shape = RoundedCornerShape(if (isSm) 28.dp else 40.dp),
+            color = Color(0xFF0F172A).copy(alpha = 0.8f), // Deep dark translucent color
+            border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(
-                    painter = painterResource(Res.drawable.logo),
-                    contentDescription = stringResource(Res.string.header_logo_text),
-                    modifier = Modifier.size(48.dp).clip(CircleShape),
-                )
-                Text(
-                    modifier = Modifier.padding(start = 12.dp),
-                    text = stringResource(Res.string.header_logo_text),
-                    fontFamily = Antonio,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 36.sp,
-                    color = AppBlack
-                )
-            }
-            if (isSm) {
-                Spacer(Modifier.weight(1f))
-            }
-
-            Image(
-                painter = painterResource(Res.drawable.menu),
-                contentDescription = stringResource(Res.string.header_menu),
+            Row(
                 modifier = Modifier
-                    .size(40.dp)
-                    .clickable { navigator.push(MenuScreen) }
-            )
-
-            if (!isSm) {
-                Button(
-                    onClick = { navigator.push(ContactScreen) },
-                    shape = RoundedCornerShape(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = AppGreen,
-                        contentColor = AppWhite
-                    ),
-                    modifier = Modifier.size(width = 147.dp, height = 50.dp)
+                    .fillMaxSize()
+                    .padding(horizontal = if (isSm) 16.dp else 32.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                // Logo + Home
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable { navigator.popAll() }
                 ) {
+                    Box(
+                        modifier = Modifier
+                            .size(if (isSm) 32.dp else 48.dp)
+                            .clip(CircleShape)
+                            .background(GlowIndigo.copy(alpha = 0.2f))
+                            .border(1.dp, GlowIndigo, CircleShape),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Image(
+                            painter = painterResource(Res.drawable.logo),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(0.6f)
+                        )
+                    }
+                    Spacer(Modifier.width(if (isSm) 8.dp else 16.dp))
                     Text(
-                        text = stringResource(Res.string.header_lets_talk),
-                        fontFamily = Inter,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Medium
+                        text = if (isSm) "HOME" else stringResource(Res.string.header_logo_text).uppercase(),
+                        style = TextStyle(
+                            fontFamily = Syne,
+                            fontWeight = FontWeight.Black,
+                            color = GlowIndigo, 
+                            letterSpacing = 2.sp,
+                            fontSize = if (isSm) 12.sp else 20.sp
+                        ),
+                        maxLines = 1,
+                        softWrap = false
                     )
-                    Image(
-                        painter = painterResource(Res.drawable.arrow),
-                        contentDescription = stringResource(Res.string.header_lets_talk),
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
+                }
+
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (!isSm) {
+                        TextButton(
+                            onClick = { navigator.push(ContactScreen) },
+                            modifier = Modifier.padding(end = 16.dp)
+                        ) {
+                            Text(
+                                text = "CONNECT",
+                                style = TextStyle(
+                                    fontFamily = Inter,
+                                    fontWeight = FontWeight.Bold,
+                                    color = GlowPink,
+                                    letterSpacing = 2.sp
+                                )
+                            )
+                        }
+                    }
+
+                    // Hamburger Menu Button
+                    Box(
+                        modifier = Modifier
+                            .size(if (isSm) 36.dp else 44.dp)
+                            .clip(CircleShape)
+                            .background(GlowIndigo)
+                            .clickable { navigator.push(MenuScreen) },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Column(
+                            modifier = Modifier.size(if (isSm) 14.dp else 18.dp),
+                            verticalArrangement = Arrangement.spacedBy(if (isSm) 3.dp else 4.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Box(modifier = Modifier.fillMaxWidth(0.8f).height(2.dp).background(Color.White))
+                            Box(modifier = Modifier.fillMaxWidth(0.8f).height(2.dp).background(Color.White))
+                            Box(modifier = Modifier.fillMaxWidth(0.8f).height(2.dp).background(Color.White))
+                        }
+                    }
                 }
             }
         }
-        AppHeaderDivider()
     }
 }
 
 @Composable
 fun MenuHeader(navigator: Navigator) {
     val isSm = isSmallScreen()
-
-    Column(
-        modifier = Modifier.fillMaxWidth().background(AppGreen),
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = if (isSm) 12.dp else 24.dp)
+            .padding(bottom = if (isSm) 12.dp else 24.dp),
+        contentAlignment = Alignment.Center
     ) {
-        Row(
+        Surface(
             modifier = Modifier
-                .widthIn(max = 1000.dp)
-                .fillMaxWidth()
-                .padding(20.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
+                .widthIn(max = 1400.dp)
+                .fillMaxWidth(if (isSm) 0.95f else 1f)
+                .height(if (isSm) 56.dp else 80.dp)
+                .rimLight(),
+            shape = RoundedCornerShape(if (isSm) 28.dp else 40.dp),
+            color = BackgroundDark.copy(alpha = 0.95f),
+            border = BorderStroke(1.dp, GlowIndigo.copy(alpha = 0.4f))
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(
-                    painter = painterResource(Res.drawable.logo),
-                    contentDescription = stringResource(Res.string.header_logo_text),
-                    modifier = Modifier.size(48.dp).clip(CircleShape),
-                )
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = if (isSm) 20.dp else 32.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                // Menu Title is now "HOME" and clickable
                 Text(
-                    modifier = Modifier.padding(start = 12.dp),
-                    text = stringResource(Res.string.header_logo_text),
-                    fontFamily = Antonio,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 36.sp,
-                    color = AppWhite
-                )
-            }
-            Spacer(Modifier.weight(1f))
-
-            Text(
-                text = stringResource(Res.string.header_home),
-                fontFamily = BebasNeue,
-                fontWeight = FontWeight.Bold,
-                fontSize = 36.sp,
-                color = AppWhite,
-                modifier = Modifier.clickable { navigator.popAll() }
-            )
-
-            if (!isSm) {
-                Spacer(Modifier.weight(1f))
-                Button(
-                    onClick = { navigator.push(ContactScreen) },
-                    shape = RoundedCornerShape(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = AppWhite,
-                        contentColor = AppBlack
+                    text = "HOME",
+                    modifier = Modifier.clickable { navigator.popAll() },
+                    style = TextStyle(
+                        fontFamily = Syne,
+                        fontWeight = FontWeight.Black,
+                        color = GlowIndigo, 
+                        letterSpacing = if (isSm) 2.sp else 8.sp,
+                        fontSize = if (isSm) 14.sp else 24.sp
                     ),
-                    modifier = Modifier.size(width = 147.dp, height = 50.dp)
+                    maxLines = 1,
+                    softWrap = false
+                )
+
+                // High Visibility Close Button
+                Surface(
+                    onClick = { navigator.pop() },
+                    shape = RoundedCornerShape(22.dp),
+                    color = GlowPink,
+                    modifier = Modifier.height(if (isSm) 32.dp else 44.dp)
                 ) {
-                    Text(
-                        text = stringResource(Res.string.header_lets_talk),
-                        fontFamily = Inter,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                    Image(
-                        painter = painterResource(Res.drawable.arrow2),
-                        contentDescription = stringResource(Res.string.header_lets_talk),
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
+                    Box(
+                        modifier = Modifier.padding(horizontal = if (isSm) 12.dp else 24.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "CLOSE ×",
+                            style = TextStyle(
+                                fontFamily = Inter,
+                                fontWeight = FontWeight.Black,
+                                color = Color.White,
+                                fontSize = if (isSm) 11.sp else 13.sp,
+                                letterSpacing = 1.sp
+                            ),
+                            maxLines = 1,
+                            softWrap = false
+                        )
+                    }
                 }
             }
         }
-        AppHeaderDivider(color = AppWhite.copy(alpha = 0.4f))
     }
 }
 
 @Composable
 fun SecondHeader(navigator: Navigator) {
-    val isSm = isSmallScreen()
-
-    Column(
-        modifier = Modifier.fillMaxWidth().background(AppWhite),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(
-            modifier = Modifier
-                .widthIn(max = 1000.dp)
-                .fillMaxWidth()
-                .padding(20.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                text = stringResource(Res.string.header_name),
-                fontFamily = Georama,
-                fontWeight = FontWeight.Bold,
-                fontSize = 24.sp,
-                color = AppDark
-            )
-
-            Row(
-                modifier = Modifier.weight(1f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            ) {
-                if (!isSm) {
-                    Text(
-                        text = stringResource(Res.string.header_connect),
-                        fontFamily = Inter,
-                        fontWeight = FontWeight.Medium,
-                        fontSize = 18.sp,
-                        color = AppBlack,
-                    )
-                    Spacer(Modifier.width(16.dp))
-                    Button(
-                        onClick = {  },
-                        shape = RoundedCornerShape(30.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = AppGreen,
-                            contentColor = AppWhite
-                        ),
-                        modifier = Modifier.height(40.dp).widthIn(min = 200.dp)
-                    ) {
-                        Text(
-                            text = stringResource(Res.string.email),
-                            fontFamily = Inter,
-                            fontSize = 16.sp,
-                        )
-                        Image(
-                            painter = painterResource(Res.drawable.email),
-                            contentDescription = stringResource(Res.string.email),
-                            modifier = Modifier.padding(start = 8.dp)
-                        )
-                    }
-                }
-            }
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier.clickable { navigator.push(MenuScreen) }
-            ) {
-                if (isSm) {
-                    Spacer(Modifier.weight(1f))
-                    Image(
-                        painter = painterResource(Res.drawable.plus),
-                        contentDescription = stringResource(Res.string.header_menu)
-                    )
-                }
-                Text(
-                    text = stringResource(Res.string.header_menu),
-                    fontFamily = Inter,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 18.sp,
-                    color = AppDark
-                )
-            }
-        }
-    }
+    Header(navigator) 
 }

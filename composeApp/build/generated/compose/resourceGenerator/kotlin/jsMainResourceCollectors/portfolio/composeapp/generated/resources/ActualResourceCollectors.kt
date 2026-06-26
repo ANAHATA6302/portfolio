@@ -19,6 +19,7 @@ internal actual val Res.allDrawableResources: Map<String, DrawableResource> by l
 
 internal actual val Res.allStringResources: Map<String, StringResource> by lazy {
   val map = mutableMapOf<String, StringResource>()
+  _collectWebMainString0Resources(map)
   return@lazy map
 }
 
@@ -34,5 +35,6 @@ internal actual val Res.allPluralStringResources: Map<String, PluralStringResour
 
 internal actual val Res.allFontResources: Map<String, FontResource> by lazy {
   val map = mutableMapOf<String, FontResource>()
+  _collectWebMainFont0Resources(map)
   return@lazy map
 }
