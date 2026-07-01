@@ -35,7 +35,7 @@ import portfolio.composeapp.generated.resources.*
 fun AboutMeScreen() {
     SetPageTitle("ABOUT")
     val isSm = isSmallScreen()
-    
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -60,13 +60,13 @@ fun AboutMeScreen() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     ArtisticAboutHero(isSm)
-                    
+
                     Spacer(Modifier.height(if (isSm) 60.dp else 120.dp))
-                    
+
                     WorkExperienceIntroSection(isSm)
-                    
+
                     ExperienceTimelineShowcase(isSm)
-                    
+
                     Footer()
                 }
             }
@@ -129,9 +129,9 @@ private fun ArtisticAboutHero(isSm: Boolean) {
                 .fillMaxWidth(if (isSm) 0.85f else 0.5f)
                 .aspectRatio(1f)
                 .align(if (isSm) Alignment.Center else Alignment.TopEnd)
-                .graphicsLayer { 
+                .graphicsLayer {
                     rotationZ = if (isSm) 5f else 10f
-                    alpha = if (isSm) 0.4f else 0.7f 
+                    alpha = if (isSm) 0.4f else 0.7f
                 },
             shape = RoundedCornerShape(if (isSm) 32.dp else 64.dp),
             color = Color.White.copy(alpha = 0.08f),
@@ -162,7 +162,7 @@ private fun ArtisticAboutHero(isSm: Boolean) {
                     fontWeight = FontWeight.ExtraLight,
                     fontSize = if (isSm) 32.sp else 80.sp,
                     color = TextPrimary,
-                    letterSpacing = if (isSm) 2.sp else 4.sp // REDUCED
+                    letterSpacing = if (isSm) 2.sp else 4.sp
                 ),
                 maxLines = 1,
                 softWrap = false
@@ -175,7 +175,7 @@ private fun ArtisticAboutHero(isSm: Boolean) {
                     fontSize = if (isSm) 48.sp else 120.sp,
                     color = GlowPink,
                     lineHeight = if (isSm) 44.sp else 110.sp,
-                    letterSpacing = (-2).sp // REDUCED
+                    letterSpacing = (-2).sp
                 ),
                 maxLines = 1,
                 softWrap = false
@@ -188,14 +188,14 @@ private fun ArtisticAboutHero(isSm: Boolean) {
                     fontSize = if (isSm) 40.sp else 100.sp,
                     color = TextPrimary,
                     lineHeight = if (isSm) 38.sp else 90.sp,
-                    letterSpacing = (-1).sp // REDUCED
+                    letterSpacing = (-1).sp
                 ),
                 maxLines = 1,
                 softWrap = false
             )
-            
+
             Spacer(Modifier.height(40.dp))
-            
+
             Surface(
                 color = GlowIndigo.copy(alpha = 0.1f),
                 shape = RoundedCornerShape(12.dp),
@@ -231,7 +231,7 @@ private fun WorkExperienceIntroSection(isSm: Boolean) {
                 fontWeight = FontWeight.Black,
                 fontSize = if (isSm) 28.sp else 64.sp,
                 color = TextPrimary,
-                letterSpacing = (-1).sp // REDUCED
+                letterSpacing = (-1).sp
             ),
             maxLines = 1,
             softWrap = false
@@ -280,7 +280,7 @@ private fun ArtisticTimelineItem(
     onClick: () -> Unit
 ) {
     val scale by animateFloatAsState(if (isExpanded) 1.01f else 1f)
-    
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -294,82 +294,110 @@ private fun ArtisticTimelineItem(
         border = BorderStroke(1.dp, if (isExpanded) data.accent.copy(alpha = 0.3f) else GlassBorder),
         onClick = onClick
     ) {
-        Column(modifier = Modifier.padding(if (isSm) 20.dp else 48.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                // FIXED WIDTH DATE SECTION (Aligned with Home Screen: 130dp/300dp)
-                Surface(
-                    modifier = Modifier.width(if (isSm) 120.dp else 280.dp),
-                    shape = RoundedCornerShape(20.dp),
-                    color = data.accent.copy(alpha = 0.15f),
-                    border = BorderStroke(1.dp, data.accent.copy(alpha = 0.4f))
+        Box {
+            Column(modifier = Modifier.padding(if (isSm) 20.dp else 48.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = data.date,
-                        style = TextStyle(
-                            fontFamily = Inter, 
-                            fontWeight = FontWeight.ExtraBold, 
-                            fontSize = if (isSm) 14.sp else 24.sp, 
-                            color = data.accent, 
-                            letterSpacing = 0.5.sp, // REDUCED
-                            textAlign = TextAlign.Center
-                        ),
-                        modifier = Modifier.padding(vertical = if (isSm) 12.dp else 16.dp),
-                        maxLines = 1,
-                        softWrap = false
-                    )
+                    // FIXED WIDTH DATE SECTION
+                    Surface(
+                        modifier = Modifier.width(if (isSm) 130.dp else 300.dp),
+                        shape = RoundedCornerShape(20.dp),
+                        color = data.accent.copy(alpha = 0.15f),
+                        border = BorderStroke(1.dp, data.accent.copy(alpha = 0.4f))
+                    ) {
+                        Text(
+                            text = data.date,
+                            style = TextStyle(
+                                fontFamily = Inter,
+                                fontWeight = FontWeight.ExtraBold,
+                                fontSize = if (isSm) 14.sp else 24.sp,
+                                color = data.accent,
+                                letterSpacing = 0.5.sp,
+                                textAlign = TextAlign.Center
+                            ),
+                            modifier = Modifier.padding(vertical = if (isSm) 12.dp else 16.dp),
+                            maxLines = 1,
+                            softWrap = false
+                        )
+                    }
+
+                    Spacer(Modifier.width(if (isSm) 20.dp else 48.dp))
+
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = data.title.uppercase(),
+                            style = TextStyle(
+                                fontFamily = Syne,
+                                fontWeight = FontWeight.Black,
+                                fontSize = if (isSm) 20.sp else 44.sp,
+                                color = TextPrimary,
+                                lineHeight = if (isSm) 24.sp else 48.sp,
+                                letterSpacing = (-0.5).sp
+                            ),
+                            maxLines = 2,
+                            softWrap = true,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            text = data.company,
+                            style = TextStyle(
+                                fontFamily = Inter,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = if (isSm) 14.sp else 24.sp,
+                                color = GlowCyan,
+                                letterSpacing = 0.5.sp
+                            ),
+                            maxLines = 1,
+                            softWrap = false
+                        )
+                    }
                 }
 
-                Spacer(Modifier.width(if (isSm) 20.dp else 48.dp))
-
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = data.title.uppercase(),
-                        style = TextStyle(
-                            fontFamily = Syne,
-                            fontWeight = FontWeight.Black,
-                            fontSize = if (isSm) 20.sp else 44.sp,
-                            color = TextPrimary,
-                            lineHeight = if (isSm) 24.sp else 48.sp,
-                            letterSpacing = (-0.5).sp // REDUCED
-                        ),
-                        maxLines = 2,
-                        softWrap = true,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Spacer(Modifier.height(4.dp))
-                    Text(
-                        text = data.company,
-                        style = TextStyle(
-                            fontFamily = Inter,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = if (isSm) 14.sp else 24.sp,
-                            color = GlowCyan,
-                            letterSpacing = 0.5.sp // REDUCED
-                        ),
-                        maxLines = 1,
-                        softWrap = false
-                    )
+                AnimatedVisibility(visible = isExpanded) {
+                    Column(modifier = Modifier.padding(top = 32.dp)) {
+                        Box(modifier = Modifier.fillMaxWidth().height(1.dp).background(GlassBorder))
+                        Spacer(Modifier.height(24.dp))
+                        Text(
+                            text = data.description,
+                            style = TextStyle(
+                                fontFamily = Inter,
+                                fontWeight = FontWeight.Light,
+                                fontSize = if (isSm) 15.sp else 22.sp,
+                                lineHeight = if (isSm) 24.sp else 36.sp,
+                                color = TextPrimary
+                            ),
+                            softWrap = true
+                        )
+                    }
                 }
             }
 
-            AnimatedVisibility(visible = isExpanded) {
-                Column(modifier = Modifier.padding(top = 32.dp)) {
-                    Box(modifier = Modifier.fillMaxWidth().height(1.dp).background(GlassBorder))
-                    Spacer(Modifier.height(24.dp))
-                    Text(
-                        text = data.description,
-                        style = TextStyle(
-                            fontFamily = Inter,
-                            fontWeight = FontWeight.Light,
-                            fontSize = if (isSm) 15.sp else 22.sp,
-                            lineHeight = if (isSm) 24.sp else 36.sp,
-                            color = TextPrimary
-                        ),
-                        softWrap = true
-                    )
+            // INTERACTION ICON IN THE BOTTOM END CORNER
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(if (isSm) 16.dp else 24.dp)
+            ) {
+                Surface(
+                    modifier = Modifier
+                        .size(if (isSm) 32.dp else 48.dp),
+                    shape = CircleShape,
+                    color = data.accent.copy(alpha = 0.1f),
+                    border = BorderStroke(1.dp, GlassBorder)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Text(
+                            text = if (isExpanded) "-" else "+",
+                            style = TextStyle(
+                                color = data.accent,
+                                fontSize = if (isSm) 18.sp else 24.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        )
+                    }
                 }
             }
         }
