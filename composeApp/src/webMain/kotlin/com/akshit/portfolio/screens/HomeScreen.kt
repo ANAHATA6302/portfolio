@@ -36,7 +36,7 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun HomeScreen() {
-    SetPageTitle("ENGINEER // ARCHITECT")
+    SetPageTitle("ENGINEER//ARCHITECT")
     val isSm = isSmallScreen()
     val scrollState = rememberScrollState()
 
@@ -172,7 +172,7 @@ private fun HeroMainCard(isSm: Boolean, modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.Black, 
                         fontSize = if (isSm) 10.sp else 12.sp, 
                         color = GlowIndigo, 
-                        letterSpacing = 2.sp
+                        letterSpacing = 1.sp // REDUCED
                     ),
                     maxLines = 1,
                     softWrap = false
@@ -185,7 +185,8 @@ private fun HeroMainCard(isSm: Boolean, modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.Black,
                         fontSize = if (isSm) 44.sp else 120.sp,
                         lineHeight = if (isSm) 42.sp else 110.sp,
-                        color = TextPrimary
+                        color = TextPrimary,
+                        letterSpacing = (-2).sp // REDUCED
                     ),
                     maxLines = 2,
                     softWrap = false
@@ -240,7 +241,7 @@ private fun HeroTechnicalSpecCard(label: String, value: String, color: Color, mo
                     fontWeight = FontWeight.Bold, 
                     fontSize = if (isSmallScreen()) 8.sp else 10.sp, 
                     color = TextTertiary, 
-                    letterSpacing = 2.sp
+                    letterSpacing = 1.sp // REDUCED
                 ),
                 maxLines = 1,
                 softWrap = false
@@ -252,7 +253,8 @@ private fun HeroTechnicalSpecCard(label: String, value: String, color: Color, mo
                     fontFamily = Syne, 
                     fontWeight = FontWeight.Black, 
                     fontSize = if (isSmallScreen()) 18.sp else 28.sp, 
-                    color = color
+                    color = color,
+                    letterSpacing = (-0.5).sp // REDUCED
                 ),
                 maxLines = 1,
                 softWrap = false
@@ -304,7 +306,8 @@ private fun EngineeringWorkShowcase(isSm: Boolean) {
                 fontFamily = Syne, 
                 fontWeight = FontWeight.Black, 
                 fontSize = if (isSm) 32.sp else 80.sp, 
-                color = TextPrimary
+                color = TextPrimary,
+                letterSpacing = (-1).sp // REDUCED
             ),
             maxLines = 1,
             softWrap = false
@@ -380,7 +383,8 @@ private fun WorkTechnicalCard(
                         fontFamily = Syne, 
                         fontWeight = FontWeight.Black, 
                         fontSize = if (isSm) 28.sp else 64.sp, 
-                        color = TextPrimary
+                        color = TextPrimary,
+                        letterSpacing = (-1).sp // REDUCED
                     ),
                     maxLines = 2,
                     softWrap = true // FIX: Enabled wrapping
@@ -409,7 +413,7 @@ private fun WorkTechnicalCard(
                         fontWeight = FontWeight.Black, 
                         fontSize = if (isSm) 12.sp else 14.sp, 
                         color = accent, 
-                        letterSpacing = 2.sp
+                        letterSpacing = 1.sp // REDUCED
                     ),
                     maxLines = 1,
                     softWrap = false
@@ -448,7 +452,8 @@ private fun ArchitectureTimeline(isSm: Boolean) {
                 fontFamily = Syne, 
                 fontWeight = FontWeight.Black, 
                 fontSize = if (isSm) 32.sp else 80.sp, 
-                color = TextPrimary
+                color = TextPrimary,
+                letterSpacing = (-1).sp // REDUCED
             ),
             maxLines = 1,
             softWrap = false
@@ -477,7 +482,7 @@ private fun ArchitectureTimeline(isSm: Boolean) {
                             fontWeight = FontWeight.ExtraBold, 
                             fontSize = if (isSm) 16.sp else 28.sp, // FIX: Significantly increased size
                             color = GlowIndigo, 
-                            letterSpacing = 1.sp,
+                            letterSpacing = 0.5.sp, // REDUCED
                             textAlign = TextAlign.Center
                         ),
                         modifier = Modifier.padding(vertical = 16.dp, horizontal = 12.dp),
@@ -494,7 +499,8 @@ private fun ArchitectureTimeline(isSm: Boolean) {
                             fontWeight = FontWeight.Black, 
                             fontSize = if (isSm) 22.sp else 44.sp, // FIX: Increased size
                             color = TextPrimary,
-                            lineHeight = if (isSm) 26.sp else 48.sp
+                            lineHeight = if (isSm) 26.sp else 48.sp,
+                            letterSpacing = (-0.5).sp // REDUCED
                         ),
                         maxLines = 2,
                         softWrap = true 
@@ -505,8 +511,9 @@ private fun ArchitectureTimeline(isSm: Boolean) {
                         style = TextStyle(
                             fontFamily = Inter, 
                             fontWeight = FontWeight.Bold, 
-                            fontSize = if (isSm) 16.sp else 26.sp, // FIX: Increased size
-                            color = GlowCyan
+                            fontSize = if (isSm) 14.sp else 24.sp, 
+                            color = GlowCyan,
+                            letterSpacing = 0.5.sp // REDUCED
                         ),
                         maxLines = 1,
                         softWrap = false

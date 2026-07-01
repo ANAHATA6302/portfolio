@@ -44,7 +44,7 @@ private fun Modifier.rimLight(): Modifier = this.drawWithContent {
 
 @Composable
 fun ProjectsScreen() {
-    SetPageTitle("ENGINEERING // WORKS")
+    SetPageTitle("WORKS")
     val isSm = isSmallScreen()
     val scrollState = rememberScrollState()
 
@@ -98,6 +98,7 @@ private fun EngineeringArchitecturalBackground() {
     )
 
     Box(modifier = Modifier.fillMaxSize()) {
+        // Global Technical Grid
         Canvas(modifier = Modifier.fillMaxSize().graphicsLayer { alpha = 0.05f }) {
             val gridSpacing = 50.dp.toPx()
             for (x in 0..size.width.toInt() step gridSpacing.toInt()) {
@@ -108,6 +109,7 @@ private fun EngineeringArchitecturalBackground() {
             }
         }
 
+        // Tri-Lighting Setup (Boosted Glows)
         Box(
             modifier = Modifier
                 .size(if (isSmallScreen()) 600.dp else 1200.dp)
@@ -125,6 +127,7 @@ private fun EngineeringArchitecturalBackground() {
                 .background(Brush.radialGradient(listOf(GlowPink.copy(alpha = 0.15f), Color.Transparent)), CircleShape)
                 .blur(120.dp)
         )
+        // Third Glow Source (Cyan)
         Box(
             modifier = Modifier
                 .size(if (isSmallScreen()) 400.dp else 800.dp)
@@ -139,13 +142,15 @@ private fun EngineeringArchitecturalBackground() {
 @Composable
 private fun TechnicalHeroSection(isSm: Boolean) {
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+        // Background Decorative Text - Reduced letter spacing for better fit
         Text(
             text = "ENGINEER",
             style = TextStyle(
                 fontFamily = Syne,
                 fontWeight = FontWeight.Black,
                 fontSize = if (isSm) 50.sp else 220.sp, 
-                color = Color.White.copy(alpha = 0.02f)
+                color = Color.White.copy(alpha = 0.02f),
+                letterSpacing = (-4).sp // Tighter for Syne Black
             ),
             maxLines = 1,
             softWrap = false,
@@ -160,7 +165,7 @@ private fun TechnicalHeroSection(isSm: Boolean) {
                     fontWeight = FontWeight.Black,
                     fontSize = if (isSm) 10.sp else 16.sp,
                     color = GlowIndigo,
-                    letterSpacing = 4.sp
+                    letterSpacing = 2.sp // Reduced from 4
                 ),
                 maxLines = 1,
                 softWrap = false
@@ -173,7 +178,8 @@ private fun TechnicalHeroSection(isSm: Boolean) {
                     fontWeight = FontWeight.Black,
                     fontSize = if (isSm) 36.sp else 140.sp, 
                     lineHeight = if (isSm) 30.sp else 130.sp,
-                    color = TextPrimary
+                    color = TextPrimary,
+                    letterSpacing = (-2).sp // Tighter gap
                 ),
                 maxLines = 2,
                 softWrap = false
@@ -191,14 +197,13 @@ private fun TechnicalHeroSection(isSm: Boolean) {
 
 @Composable
 private fun TechnicalProjectGallery(isSm: Boolean) {
-    // Re-ordered and all projects included
     val projects = listOf(
         ProjectArtInfo(
             "01",
             stringResource(Res.string.project_one_app_title),
             "ENTERPRISE_ARCHITECTURE",
             stringResource(Res.string.project_one_app_desc),
-            listOf("KOTLIN", "JETPACK COMPOSE", "MVVM", "KOTLIN"),
+            listOf("KOTLIN", "JETPACK COMPOSE", "MVI", "HILT"),
             GlowIndigo
         ),
         ProjectArtInfo(
@@ -288,7 +293,7 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
                         fontWeight = FontWeight.Black,
                         color = project.accent,
                         fontSize = if (isSm) 10.sp else 12.sp,
-                        letterSpacing = 1.sp
+                        letterSpacing = 1.sp // Reduced from 2
                     ),
                     maxLines = 1,
                     softWrap = false
@@ -301,7 +306,8 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
                         fontWeight = FontWeight.Black,
                         fontSize = if (isSm) 24.sp else 54.sp, 
                         color = TextPrimary,
-                        lineHeight = if (isSm) 28.sp else 58.sp
+                        lineHeight = if (isSm) 28.sp else 58.sp,
+                        letterSpacing = (-1).sp
                     ),
                     maxLines = 2,
                     softWrap = true
@@ -342,7 +348,7 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
                                     fontWeight = FontWeight.Bold,
                                     fontSize = if (isSm) 8.sp else 10.sp,
                                     color = project.accent,
-                                    letterSpacing = 1.sp
+                                    letterSpacing = 0.5.sp // Reduced from 1
                                 )
                             )
                         }
@@ -358,7 +364,8 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
                         fontFamily = Syne,
                         fontWeight = FontWeight.Black,
                         fontSize = 180.sp,
-                        color = project.accent.copy(alpha = 0.1f)
+                        color = project.accent.copy(alpha = 0.1f),
+                        letterSpacing = (-10).sp // Tighter for display IDs
                     ),
                     modifier = Modifier
                         .weight(1f)

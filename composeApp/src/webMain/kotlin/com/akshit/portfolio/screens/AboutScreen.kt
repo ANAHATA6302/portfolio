@@ -33,7 +33,7 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun AboutMeScreen() {
-    SetPageTitle("ABOUT // IDENTITY")
+    SetPageTitle("ABOUT")
     val isSm = isSmallScreen()
     
     Box(
@@ -131,7 +131,7 @@ private fun ArtisticAboutHero(isSm: Boolean) {
                 .align(if (isSm) Alignment.Center else Alignment.TopEnd)
                 .graphicsLayer { 
                     rotationZ = if (isSm) 5f else 10f
-                    alpha = if (isSm) 0.4f else 0.7f // Made more transparent on mobile for text visibility
+                    alpha = if (isSm) 0.4f else 0.7f 
                 },
             shape = RoundedCornerShape(if (isSm) 32.dp else 64.dp),
             color = Color.White.copy(alpha = 0.08f),
@@ -162,7 +162,7 @@ private fun ArtisticAboutHero(isSm: Boolean) {
                     fontWeight = FontWeight.ExtraLight,
                     fontSize = if (isSm) 32.sp else 80.sp,
                     color = TextPrimary,
-                    letterSpacing = if (isSm) 4.sp else 12.sp
+                    letterSpacing = if (isSm) 2.sp else 4.sp // REDUCED
                 ),
                 maxLines = 1,
                 softWrap = false
@@ -174,7 +174,8 @@ private fun ArtisticAboutHero(isSm: Boolean) {
                     fontWeight = FontWeight.Black,
                     fontSize = if (isSm) 48.sp else 120.sp,
                     color = GlowPink,
-                    lineHeight = if (isSm) 44.sp else 110.sp
+                    lineHeight = if (isSm) 44.sp else 110.sp,
+                    letterSpacing = (-2).sp // REDUCED
                 ),
                 maxLines = 1,
                 softWrap = false
@@ -186,7 +187,8 @@ private fun ArtisticAboutHero(isSm: Boolean) {
                     fontWeight = FontWeight.Black,
                     fontSize = if (isSm) 40.sp else 100.sp,
                     color = TextPrimary,
-                    lineHeight = if (isSm) 38.sp else 90.sp
+                    lineHeight = if (isSm) 38.sp else 90.sp,
+                    letterSpacing = (-1).sp // REDUCED
                 ),
                 maxLines = 1,
                 softWrap = false
@@ -228,7 +230,8 @@ private fun WorkExperienceIntroSection(isSm: Boolean) {
                 fontFamily = Syne,
                 fontWeight = FontWeight.Black,
                 fontSize = if (isSm) 28.sp else 64.sp,
-                color = TextPrimary
+                color = TextPrimary,
+                letterSpacing = (-1).sp // REDUCED
             ),
             maxLines = 1,
             softWrap = false
@@ -310,7 +313,7 @@ private fun ArtisticTimelineItem(
                             fontWeight = FontWeight.ExtraBold, 
                             fontSize = if (isSm) 14.sp else 24.sp, 
                             color = data.accent, 
-                            letterSpacing = 1.sp,
+                            letterSpacing = 0.5.sp, // REDUCED
                             textAlign = TextAlign.Center
                         ),
                         modifier = Modifier.padding(vertical = if (isSm) 12.dp else 16.dp),
@@ -327,9 +330,10 @@ private fun ArtisticTimelineItem(
                         style = TextStyle(
                             fontFamily = Syne,
                             fontWeight = FontWeight.Black,
-                            fontSize = if (isSm) 18.sp else 36.sp,
+                            fontSize = if (isSm) 20.sp else 44.sp,
                             color = TextPrimary,
-                            lineHeight = if (isSm) 22.sp else 40.sp
+                            lineHeight = if (isSm) 24.sp else 48.sp,
+                            letterSpacing = (-0.5).sp // REDUCED
                         ),
                         maxLines = 2,
                         softWrap = true,
@@ -342,7 +346,8 @@ private fun ArtisticTimelineItem(
                             fontFamily = Inter,
                             fontWeight = FontWeight.Bold,
                             fontSize = if (isSm) 14.sp else 24.sp,
-                            color = GlowCyan
+                            color = GlowCyan,
+                            letterSpacing = 0.5.sp // REDUCED
                         ),
                         maxLines = 1,
                         softWrap = false

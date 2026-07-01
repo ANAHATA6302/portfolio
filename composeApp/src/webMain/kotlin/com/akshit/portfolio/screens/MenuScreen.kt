@@ -27,7 +27,7 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun MenuScreen() {
-    SetPageTitle("SYSTEM_MENU")
+    SetPageTitle("MENU")
     val isSm = isSmallScreen()
     val navigator = LocalNavigator.currentOrThrow
 
