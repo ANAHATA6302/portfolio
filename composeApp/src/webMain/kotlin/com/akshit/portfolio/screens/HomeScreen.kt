@@ -36,7 +36,7 @@ import portfolio.composeapp.generated.resources.*
 
 @Composable
 fun HomeScreen() {
-    SetPageTitle("ENGINEER//ARCHITECT")
+    SetPageTitle("ENGINEER")
     val isSm = isSmallScreen()
     val scrollState = rememberScrollState()
 
