@@ -268,6 +268,7 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
+            .wrapContentHeight()
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
@@ -281,11 +282,16 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
         Row(
             modifier = Modifier
                 .padding(if (isSm) 24.dp else 64.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .wrapContentHeight(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(modifier = Modifier.weight(1.5f)) {
+            Column(
+                modifier = Modifier
+                    .weight(1.5f)
+                    .wrapContentHeight()
+            ) {
                 Text(
                     text = project.tag,
                     style = TextStyle(
@@ -323,9 +329,7 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
                         fontSize = if (isSm) 14.sp else 22.sp,
                         color = TextSecondary,
                         lineHeight = if (isSm) 20.sp else 36.sp
-                    ),
-                    maxLines = 4,
-                    overflow = TextOverflow.Ellipsis
+                    )
                 )
 
                 Spacer(Modifier.height(if (isSm) 20.dp else 40.dp))
