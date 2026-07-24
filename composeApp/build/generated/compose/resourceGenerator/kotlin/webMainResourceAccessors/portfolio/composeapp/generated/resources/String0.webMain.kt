@@ -323,183 +323,207 @@ internal val Res.string.link_potterpedia: StringResource by lazy {
       ))
     }
 
+internal val Res.string.link_roamio: StringResource by lazy {
+      StringResource("string:link_roamio", "link_roamio", setOf(
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5167, 103),
+      ))
+    }
+
 internal val Res.string.menu_01: StringResource by lazy {
       StringResource("string:menu_01", "menu_01", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5167, 19),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5271, 19),
       ))
     }
 
 internal val Res.string.menu_02: StringResource by lazy {
       StringResource("string:menu_02", "menu_02", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5187, 19),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5291, 19),
       ))
     }
 
 internal val Res.string.menu_03: StringResource by lazy {
       StringResource("string:menu_03", "menu_03", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5207, 19),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5311, 19),
       ))
     }
 
 internal val Res.string.menu_about: StringResource by lazy {
       StringResource("string:menu_about", "menu_about", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5227, 30),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5331, 30),
       ))
     }
 
 internal val Res.string.menu_contact: StringResource by lazy {
       StringResource("string:menu_contact", "menu_contact", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5258, 32),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5362, 32),
       ))
     }
 
 internal val Res.string.menu_projects: StringResource by lazy {
       StringResource("string:menu_projects", "menu_projects", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5291, 33),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5395, 33),
       ))
     }
 
 internal val Res.string.project_jlr_one_app: StringResource by lazy {
       StringResource("string:project_jlr_one_app", "project_jlr_one_app", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5325, 63),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5429, 63),
       ))
     }
 
 internal val Res.string.project_level_author: StringResource by lazy {
       StringResource("string:project_level_author", "project_level_author", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5389, 76),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5493, 76),
       ))
     }
 
 internal val Res.string.project_level_desc: StringResource by lazy {
       StringResource("string:project_level_desc", "project_level_desc", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5466, 238),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5570, 238),
       ))
     }
 
 internal val Res.string.project_level_shoes: StringResource by lazy {
       StringResource("string:project_level_shoes", "project_level_shoes", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5705, 43),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5809, 43),
       ))
     }
 
 internal val Res.string.project_level_title: StringResource by lazy {
       StringResource("string:project_level_title", "project_level_title", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5749, 43),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5853, 43),
       ))
     }
 
 internal val Res.string.project_one_app_desc: StringResource by lazy {
       StringResource("string:project_one_app_desc", "project_one_app_desc", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5793, 464),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 5897, 464),
       ))
     }
 
 internal val Res.string.project_one_app_title: StringResource by lazy {
       StringResource("string:project_one_app_title", "project_one_app_title", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6258, 37),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6362, 37),
       ))
     }
 
 internal val Res.string.project_portfolio: StringResource by lazy {
       StringResource("string:project_portfolio", "project_portfolio", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6759, 37),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6863, 37),
       ))
     }
 
 internal val Res.string.project_portfolio_desc: StringResource by lazy {
       StringResource("string:project_portfolio_desc", "project_portfolio_desc", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6296, 418),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6400, 418),
       ))
     }
 
 internal val Res.string.project_portfolio_title: StringResource by lazy {
       StringResource("string:project_portfolio_title", "project_portfolio_title", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6715, 43),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6819, 43),
       ))
     }
 
 internal val Res.string.project_potterpedia: StringResource by lazy {
       StringResource("string:project_potterpedia", "project_potterpedia", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7160, 43),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7264, 43),
       ))
     }
 
 internal val Res.string.project_potterpedia_desc: StringResource by lazy {
       StringResource("string:project_potterpedia_desc", "project_potterpedia_desc", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6797, 312),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 6901, 312),
       ))
     }
 
 internal val Res.string.project_potterpedia_title: StringResource by lazy {
       StringResource("string:project_potterpedia_title", "project_potterpedia_title", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7110, 49),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7214, 49),
+      ))
+    }
+
+internal val Res.string.project_roamio: StringResource by lazy {
+      StringResource("string:project_roamio", "project_roamio", setOf(
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7901, 30),
+      ))
+    }
+
+internal val Res.string.project_roamio_desc: StringResource by lazy {
+      StringResource("string:project_roamio_desc", "project_roamio_desc", setOf(
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7308, 555),
+      ))
+    }
+
+internal val Res.string.project_roamio_title: StringResource by lazy {
+      StringResource("string:project_roamio_title", "project_roamio_title", setOf(
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7864, 36),
       ))
     }
 
 internal val Res.string.project_truth_or_dare: StringResource by lazy {
       StringResource("string:project_truth_or_dare", "project_truth_or_dare", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7475, 49),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8203, 49),
       ))
     }
 
 internal val Res.string.project_truth_or_dare_desc: StringResource by lazy {
       StringResource("string:project_truth_or_dare_desc", "project_truth_or_dare_desc", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7204, 214),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7932, 214),
       ))
     }
 
 internal val Res.string.project_truth_or_dare_title: StringResource by lazy {
       StringResource("string:project_truth_or_dare_title", "project_truth_or_dare_title", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7419, 55),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8147, 55),
       ))
     }
 
 internal val Res.string.project_unexpectedly: StringResource by lazy {
       StringResource("string:project_unexpectedly", "project_unexpectedly", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7790, 44),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8518, 44),
       ))
     }
 
 internal val Res.string.project_unexpectedly_desc: StringResource by lazy {
       StringResource("string:project_unexpectedly_desc", "project_unexpectedly_desc", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7525, 213),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8253, 213),
       ))
     }
 
 internal val Res.string.project_unexpectedly_title: StringResource by lazy {
       StringResource("string:project_unexpectedly_title", "project_unexpectedly_title", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7739, 50),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8467, 50),
       ))
     }
 
 internal val Res.string.projects_hero_android: StringResource by lazy {
       StringResource("string:projects_hero_android", "projects_hero_android", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7835, 41),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8563, 41),
       ))
     }
 
 internal val Res.string.projects_hero_engineer: StringResource by lazy {
       StringResource("string:projects_hero_engineer", "projects_hero_engineer", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7877, 42),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8605, 42),
       ))
     }
 
 internal val Res.string.projects_hero_subtitle: StringResource by lazy {
       StringResource("string:projects_hero_subtitle", "projects_hero_subtitle", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 7920, 126),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8648, 126),
       ))
     }
 
 internal val Res.string.projects_section_desc: StringResource by lazy {
       StringResource("string:projects_section_desc", "projects_section_desc", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8047, 189),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8775, 189),
       ))
     }
 
 internal val Res.string.projects_section_title: StringResource by lazy {
       StringResource("string:projects_section_title", "projects_section_title", setOf(
-        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8237, 42),
+        ResourceItem(setOf(), "${MD}values/strings.webMain.cvr", 8965, 42),
       ))
     }
 
@@ -557,6 +581,7 @@ internal fun _collectWebMainString0Resources(map: MutableMap<String, StringResou
   map.put("link_level_shoes", Res.string.link_level_shoes)
   map.put("link_linkedin", Res.string.link_linkedin)
   map.put("link_potterpedia", Res.string.link_potterpedia)
+  map.put("link_roamio", Res.string.link_roamio)
   map.put("menu_01", Res.string.menu_01)
   map.put("menu_02", Res.string.menu_02)
   map.put("menu_03", Res.string.menu_03)
@@ -576,6 +601,9 @@ internal fun _collectWebMainString0Resources(map: MutableMap<String, StringResou
   map.put("project_potterpedia", Res.string.project_potterpedia)
   map.put("project_potterpedia_desc", Res.string.project_potterpedia_desc)
   map.put("project_potterpedia_title", Res.string.project_potterpedia_title)
+  map.put("project_roamio", Res.string.project_roamio)
+  map.put("project_roamio_desc", Res.string.project_roamio_desc)
+  map.put("project_roamio_title", Res.string.project_roamio_title)
   map.put("project_truth_or_dare", Res.string.project_truth_or_dare)
   map.put("project_truth_or_dare_desc", Res.string.project_truth_or_dare_desc)
   map.put("project_truth_or_dare_title", Res.string.project_truth_or_dare_title)

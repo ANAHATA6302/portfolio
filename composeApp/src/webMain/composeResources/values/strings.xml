@@ -26,6 +26,7 @@
     <string name="home_banner_subtitle">I create art that is both aesthetically pleasing and emotionally resonant. I also design user interfaces that are intuitive and user-friendly.</string>
     <string name="home_projects_title">Projects</string>
     <string name="project_level_shoes">Level Shoes</string>
+    <string name="project_roamio">Roamio</string>
     <string name="project_potterpedia">PotterPedia</string>
     <string name="project_truth_or_dare">Truth Or Dare</string>
     <string name="project_portfolio">Portfolio</string>
@@ -60,12 +61,13 @@
     <string name="link_buy_coffee" translatable="false">https://www.buymeacoffee.com/akshit6302</string>
     <string name="link_figma_eric" translatable="false">https://www.figma.com/@ericandtheweb</string>
     <string name="link_level_shoes" translatable="false">https://play.google.com/store/apps/details?id=com.levelshoes&amp;pcampaignid=web_share</string>
+    <string name="link_roamio" translatable="false">https://play.google.com/store/apps/details?id=com.akshit.roamio</string>
     <string name="link_potterpedia" translatable="false">https://play.google.com/store/apps/details?id=com.akshit.potterpedia</string>
 
     <!-- Contact Screen -->
     <string name="contact_copy_email">Copy \n Email</string>
     <string name="contact_copy_email_link">Copy Email</string>
-    <string name="contact_hero_text">I'm open for projects, feel free to contact me to see how we can collaborate</string>
+    <string name="contact_hero_text">I\'m open for projects, feel free to contact me to see how we can collaborate</string>
     <string name="content_desc_author_image">Author Image</string>
 
     <!-- About Screen -->
@@ -88,6 +90,8 @@
     <string name="project_level_title">LevelShoes</string>
     <string name="project_level_desc">"Level Shoes has blended the worlds of digital and physical to provide seamless experiences to consumers wherever and however they are engaging with the brand"</string>
     <string name="project_level_author">- Rania Masri, CTO Chalhoub Group.</string>
+    <string name="project_roamio_title">Roamio</string>
+    <string name="project_roamio_desc">A premier travel planning app built with an offline-first architecture and a mobile-first UI. This flagship project showcases advanced Android engineering: Firebase Auth, local private DataStore, and multi-variant builds (Flavors). It features a robust CI/CD pipeline with automated daily deployments to the Play Store, enabling users to curate itineraries and manage trip schedules seamlessly.</string>
     <string name="project_potterpedia_title">PotterPedia</string>
     <string name="project_potterpedia_desc">PotterPedia: An offline-first Android app (Jetpack Compose) displaying Harry Potter character info fetched from an API. Includes search, dark/light themes, and a scalable architecture for optimal performance.</string>
     <string name="project_unexpectedly_title">UnExpectedly</string>
@@ -98,5 +102,5 @@
     <string name="project_portfolio_desc">This personal portfolio is a showcase of my work, built entirely with Kotlin Multiplatform. The responsive, modern UI is crafted with Compose for Web, demonstrating my skills in building beautiful, declarative interfaces from a single Kotlin codebase. The project is hosted live on Netlify.</string>
     <string name="project_portfolio_title">Portfolio</string>
     <string name="project_one_app_title">OneApp</string>
-    <string name="project_one_app_desc">OneApp is JLR's state-of-the-art connectivity solution, transforming the smartphone into a true remote command center. It provides a seamless digital bridge to the vehicle, offering a suite of advanced features that redefine the ownership experience and allow drivers to interact with their car in ways never before imagined.</string>
+    <string name="project_one_app_desc">OneApp is JLR\'s state-of-the-art connectivity solution, transforming the smartphone into a true remote command center. It provides a seamless digital bridge to the vehicle, offering a suite of advanced features that redefine the ownership experience and allow drivers to interact with their car in ways never before imagined.</string>
 </resources>

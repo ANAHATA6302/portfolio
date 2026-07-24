@@ -318,7 +318,7 @@ private fun EngineeringWorkShowcase(isSm: Boolean) {
             WorkTechnicalCard(
                 title = stringResource(Res.string.project_one_app_title),
                 tag = "ENTERPRISE",
-                desc = "Automotive companion Android application with deep system integrations.",
+                desc = stringResource(Res.string.project_one_app_desc),
                 img = Res.drawable.jlrLogo,
                 accent = GlowIndigo,
                 isSm = isSm,
@@ -326,9 +326,19 @@ private fun EngineeringWorkShowcase(isSm: Boolean) {
             ) { navigator.push(ProjectsScreen) }
 
             WorkTechnicalCard(
-                title = "PORTFOLIO",
+                title = stringResource(Res.string.project_roamio_title),
+                tag = "FLAGSHIP",
+                desc = stringResource(Res.string.project_roamio_desc),
+                img = Res.drawable.projecticon1,
+                accent = GlowCyan,
+                isSm = isSm,
+                useHighContrastLogo = true 
+            ) { navigator.push(ProjectsScreen) }
+
+            WorkTechnicalCard(
+                title = stringResource(Res.string.project_portfolio_title),
                 tag = "COMPOSE_WEB",
-                desc = "Multiplatform design system built for performance and high visual fidelity.",
+                desc = stringResource(Res.string.project_portfolio_desc),
                 img = Res.drawable.portfolioIcon,
                 accent = GlowPink,
                 isSm = isSm,

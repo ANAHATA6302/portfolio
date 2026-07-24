@@ -17,6 +17,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -59,15 +60,15 @@ fun ProjectsScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(scrollState),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .verticalScroll(scrollState)
         ) {
             FadeIn {
                 Column(
                     modifier = Modifier
                         .widthIn(max = 1400.dp)
                         .fillMaxWidth()
-                        .padding(horizontal = if (isSm) 20.dp else 40.dp),
+                        .padding(horizontal = if (isSm) 20.dp else 40.dp)
+                        .align(Alignment.CenterHorizontally),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Spacer(Modifier.height(if (isSm) 100.dp else 180.dp))
@@ -204,47 +205,62 @@ private fun TechnicalProjectGallery(isSm: Boolean) {
             "ENTERPRISE_ARCHITECTURE",
             stringResource(Res.string.project_one_app_desc),
             listOf("KOTLIN", "JETPACK COMPOSE", "MVI", "HILT"),
-            GlowIndigo
+            GlowIndigo,
+            ""
         ),
         ProjectArtInfo(
             "02",
+            stringResource(Res.string.project_roamio_title),
+            "FLAGSHIP_ENGINE",
+            stringResource(Res.string.project_roamio_desc),
+            listOf("OFFLINE-FIRST", "FIREBASE", "CI/CD", "MODERN ANDROID"),
+            GlowCyan,
+            stringResource(Res.string.link_roamio)
+        ),
+        ProjectArtInfo(
+            "03",
             stringResource(Res.string.project_level_title),
             "E-COMMERCE_ENGINE",
             stringResource(Res.string.project_level_desc),
             listOf("ANDROID SDK", "FIREBASE", "G-PAY"),
-            GlowPurple
+            GlowPurple,
+            stringResource(Res.string.link_level_shoes)
         ),
         ProjectArtInfo(
-            "03",
+            "04",
             stringResource(Res.string.project_portfolio_title),
             "KMP_VISUALS",
             stringResource(Res.string.project_portfolio_desc),
             listOf("KOTLIN MULTIPLATFORM", "COMPOSE WEB", "WASM"),
-            GlowPink
+            GlowPink,
+            ""
         ),
         ProjectArtInfo(
-            "04",
+            "05",
             stringResource(Res.string.project_potterpedia_title),
             "CLEAN_ARCHITECTURE",
             stringResource(Res.string.project_potterpedia_desc),
             listOf("OFFLINE-FIRST", "API INTEGRATION", "MVVM"),
-            GlowCyan
+            GlowCyan,
+            stringResource(Res.string.link_potterpedia)
         ),
         ProjectArtInfo(
-            "05",
+            "06",
             stringResource(Res.string.project_unexpectedly_title),
             "SOCIAL_EXPERIENCE",
             stringResource(Res.string.project_unexpectedly_desc),
             listOf("WEBRTC", "EXOPLAYER", "REAL-TIME"),
-            GlowAmber
+            GlowAmber,
+            ""
         ),
         ProjectArtInfo(
-            "06",
+            "07",
             stringResource(Res.string.project_truth_or_dare_title),
             "INTERACTIVE_SYSTEM",
             stringResource(Res.string.project_truth_or_dare_desc),
             listOf("GAME LOGIC", "UI MOTION", "INTERACTIVE"),
-            GlowIndigo
+            GlowIndigo,
+            ""
         )
     )
 
@@ -264,6 +280,7 @@ private fun TechnicalProjectGallery(isSm: Boolean) {
 private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
     var isHovered by remember { mutableStateOf(false) }
     val scale by animateFloatAsState(if (isHovered) 1.01f else 1f)
+    val uriHandler = LocalUriHandler.current
 
     Surface(
         modifier = Modifier
@@ -274,7 +291,11 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
                 scaleY = scale
             }
             .hoverable(remember { MutableInteractionSource() })
-            .clickable { },
+            .clickable { 
+                if (project.link.isNotEmpty()) {
+                    uriHandler.openUri(project.link)
+                }
+            },
         shape = RoundedCornerShape(if (isSm) 24.dp else 48.dp),
         color = GlassWhite,
         border = BorderStroke(1.dp, GlassBorder)
@@ -358,6 +379,20 @@ private fun HighEndWorkCard(project: ProjectArtInfo, isSm: Boolean) {
                         }
                     }
                 }
+                
+                if (project.link.isNotEmpty()) {
+                    Spacer(Modifier.height(24.dp))
+                    Text(
+                        text = "PLAY STORE →",
+                        style = TextStyle(
+                            fontFamily = Inter,
+                            fontWeight = FontWeight.Black,
+                            fontSize = if (isSm) 12.sp else 14.sp,
+                            color = project.accent,
+                            letterSpacing = 1.sp
+                        )
+                    )
+                }
             }
 
             if (!isSm) {
@@ -389,5 +424,6 @@ private data class ProjectArtInfo(
     val tag: String,
     val desc: String,
     val stack: List<String>,
-    val accent: Color
+    val accent: Color,
+    val link: String
 )
