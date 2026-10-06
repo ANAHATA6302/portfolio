@@ -1,8 +1,1 @@
-desk-light pageerror: Incorrect locale information provided
-desk-dark pageerror: Incorrect locale information provided
-mob-light pageerror: Incorrect locale information provided
-mob-dark pageerror: Incorrect locale information provided
-desk-light pageerror: Incorrect locale information provided
-desk-light pageerror: Incorrect locale information provided
-desk-light pageerror: Incorrect locale information provided
-mob-dark pageerror: Incorrect locale information provided
+
