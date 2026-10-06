@@ -141,7 +141,7 @@ fun Section(
     }
 }
 
-/** The mono section label: `0x02 // NAME (aside)`, primary with the aside in onSurfaceVariant. */
+/** The mono section label: `NAME (aside)`, primary with the aside in onSurfaceVariant. */
 @Composable
 fun SectionLabel(main: String, aside: String? = null, color: Color? = null) {
     val p = LocalPalette.current

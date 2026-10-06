@@ -110,7 +110,7 @@ fun Hero() {
                         verticalAlignment = Alignment.Bottom,
                     ) {
                         Box(Modifier.weight(1f)) {
-                            com.akshit.portfolio.ui.SectionLabel("0x01 // BOOT_COMPLETE", "(took one coffee)")
+                            com.akshit.portfolio.ui.SectionLabel("BOOT_COMPLETE", "(took one coffee)")
                         }
                         if (m) {
                             BitTap(

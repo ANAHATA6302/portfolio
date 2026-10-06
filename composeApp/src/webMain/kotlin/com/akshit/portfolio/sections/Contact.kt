@@ -72,7 +72,7 @@ fun Contact() {
                 align = Align.Center,
             ) {
                 Column(Modifier.flex(grow = 1f, basis = 520.dp, min = 0.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
-                    T("0x05 // SAY_HELLO", fonts.mono(f.sp(12, 1, 14)))
+                    T("SAY_HELLO", fonts.mono(f.sp(12, 1, 14)))
                     T("Inbox open. Coffee ready. Let's build something.", fonts.display(f.sp(48, 6.4, 96), .9f, -.045f))
                     T(
                         "Hiring, collaborating, or just want to talk Compose? I reply faster than a cold Gradle build.",

@@ -93,7 +93,7 @@ fun HowIBuild() {
         Column(verticalArrangement = Arrangement.spacedBy(f.c(20, 2.4, 32))) {
             FlexWrap(Modifier.reveal(), gap = 16.dp, justify = Justify.SpaceBetween, align = Align.End) {
                 SectionHeader(
-                    "0x03 // HOW_I_BUILD", "(long press to rearrange)", "How I build",
+                    "HOW_I_BUILD", "(long press to rearrange)", "How I build",
                     "The boring bits, done properly, so the fun bits can ship.", 560.dp,
                 )
                 if (app.editMode) {

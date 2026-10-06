@@ -55,7 +55,7 @@ fun Career() {
     Section(top = f.sectionTop, modifier = Modifier.anchor(app, "career")) {
         FlexWrap(gap = f.c(24, 4, 64)) {
             Column(Modifier.flex(grow = 1f, basis = 340.dp).reveal(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                SectionLabel("0x04 // RUNTIME_HISTORY")
+                SectionLabel("RUNTIME_HISTORY")
                 T("Career, as an Activity", fonts.display(f.sp(44, 5.6, 80), .92f, -.04f))
                 T(
                     "Every good app has a lifecycle. Here's mine, newest first. Lifecycle purists, look away.",

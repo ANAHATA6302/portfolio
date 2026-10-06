@@ -58,32 +58,23 @@ fun StatusBar() {
     val mono12 = fonts.mono(12.sp)
 
     Column(Modifier.fillMaxWidth()) {
-        // Status strip
-        Row(
+        // Status strip: clock on the left, the quick settings pill centred on the page.
+        Box(
             Modifier.fillMaxWidth().height(40.dp).padding(horizontal = f.c(16, 2, 28)),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
+            contentAlignment = Alignment.Center,
         ) {
-            T(app.clock, mono12, color = p.osv)
-            run {
-                Row(
-                    Modifier
-                        .tap(Pill, p.osv, label = "Open quick settings") { app.qsOpen = !app.qsOpen }
-                        .background(p.sc2, Pill)
-                        .padding(vertical = 6.dp, horizontal = 14.dp),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Box(Modifier.size(28.dp, 4.dp).background(p.ol, css(2.dp)))
-                    T(if (m) "pull" else "pull for quick settings", mono12, color = p.osv, maxLines = 1)
-                }
+            T(app.clock, mono12, Modifier.align(Alignment.CenterStart), color = p.osv)
+            Row(
+                Modifier
+                    .tap(Pill, p.osv, label = "Open quick settings") { app.qsOpen = !app.qsOpen }
+                    .background(p.sc2, Pill)
+                    .padding(vertical = 6.dp, horizontal = 14.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Box(Modifier.size(28.dp, 4.dp).background(p.ol, css(2.dp)))
+                T(if (m) "pull" else "pull for quick settings", mono12, color = p.osv, maxLines = 1)
             }
-            val build = when {
-                pct >= 100 -> "BUILD SUCCESSFUL in 4s"
-                m -> "$pct%"
-                else -> ":app:assembleRelease $pct%"
-            }
-            T(build, mono12, color = p.osv, maxLines = 1)
         }
         // Scroll progress
         val w by animateFloatAsState(pct / 100f, tween(200))
@@ -97,8 +88,16 @@ fun StatusBar() {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+                // A tiny Bit: green head, dark screen, two eyes.
                 Box(Modifier.size(34.dp).background(p.p, css(12.dp)), contentAlignment = Alignment.Center) {
-                    Box(Modifier.size(18.dp, 10.dp).background(p.ink, css(5.dp)))
+                    Row(
+                        Modifier.size(24.dp, 16.dp).background(p.ink, css(6.dp)),
+                        horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Box(Modifier.size(4.dp, 7.dp).background(p.tint(.9f, .14f), css(2.dp)))
+                        Box(Modifier.size(4.dp, 7.dp).background(p.tint(.9f, .14f), css(2.dp)))
+                    }
                 }
                 T(
                     buildAnnotatedString {
