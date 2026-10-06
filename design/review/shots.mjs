@@ -14,7 +14,7 @@ const log = [];
 const browser = await chromium.launch();
 
 async function open(c, { boot = false, path = '/' } = {}) {
-  const page = await browser.newPage({ viewport: { width: c.w, height: c.h }, colorScheme: c.dark ? 'dark' : 'light' });
+  const page = await browser.newPage({ viewport: { width: c.w, height: c.h }, colorScheme: c.dark ? 'dark' : 'light', locale: 'en-GB' });
   page.on('pageerror', e => log.push(`${c.name} pageerror: ${e.message}`));
   page.on('console', m => { if (m.type() === 'error') log.push(`${c.name} console: ${m.text()}`); });
   if (!boot) await page.addInitScript(() => localStorage.setItem('akshit-boot-seen', '1'));
