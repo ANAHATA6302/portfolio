@@ -27,11 +27,16 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlin.math.pow
 import kotlin.math.roundToInt
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 import kotlin.time.TimeSource
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 enum class Screen { Site, Boot, NotFound }
 
 /** All UI state, mirroring the reference component's state and handlers. */
+@OptIn(ExperimentalTime::class)
 @Stable
 class AppState(private val scope: CoroutineScope, val scroll: ScrollState) {
     var seed by mutableStateOf(Browser.get(K_SEED)?.toFloatOrNull()?.takeIf { h -> SEEDS.any { it.hue == h } } ?: 145f)
@@ -64,6 +69,10 @@ class AppState(private val scope: CoroutineScope, val scroll: ScrollState) {
     var bootProgress by mutableStateOf(0f)
     private var bootJob: Job? = null
 
+    /** The visitor's local time, "H:mm", refreshed on each minute. */
+    var clock by mutableStateOf(now())
+        private set
+
     /** Incremented to fire a confetti burst. */
     var confetti by mutableIntStateOf(0)
     /** Incremented every 3.4s to blink every Bit. */
@@ -84,6 +93,13 @@ class AppState(private val scope: CoroutineScope, val scroll: ScrollState) {
         }
 
     fun start() {
+        scope.launch {
+            while (isActive) {
+                clock = now()
+                val t = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+                delay(((60 - t.second) * 1000L - t.nanosecond / 1_000_000).coerceAtLeast(200L))
+            }
+        }
         scope.launch { while (isActive) { delay(3400); if (whimsy && !reduceMotion) blink++ } }
         scope.launch { while (isActive) { delay(5000); bubble = (bubble + 1) % 3 } }
         count()
@@ -286,6 +302,11 @@ class AppState(private val scope: CoroutineScope, val scroll: ScrollState) {
     fun anrClose() {
         Browser.goHome()
         screen = Screen.Site
+    }
+
+    private fun now(): String {
+        val t = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+        return "${t.hour}:${t.minute.toString().padStart(2, '0')}"
     }
 
     companion object {

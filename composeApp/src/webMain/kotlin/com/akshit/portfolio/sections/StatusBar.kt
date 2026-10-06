@@ -64,7 +64,7 @@ fun StatusBar() {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            T("9:41", mono12, color = p.osv)
+            T(app.clock, mono12, color = p.osv)
             run {
                 Row(
                     Modifier

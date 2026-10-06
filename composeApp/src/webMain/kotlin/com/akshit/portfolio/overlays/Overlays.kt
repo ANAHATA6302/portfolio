@@ -141,7 +141,7 @@ fun QuickSettings() {
                 verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.Start)) {
-                    T("9:41", fonts.display(f.sp(32, 3, 40), 1f, -.03f), Modifier.alignByBaseline(), color = p.os)
+                    T(app.clock, fonts.display(f.sp(32, 3, 40), 1f, -.03f), Modifier.alignByBaseline(), color = p.os)
                     Box(Modifier.weight(1f))
                     T("QUICK_SETTINGS // no root required", fonts.mono(12.sp), Modifier.alignByBaseline(), color = p.osv)
                 }
