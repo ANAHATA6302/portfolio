@@ -12,3 +12,8 @@ html, body {
         background: #0b100b;
     }
 }
+
+/* Compose draws its own focus rings. */
+canvas:focus, canvas:focus-visible {
+    outline: none;
+}

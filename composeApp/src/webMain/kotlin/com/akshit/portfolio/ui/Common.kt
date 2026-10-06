@@ -41,6 +41,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
@@ -89,7 +90,7 @@ fun T(
     val c = if (color.isSpecified) color else LocalFg.current
     val lines = remember { IntArray(1) }
     BasicText(
-        text, modifier.cssLeading(style, lines), style.copy(color = c),
+        text, modifier.cssText(style, lines, ellipsis), style.copy(color = c),
         onTextLayout = { lines[0] = it.lineCount },
         overflow = if (ellipsis) TextOverflow.Ellipsis else TextOverflow.Clip,
         maxLines = maxLines,
@@ -97,22 +98,25 @@ fun T(
 }
 
 /**
- * CSS line boxes for line heights below the font's natural height. Compose web keeps the first
- * line's natural top and the last line's natural bottom, so the box is too tall by
- * (natural - lineHeight). CSS centres the glyphs in the smaller line box and lets them overflow,
- * so trim half the excess from the top and half from the bottom.
+ * CSS text box behaviour Compose doesn't have:
+ * - Line boxes for line heights below the font's natural height. Compose web keeps the first
+ *   line's natural top and the last line's natural bottom, so the box is too tall by
+ *   (natural - lineHeight). CSS centres the glyphs in the smaller line box and lets them
+ *   overflow, so trim half the excess from the top and half from the bottom.
+ * - `overflow-wrap: normal`: a word wider than the box overflows instead of breaking.
  */
-private fun Modifier.cssLeading(style: TextStyle, lines: IntArray): Modifier {
+private fun Modifier.cssText(style: TextStyle, lines: IntArray, ellipsis: Boolean): Modifier = layout { m, c ->
+    val longest = if (!ellipsis && c.hasBoundedWidth) m.minIntrinsicWidth(Constraints.Infinity) else 0
+    val p = m.measure(if (longest > c.maxWidth) c.copy(maxWidth = longest) else c)
     val lh = style.lineHeight
     val fs = style.fontSize
-    if (!lh.isEm || !fs.isSp) return this
-    return layout { m, c ->
-        val p = m.measure(c)
+    val t = if (lh.isEm && fs.isSp) {
         val box = lh.value * fs.toPx() * lines[0].coerceAtLeast(1)
-        val t = ((p.height - box).coerceAtLeast(0f) / 2f).roundToInt()
-        val h = (p.height - 2 * t).coerceIn(c.minHeight, c.maxHeight)
-        layout(p.width, h) { p.place(0, -t) }
-    }
+        ((p.height - box).coerceAtLeast(0f) / 2f).roundToInt()
+    } else 0
+    val w = p.width.coerceIn(c.minWidth, c.maxWidth)
+    val h = (p.height - 2 * t).coerceIn(c.minHeight, c.maxHeight)
+    layout(w, h) { p.place(0, -t) }
 }
 
 /**

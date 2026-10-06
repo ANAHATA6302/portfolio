@@ -308,9 +308,10 @@ fun AnrDialog() {
         contentAlignment = Alignment.Center,
     ) {
         val shape = css(28.dp)
+        // width: min(440px, 100%) is the content box; the 24dp padding sits outside it.
         Column(
             Modifier
-                .widthIn(max = 440.dp)
+                .widthIn(max = 488.dp)
                 .fillMaxWidth()
                 .cssShadow(shape, 20.dp, 60.dp, Color.Black.copy(alpha = .3f))
                 .background(p.sc2, shape)

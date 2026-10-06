@@ -68,6 +68,8 @@ class AppState(private val scope: CoroutineScope, val scroll: ScrollState) {
     var confetti by mutableIntStateOf(0)
     /** Incremented every 3.4s to blink every Bit. */
     var blink by mutableIntStateOf(0)
+    /** True after Tab navigation, false after any pointer press: the `:focus-visible` heuristic. */
+    var keyboardNav by mutableStateOf(false)
     /** Pointer position in root coordinates, for Bit's eyes. */
     var pointer by mutableStateOf<Offset?>(null)
 

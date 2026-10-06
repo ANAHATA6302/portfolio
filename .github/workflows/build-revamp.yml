@@ -6,9 +6,6 @@ on:
       - Portfolio-revamp
       - portfolio-revamp-*
 
-permissions:
-  contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,23 +34,3 @@ jobs:
           path: composeApp/build/dist/wasmJs/productionExecutable
           retention-days: 3
 
-      - name: Review screenshots
-        if: contains(github.event.head_commit.message, '[shots]')
-        run: |
-          cd design/review
-          npm init -y >/dev/null
-          npm install playwright@1.56.1 >/dev/null
-          npx playwright install --with-deps chromium >/dev/null
-          (python3 serve.py ../../composeApp/build/dist/wasmJs/productionExecutable >/dev/null 2>&1 &)
-          sleep 2
-          rm -rf shots && node shots.mjs http://localhost:8080 shots
-          rm -rf node_modules package.json package-lock.json
-
-      - name: Commit screenshots
-        if: contains(github.event.head_commit.message, '[shots]')
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add design/review/shots
-          git commit -m "Review screenshots for ${GITHUB_SHA::7} [skip ci]" || exit 0
-          git push

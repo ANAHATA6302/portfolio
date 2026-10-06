@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
+import com.akshit.portfolio.state.LocalApp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
@@ -112,7 +114,9 @@ fun Modifier.tap(
     onClick: () -> Unit,
 ): Modifier {
     val src = interaction ?: remember { MutableInteractionSource() }
-    val focused = src.collectIsFocusedAsState()
+    val isFocused by src.collectIsFocusedAsState()
+    val app = LocalApp.current
+    val focused = rememberUpdatedState(isFocused && app.keyboardNav)
     val p = LocalPalette.current
     val reduce = LocalMotion.current.reduce
     val ripple = rippleColor?.let { c -> remember(c, reduce) { CssRipple({ c }, reduce) } }

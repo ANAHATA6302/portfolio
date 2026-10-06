@@ -15,7 +15,7 @@ object Browser {
     fun media(query: String): Boolean = try { window.matchMedia(query).matches } catch (_: Throwable) { false }
 
     fun copy(text: String) {
-        try { window.navigator.clipboard.writeText(text) } catch (_: Throwable) {}
+        try { window.navigator.clipboard.writeText(text).catch { null } } catch (_: Throwable) {}
     }
 
     fun open(url: String) {
