@@ -141,7 +141,7 @@ private fun WidgetTile(w: Widget, index: Int, modifier: Modifier) {
     val l = look(w, p)
     val src = remember { MutableInteractionSource() }
     val b = rememberBounce()
-    val wiggling = app.editMode && !motion.reduce
+    val wiggling = app.editMode && motion.playful
     val rot = if (wiggling) {
         val t = rememberInfiniteTransition()
         t.animateFloat(

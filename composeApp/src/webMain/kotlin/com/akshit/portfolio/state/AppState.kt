@@ -249,7 +249,7 @@ class AppState(private val scope: CoroutineScope, val scroll: ScrollState) {
     }
 
     private fun fireConfetti() {
-        if (!reduceMotion) confetti++
+        if (whimsy && !reduceMotion) confetti++
     }
 
     // Quick settings

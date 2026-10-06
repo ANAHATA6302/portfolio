@@ -28,9 +28,9 @@ Everything in the plan is built and checked in a real browser at 1440 and 390, l
 - Content-box widths: section max 1328 and the ANR dialog 440 exclude padding.
 - The nav pill selection is static: "Work" is always selected. Status bar and app bar scroll with the page.
 - After a widget long press, releasing still fires click, which selects that widget (matches the reference).
-- Wiggle duration is 180 + (i%3)*30 ms, alternating ±1.4°, starting at -1.4. In the reference only reduce motion stops it; whimsy off does not.
+- Wiggle duration is 180 + (i%3)*30 ms, alternating ±1.4°, starting at -1.4. It stops with whimsy off or reduce motion (README rule, over the prototype), and so does confetti.
 - Headless Chrome needs an explicit locale or Compose throws "Incorrect locale information provided" at startup.
-- Phone rows on narrow screens start at the first phone and scroll, instead of the reference's centred-overflow clipping.
+- Phone rows on narrow screens start at the first phone and scroll, instead of the reference's centred-overflow clipping (agreed: keep the better behaviour).
 
 ## Left to consider
 - Merge `portfolio-revamp-mdhabg` into `Portfolio-revamp`, then `Portfolio-revamp` into `main` when you're happy (that deploys).
