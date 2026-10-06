@@ -4,6 +4,7 @@ import kotlinx.browser.localStorage
 import kotlinx.browser.window
 
 /** Thin, exception-safe wrappers over the browser APIs the site uses. */
+@OptIn(kotlin.js.ExperimentalWasmJsInterop::class)
 object Browser {
     fun get(key: String): String? = try { localStorage.getItem(key) } catch (_: Throwable) { null }
 
