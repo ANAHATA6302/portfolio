@@ -109,7 +109,7 @@ fun Work() {
         Column(verticalArrangement = Arrangement.spacedBy(f.c(16, 1.8, 24))) {
             SectionHeader(
                 "0x02 // SELECTED_REPOS", "(the ones I show my mum)", "Things I've shipped",
-                "Four apps of my own on Google Play, and one that lives inside some very nice cars.", 620.dp,
+                "Four apps of my own on Google Play, and the companion app for some very nice cars.", 620.dp,
                 Modifier.reveal().margin(bottom = f.c(8, 1.5, 20)),
             )
             Vantage()
