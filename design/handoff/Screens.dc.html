@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><style>body{margin:0;background:#e9e7e2}</style></helmet>
+<div style="display:flex;flex-direction:column;gap:40px;padding:40px;align-items:flex-start">
+<div id="s01" style="width:1440px"><dc-import name="Portfolio" embedded="true" hint-size="1440px,6000px"></dc-import></div>
+<div id="s02" style="width:390px"><dc-import name="Portfolio" embedded="true" hint-size="390px,8000px"></dc-import></div>
+<div id="s03" style="width:1440px"><dc-import name="Portfolio" embedded="true" dark="true" hint-size="1440px,6000px"></dc-import></div>
+<div id="s04" style="width:390px"><dc-import name="Portfolio" embedded="true" dark="true" hint-size="390px,8000px"></dc-import></div>
+<div id="s05" style="width:1440px"><dc-import name="Portfolio" embedded="true" seed="Electric violet" section="hero,work" hint-size="1440px,3000px"></dc-import></div>
+<div id="s06" style="width:390px"><dc-import name="Portfolio" embedded="true" seed="Tangerine" dark="true" section="hero,work" hint-size="390px,3800px"></dc-import></div>
+<div id="s07" style="width:1440px"><dc-import name="Portfolio" embedded="true" section="hero" qs-open="true" hint-size="1440px,900px"></dc-import></div>
+<div id="s08" style="width:390px;height:844px;overflow:hidden"><dc-import name="Portfolio" embedded="true" dark="true" section="hero" qs-open="true" hint-size="390px,844px"></dc-import></div>
+<div id="s09" style="width:1440px"><dc-import name="Portfolio" embedded="true" section="hero" dev-unlocked="true" toast="You are now a developer!" hint-size="1440px,900px"></dc-import></div>
+<div id="s10" style="width:1440px"><dc-import name="Portfolio" embedded="true" section="work" spec-open="true" hint-size="1440px,2400px"></dc-import></div>
+<div id="s11" style="width:1440px"><dc-import name="Portfolio" embedded="true" section="contact,footer" toast="Email copied to clipboard" toast-action="Undo" hint-size="1440px,900px"></dc-import></div>
+<div id="s12" style="width:390px"><dc-import name="Portfolio" embedded="true" section="career" career-open="1" hint-size="390px,1100px"></dc-import></div>
+<div id="s13" style="width:390px;height:844px;overflow:hidden"><dc-import name="Portfolio" embedded="true" section="hero" screen="boot" hint-size="390px,844px"></dc-import></div>
+<div id="s14" style="width:1440px;height:900px;overflow:hidden"><dc-import name="Portfolio" embedded="true" section="hero" screen="404" hint-size="1440px,900px"></dc-import></div>
+<div id="s15" style="width:390px;height:844px;overflow:hidden"><dc-import name="Portfolio" embedded="true" dark="true" section="hero" screen="404" hint-size="390px,844px"></dc-import></div>
+<div id="s16" style="width:1100px;padding:40px;box-sizing:border-box;background:oklch(.985 .008 145);display:grid;grid-template-columns:repeat(6,1fr);gap:12px;font-family:system-ui,sans-serif;--h:145;--p:oklch(.5 .19 145);--pc:oklch(.91 .09 145);--os:oklch(.21 .02 145);--t:oklch(.52 .16 215);--tc:oklch(.9 .08 215);--osv:oklch(.43 .03 145);--sc2:oklch(.935 .02 145)">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 8px;border-radius:28px;background:var(--sc2)"><dc-import name="Bit" pose="idle" size="110" hint-size="110px,128px"></dc-import><b>Idle</b></div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 8px;border-radius:28px;background:var(--sc2)"><dc-import name="Bit" pose="wave" size="110" hint-size="110px,128px"></dc-import><b>Wave</b></div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 8px;border-radius:28px;background:var(--sc2)"><dc-import name="Bit" pose="loading" size="110" hint-size="110px,128px"></dc-import><b>Loading</b></div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 8px;border-radius:28px;background:var(--sc2)"><dc-import name="Bit" pose="sleep" size="110" hint-size="110px,128px"></dc-import><b>Sleep</b></div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 8px;border-radius:28px;background:var(--sc2)"><dc-import name="Bit" pose="anr" size="110" hint-size="110px,128px"></dc-import><b>Not responding</b></div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 8px;border-radius:28px;background:var(--sc2)"><dc-import name="Bit" pose="dev" size="110" hint-size="110px,128px"></dc-import><b>Developer</b></div>
+</div>
+</div>
+</x-dc>
+</body>
+</html>

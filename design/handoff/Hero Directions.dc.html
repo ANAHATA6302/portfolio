@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"><style>body{margin:0;background:#efede8;font-family:system-ui,sans-serif}a{color:inherit}a:hover{opacity:.75}button{font:inherit}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-opts{display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.6)}.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-next{margin:28px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}</style></helmet>
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Full build of <a class="dv-oid" href="#1a">1a</a>. Every frame is the same live, interactive component, so you can tap through anything.</span></div>
+<p style="margin:0 0 28px;max-width:900px;font:13px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.6);text-wrap:pretty">The standalone site is <a href="Portfolio.dc.html" style="color:#2a78d6">Portfolio.dc.html</a>. Open it to see the boot intro, scroll reveals and the Gradle bar, all driven by real scrolling. Layout is fluid between 390 and 1440. Things to try: long press the How I build widgets, tap Build number 7 times, copy the email, poke Bit.</p>
+<div style="--h:145;--p:oklch(.5 .19 145);--op:oklch(.99 .01 145);--pc:oklch(.91 .09 145);--opc:oklch(.27 .09 145);--s:oklch(.985 .008 145);--sc1:oklch(.96 .014 145);--sc2:oklch(.935 .02 145);--sc3:oklch(.9 .03 145);--os:oklch(.21 .02 145);--osv:oklch(.43 .03 145);--ol:oklch(.72 .03 145);--tc:oklch(.9 .08 215);--otc:oklch(.28 .09 215);--sec:oklch(.92 .04 145);--osec:oklch(.28 .05 145);--inv:oklch(.27 .02 145);--oinv:oklch(.95 .01 145);--t:oklch(.52 .16 215);display:flex;flex-direction:column;gap:56px">
+
+<div style="display:flex;flex-direction:column;gap:16px"><span style="font:600 12px ui-monospace,Menlo,monospace;color:#1a1a1a">PAGES // light and dark, desktop 1440 and mobile 390</span>
+<div class="dv-opts">
+<div class="dv-opt" id="2a"><div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Desktop, light, Android green</div><div class="dv-card" style="width:1440px"><dc-import name="Portfolio" embedded="true" hint-size="1440px,6400px"></dc-import></div></div>
+<div class="dv-opt" id="2b"><div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Mobile, light</div><div class="dv-card" style="width:390px;border-radius:36px"><dc-import name="Portfolio" embedded="true" hint-size="390px,8000px"></dc-import></div></div>
+<div class="dv-opt" id="2c"><div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Desktop, dark</div><div class="dv-card" style="width:1440px"><dc-import name="Portfolio" embedded="true" dark="true" hint-size="1440px,6400px"></dc-import></div></div>
+<div class="dv-opt" id="2d"><div class="dv-olabel"><a class="dv-oid" href="#2d">2d</a>Mobile, dark</div><div class="dv-card" style="width:390px;border-radius:36px"><dc-import name="Portfolio" embedded="true" dark="true" hint-size="390px,8000px"></dc-import></div></div>
+</div></div>
+
+<div style="display:flex;flex-direction:column;gap:16px"><span style="font:600 12px ui-monospace,Menlo,monospace;color:#1a1a1a">DYNAMIC COLOUR // same component, different seed</span>
+<div class="dv-opts">
+<div class="dv-opt" id="2e"><div class="dv-olabel"><a class="dv-oid" href="#2e">2e</a>Electric violet, light</div><div class="dv-card" style="width:1440px"><dc-import name="Portfolio" embedded="true" seed="Electric violet" section="hero,work" hint-size="1440px,3000px"></dc-import></div></div>
+<div class="dv-opt" id="2f"><div class="dv-olabel"><a class="dv-oid" href="#2f">2f</a>Tangerine, dark</div><div class="dv-card" style="width:390px;border-radius:36px"><dc-import name="Portfolio" embedded="true" seed="Tangerine" dark="true" section="hero,work" hint-size="390px,3800px"></dc-import></div></div>
+</div></div>
+
+<div style="display:flex;flex-direction:column;gap:16px"><span style="font:600 12px ui-monospace,Menlo,monospace;color:#1a1a1a">KEY STATES</span>
+<div class="dv-opts">
+<div class="dv-opt" id="2g"><div class="dv-olabel"><a class="dv-oid" href="#2g">2g</a>Quick Settings open</div><div class="dv-card" style="width:1440px"><dc-import name="Portfolio" embedded="true" section="hero" qs-open="true" hint-size="1440px,900px"></dc-import></div></div>
+<div class="dv-opt" id="2h"><div class="dv-olabel"><a class="dv-oid" href="#2h">2h</a>Quick Settings, mobile, dark</div><div class="dv-card" style="width:390px;height:844px;border-radius:36px"><dc-import name="Portfolio" embedded="true" dark="true" section="hero" qs-open="true" hint-size="390px,844px"></dc-import></div></div>
+<div class="dv-opt" id="2i"><div class="dv-olabel"><a class="dv-oid" href="#2i">2i</a>Developer options unlocked: Bit's secret outfit, confetti, toast</div><div class="dv-card" style="width:1440px;height:900px"><dc-import name="Portfolio" embedded="true" section="hero" dev-unlocked="true" toast="You are now a developer!" hint-size="1440px,900px"></dc-import></div></div>
+<div class="dv-opt" id="2j"><div class="dv-olabel"><a class="dv-oid" href="#2j">2j</a>Vantage Point flipped to its spec sheet</div><div class="dv-card" style="width:1440px"><dc-import name="Portfolio" embedded="true" section="work" spec-open="true" hint-size="1440px,2400px"></dc-import></div></div>
+<div class="dv-opt" id="2k"><div class="dv-olabel"><a class="dv-oid" href="#2k">2k</a>Widgets in edit mode after a long press</div><div class="dv-card" style="width:1440px"><dc-import name="Portfolio" embedded="true" section="build" wiggle="true" hint-size="1440px,700px"></dc-import></div></div>
+<div class="dv-opt" id="2l"><div class="dv-olabel"><a class="dv-oid" href="#2l">2l</a>Snackbar after copying the email</div><div class="dv-card" style="width:1440px"><dc-import name="Portfolio" embedded="true" section="contact,footer" toast="Email copied to clipboard" toast-action="Undo" progress="100" hint-size="1440px,900px"></dc-import></div></div>
+<div class="dv-opt" id="2m"><div class="dv-olabel"><a class="dv-oid" href="#2m">2m</a>Career, IDS Logic expanded</div><div class="dv-card" style="width:390px;border-radius:36px"><dc-import name="Portfolio" embedded="true" section="career" career-open="1" hint-size="390px,1100px"></dc-import></div></div>
+<div class="dv-opt" id="2n"><div class="dv-olabel"><a class="dv-oid" href="#2n">2n</a>Boot intro, first visit only</div><div class="dv-card" style="width:390px;height:844px;border-radius:36px"><dc-import name="Portfolio" embedded="true" section="hero" screen="boot" hint-size="390px,844px"></dc-import></div></div>
+<div class="dv-opt" id="2o"><div class="dv-olabel"><a class="dv-oid" href="#2o">2o</a>404 as an ANR dialog</div><div class="dv-card" style="width:1440px;height:900px"><dc-import name="Portfolio" embedded="true" section="hero" screen="404" hint-size="1440px,900px"></dc-import></div></div>
+<div class="dv-opt" id="2p"><div class="dv-olabel"><a class="dv-oid" href="#2p">2p</a>404, mobile, dark</div><div class="dv-card" style="width:390px;height:844px;border-radius:36px"><dc-import name="Portfolio" embedded="true" dark="true" section="hero" screen="404" hint-size="390px,844px"></dc-import></div></div>
+<div class="dv-opt" id="2q"><div class="dv-olabel"><a class="dv-oid" href="#2q">2q</a>Hover and pressed states, frozen</div>
+<div class="dv-card" style="width:900px;padding:36px;background:var(--s);color:var(--os);font-family:Figtree,sans-serif;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px">
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">BUTTON / rest</span><div style="height:60px;border-radius:999px;background:var(--p);color:var(--op);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px">See my work →</div></div>
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">BUTTON / hover: scale 1.04, radius full to 22</span><div style="height:60px;border-radius:22px;background:var(--p);color:var(--op);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;transform:scale(1.04)">See my work →</div></div>
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">BUTTON / pressed: ripple from touch point</span><div style="position:relative;overflow:hidden;height:60px;border-radius:22px;background:var(--p);color:var(--op);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px"><span style="position:absolute;left:40px;top:-60px;width:180px;height:180px;border-radius:50%;background:currentColor;opacity:.2"></span>See my work →</div></div>
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">STAT TILE / rest</span><div style="padding:20px;border-radius:28px;background:var(--sc2)"><div style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">TARGET_SDK</div><div style="font:800 44px/1 'Bricolage Grotesque',sans-serif;margin-top:6px">36</div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">STAT TILE / hover: lift 6, tilt 1°</span><div style="padding:20px;border-radius:28px;background:var(--sc2);transform:translateY(-6px) rotate(-1deg)"><div style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">TARGET_SDK</div><div style="font:800 44px/1 'Bricolage Grotesque',sans-serif;margin-top:6px">36</div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">COFFEE TILE / pressed: squash 0.93</span><div style="position:relative;overflow:hidden;padding:20px;border-radius:28px;background:var(--inv);color:var(--oinv);transform:scale(.93)"><span style="position:absolute;left:-30px;top:-50px;width:200px;height:200px;border-radius:50%;background:currentColor;opacity:.16"></span><div style="font:500 11px 'JetBrains Mono',monospace">COFFEE_PER_RELEASE</div><div style="font:800 44px/1 'Bricolage Grotesque',sans-serif;margin-top:6px">4</div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">QS TILE / off and on</span><div style="display:flex;gap:8px"><div style="flex:1;padding:14px 18px;border-radius:999px;background:var(--sc3)"><b>Whimsy</b><div style="font-size:13px">Off</div></div><div style="flex:1;padding:14px 18px;border-radius:999px;background:var(--p);color:var(--op)"><b>Whimsy</b><div style="font-size:13px">On</div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">CAR ACTION / rest and active (shape morph)</span><div style="display:flex;gap:8px;padding:10px;border-radius:24px;background:oklch(.17 .012 145)"><div style="flex:1;padding:14px 6px;border-radius:20px;background:oklch(.24 .015 145);color:oklch(.95 .01 145);text-align:center;font-weight:600;font-size:13px">Unlock</div><div style="flex:1;padding:14px 6px;border-radius:28px;background:oklch(.85 .12 145);color:oklch(.2 .05 145);text-align:center;font-weight:600;font-size:13px">Unlocked</div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">CAREER NODE / closed and open</span><div style="display:flex;gap:16px;align-items:center"><div style="width:48px;height:48px;border-radius:50%;background:var(--sc2);display:flex;align-items:center;justify-content:center"><div style="width:14px;height:14px;border-radius:50%;background:var(--ol)"></div></div><div style="width:48px;height:48px;border-radius:16px;background:var(--p);display:flex;align-items:center;justify-content:center"><div style="width:14px;height:14px;border-radius:50%;background:var(--op)"></div></div></div></div>
+</div></div>
+</div></div>
+
+<div style="display:flex;flex-direction:column;gap:16px"><span style="font:600 12px ui-monospace,Menlo,monospace;color:#1a1a1a">SYSTEM // motion, tokens, mascot, copy</span>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2r"><div class="dv-olabel"><a class="dv-oid" href="#2r">2r</a>Motion spec</div>
+<div class="dv-card" style="width:1100px;padding:40px;background:var(--s);color:var(--os);font-family:Figtree,sans-serif;display:flex;flex-direction:column;gap:28px">
+  <h3 style="margin:0;font:800 48px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Motion spec</h3>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+    <div style="padding:20px;border-radius:28px;background:var(--pc);color:var(--opc);display:flex;flex-direction:column;gap:6px"><span style="font:500 11px 'JetBrains Mono',monospace">motion.expressive</span><b style="font-size:20px">spring(0.6f, 380f)</b><span style="font-size:14px;line-height:1.45">About 550ms, visible overshoot. Hover scale, shape morphs, QS shade, snackbar, Bit's jump, tilt return.</span><span style="font:500 11px 'JetBrains Mono',monospace">web: cubic-bezier(.34,1.56,.64,1)</span></div>
+    <div style="padding:20px;border-radius:28px;background:var(--sc2);display:flex;flex-direction:column;gap:6px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">motion.gentle</span><b style="font-size:20px">spring(0.8f, 200f)</b><span style="font-size:14px;line-height:1.45">About 700ms, soft settle. Scroll reveals, spec sheet swap, career expand.</span></div>
+    <div style="padding:20px;border-radius:28px;background:var(--sc2);display:flex;flex-direction:column;gap:6px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">motion.snappy</span><b style="font-size:20px">spring(1f, 1500f)</b><span style="font-size:14px;line-height:1.45">About 200ms, no overshoot. Toggles, swatch ring, selection.</span></div>
+    <div style="padding:20px;border-radius:28px;background:var(--sc2);display:flex;flex-direction:column;gap:6px"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">motion.colour</span><b style="font-size:20px">tween(400, Emphasized)</b><span style="font-size:14px;line-height:1.45">All colour roles crossfade on re-theme via animateColorAsState.</span></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="padding:20px;border-radius:28px;background:var(--sec);color:var(--osec);font-size:15px;line-height:1.5"><b>Whimsy off:</b> every spring becomes spring(1f, 500f), about 300ms, no overshoot. Wiggle, blink, eye tracking, tilt and confetti switch off. Toasts stay.</div>
+    <div style="padding:20px;border-radius:28px;background:var(--inv);color:var(--oinv);font-size:15px;line-height:1.5"><b>Reduce motion</b> (or the OS setting): everything becomes a 150ms fade. No translate, scale or rotation. The count-up jumps straight to its final value. Smooth scroll is off.</div>
+  </div>
+  <div style="display:grid;grid-template-columns:120px 1fr 1fr 220px;font-size:14px;line-height:1.45;border-radius:24px;overflow:hidden;background:var(--sc1)">
+    <div style="display:contents;font:600 11px 'JetBrains Mono',monospace;color:var(--osv)"><span style="padding:12px 16px">WHEN</span><span style="padding:12px 16px">WHAT</span><span style="padding:12px 16px">SPEC</span><span style="padding:12px 16px">COMPOSE</span></div>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3);font-weight:700">Load</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Boot intro, first visit only, skippable</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">1.75s total. 4 lines staggered 330ms, linear progress 1500ms, then crossfade to hero</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">AnimatedVisibility, DataStore flag</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3)"></span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">TARGET_SDK count-up 0 to 36</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">1100ms, ease out cubic. Tap to replay</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">Animatable + animateTo</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3);font-weight:700">Scroll</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Gradle build bar</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Width follows scroll fraction. At 100% the label becomes BUILD SUCCESSFUL in 4s</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">derivedStateOf(scrollState)</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3)"></span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Section reveal, once</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Fade in and rise 48dp with gentle spring when 12% visible</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">graphicsLayer + onGloballyPositioned</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3);font-weight:700">Tap</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Ripple on every clickable</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">650ms, radius 2.2x the longest side, alpha 0.24 to 0</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">ripple()</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3)"></span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Coffee tile, car actions, Bit</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Squash 0.93 to 1.05 to 1 (480ms). Shape morph 20 to 28 radius. Bit jumps 22dp, rotates 6°</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">animateFloatAsState, expressive</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3)"></span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Long press widgets</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">480ms hold enters edit mode. Wiggle ±1.4°, 180 to 240ms, alternating. Tap two to swap</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">detectTapGestures(onLongPress), infiniteTransition</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3)"></span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Build number x7</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Countdown toasts from tap 3. At 7: toast, 90 confetti particles over 1.4 to 2.8s, Bit gets shades and a party hat</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">Canvas particle system</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3);font-weight:700">Ambient</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Bit blinks, eyes follow the pointer, project phones tilt</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Blink every 3.4s for 130ms. Eyes move up to 6dp. Tilt up to 10° Y, 8° X</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">pointerInput(PointerEventType.Move)</span>
+    <span style="padding:12px 16px;border-top:1px solid var(--sc3)"></span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Toast and snackbar</span><span style="padding:12px 16px;border-top:1px solid var(--sc3)">Rise 32dp with expressive spring. 2.8s, or 4.2s if it has an action</span><span style="padding:12px 16px;border-top:1px solid var(--sc3);font-family:'JetBrains Mono',monospace;font-size:12px">SnackbarHost</span>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="2s"><div class="dv-olabel"><a class="dv-oid" href="#2s">2s</a>Design tokens, mapped to MaterialTheme</div>
+<div class="dv-card" style="width:1100px;padding:40px;background:var(--s);color:var(--os);font-family:Figtree,sans-serif;display:flex;flex-direction:column;gap:32px">
+  <h3 style="margin:0;font:800 48px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Design tokens</h3>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font:600 12px 'JetBrains Mono',monospace;color:var(--osv)">COLOR_SCHEME // seed Android green, light | dark. Every role keeps a fixed lightness and chroma, only the hue follows the seed, so contrast stays the same across seeds.</span>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+      <sc-for list="{{ tok }}" as="t" hint-placeholder-count="18"><div style="display:flex;align-items:center;gap:12px;padding:8px;border-radius:16px;background:var(--sc1)"><div style="display:flex;flex:none;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.08)"><span style="width:28px;height:40px;background:{{ t.l }}"></span><span style="width:28px;height:40px;background:{{ t.d }}"></span></div><div style="min-width:0"><div style="font-weight:700;font-size:14px">{{ t.n }}</div><div style="font:500 10.5px 'JetBrains Mono',monospace;color:var(--osv)">{{ t.lv }} | {{ t.dv }}</div></div></div></sc-for>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <span style="font:600 12px 'JetBrains Mono',monospace;color:var(--osv)">TYPOGRAPHY // Bricolage Grotesque (display), Figtree (body), JetBrains Mono (system labels)</span>
+    <div style="display:grid;grid-template-columns:200px 1fr 200px;align-items:baseline;gap:10px 20px">
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">displayLarge</span><span style="font:800 96px/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em">AKSHIT</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">800, 164 / 76sp, lh .84, -5%</span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">displayMedium</span><span style="font:800 64px/.95 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">How I build</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">800, 80 / 44sp, -4%</span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">displaySmall</span><span style="font:800 48px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">Vantage Point</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">800, 88 / 48sp, card titles</span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">headlineMedium</span><span style="font:800 36px/1.1 'Bricolage Grotesque',sans-serif">Android Engineer</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">800, 36 / 24sp</span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">titleLarge</span><span style="font:500 26px/1.38 Figtree,sans-serif">Beautifully engineered on the inside.</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">500, 26 / 19sp, tagline</span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">bodyLarge</span><span style="font:400 20px/1.45 Figtree,sans-serif">Four apps of my own on Google Play.</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">400 to 500, 20 / 17sp</span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">labelLarge</span><span style="font:700 17px Figtree,sans-serif">See my work →</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">700, 17sp, buttons</span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">labelSystem</span><span style="font:500 14px 'JetBrains Mono',monospace;color:var(--p)">0x02 // SELECTED_REPOS <span style="color:var(--osv)">(the ones I show my mum)</span></span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">500, 14 / 12sp, custom slot</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font:600 12px 'JetBrains Mono',monospace;color:var(--osv)">SHAPES</span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;font:500 10.5px 'JetBrains Mono',monospace;color:var(--osv)">
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div style="width:52px;height:52px;border-radius:12px;background:var(--pc)"></div>xs 12</div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div style="width:52px;height:52px;border-radius:20px;background:var(--pc)"></div>s 20</div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div style="width:52px;height:52px;border-radius:28px;background:var(--pc)"></div>m 28</div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div style="width:72px;height:52px;border-radius:36px;background:var(--pc)"></div>l 36</div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div style="width:96px;height:52px;border-radius:48px 48px 48px 20px;background:var(--pc)"></div>xl 48</div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div style="width:72px;height:52px;border-radius:999px 20px 20px 999px;background:var(--tc)"></div>pill tab</div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div style="width:52px;height:52px;border-radius:20px 20px 40px 20px;background:var(--tc)"></div>leaf</div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div style="width:60px;height:52px;border-radius:44% 56% 52% 48% / 50% 44% 56% 50%;background:var(--tc)"></div>blob</div>
+      </div>
+      <span style="font-size:13px;color:var(--osv);line-height:1.45">Buttons and chips are full pills. Asymmetric corners mark playful tiles. The blob is a RoundedPolygon morph.</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font:600 12px 'JetBrains Mono',monospace;color:var(--osv)">SPACING (dp)</span>
+      <div style="display:flex;flex-direction:column;gap:5px;font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:4px;height:10px;background:var(--p);border-radius:2px"></span>4</div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:8px;height:10px;background:var(--p);border-radius:2px"></span>8</div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:12px;height:10px;background:var(--p);border-radius:2px"></span>12</div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:16px;height:10px;background:var(--p);border-radius:2px"></span>16, mobile margin</div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:24px;height:10px;background:var(--p);border-radius:2px"></span>24, card gap</div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:48px;height:10px;background:var(--p);border-radius:2px"></span>48, card padding</div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:56px;height:10px;background:var(--p);border-radius:2px"></span>56, desktop margin</div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:140px;height:10px;background:var(--p);border-radius:2px"></span>72 to 140, section gap</div>
+      </div>
+      <span style="font-size:13px;color:var(--osv)">Max content width 1328.</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font:600 12px 'JetBrains Mono',monospace;color:var(--osv)">ELEVATION</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font:500 11px 'JetBrains Mono',monospace">
+        <div style="padding:12px;border-radius:16px;background:var(--s);box-shadow:0 0 0 1px var(--sc3)">0 surface</div>
+        <div style="padding:12px;border-radius:16px;background:var(--sc1)">1 containerLow</div>
+        <div style="padding:12px;border-radius:16px;background:var(--sc2)">2 container</div>
+        <div style="padding:12px;border-radius:16px;background:var(--sc3)">3 containerHigh</div>
+        <div style="grid-column:span 2;padding:12px;border-radius:16px;background:var(--sc1);box-shadow:0 12px 40px rgba(0,0,0,.18)">Overlays only: shade, snackbar, dialog</div>
+      </div>
+      <span style="font-size:13px;color:var(--osv);line-height:1.45">Depth comes from tone. Shadows only on things that float.</span>
+    </div>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="2t"><div class="dv-olabel"><a class="dv-oid" href="#2t">2t</a>Bit, the mascot, in six poses</div>
+<div class="dv-card" style="width:1100px;padding:40px;background:var(--s);color:var(--os);font-family:Figtree,sans-serif;display:flex;flex-direction:column;gap:24px">
+  <h3 style="margin:0;font:800 48px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Meet Bit</h3>
+  <p style="margin:0;font-size:16px;color:var(--osv);max-width:640px">Built only from rounded rectangles and circles, so it can be drawn in Compose with a Canvas. Its body takes the primary colour, so Bit re-themes with the wallpaper too.</p>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 8px 18px;border-radius:32px;background:var(--pc)"><dc-import name="Bit" pose="idle" size="110" hint-size="110px,128px"></dc-import><b>Idle</b><span style="font-size:12px;color:var(--opc);text-align:center">Hero. Blinks, follows your cursor</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 8px 18px;border-radius:32px;background:var(--sc2)"><dc-import name="Bit" pose="wave" size="110" hint-size="110px,128px"></dc-import><b>Wave</b><span style="font-size:12px;color:var(--osv);text-align:center">Contact section</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 8px 18px;border-radius:32px;background:var(--sc2)"><dc-import name="Bit" pose="loading" size="110" hint-size="110px,128px"></dc-import><b>Loading</b><span style="font-size:12px;color:var(--osv);text-align:center">Boot intro</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 8px 18px;border-radius:32px;background:var(--sc2)"><dc-import name="Bit" pose="sleep" size="110" hint-size="110px,128px"></dc-import><b>Sleep</b><span style="font-size:12px;color:var(--osv);text-align:center">Footer, empty states</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 8px 18px;border-radius:32px;background:var(--sc2)"><dc-import name="Bit" pose="anr" size="110" hint-size="110px,128px"></dc-import><b>Not responding</b><span style="font-size:12px;color:var(--osv);text-align:center">404 ANR dialog</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 8px 18px;border-radius:32px;background:var(--tc)"><dc-import name="Bit" pose="dev" size="110" hint-size="110px,128px"></dc-import><b>Developer</b><span style="font-size:12px;color:var(--otc);text-align:center">Secret outfit, unlocked</span></div>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="2u"><div class="dv-olabel"><a class="dv-oid" href="#2u">2u</a>Copy options</div>
+<div class="dv-card" style="width:1100px;padding:40px;background:var(--s);color:var(--os);font-family:Figtree,sans-serif;display:grid;grid-template-columns:1fr 1fr;gap:28px">
+  <div style="display:flex;flex-direction:column;gap:12px"><span style="font:600 12px 'JetBrains Mono',monospace;color:var(--osv)">TAGLINES</span>
+    <div style="padding:20px 22px;border-radius:28px;background:var(--pc);color:var(--opc);font:500 20px/1.4 Figtree,sans-serif"><span style="font:600 11px 'JetBrains Mono',monospace;display:block;margin-bottom:6px">01 // IN USE</span>I build Android apps that feel effortless on the outside and are beautifully engineered on the inside.</div>
+    <div style="padding:20px 22px;border-radius:28px;background:var(--sc1);font:500 20px/1.4 Figtree,sans-serif"><span style="font:600 11px 'JetBrains Mono',monospace;display:block;margin-bottom:6px;color:var(--osv)">02</span>Smooth on the screen, solid under the hood. I make Android apps people love and engineers trust.</div>
+    <div style="padding:20px 22px;border-radius:28px;background:var(--sc1);font:500 20px/1.4 Figtree,sans-serif"><span style="font:600 11px 'JetBrains Mono',monospace;display:block;margin-bottom:6px;color:var(--osv)">03</span>Apps that feel like magic. Code that still makes sense at 3am.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px"><span style="font:600 12px 'JetBrains Mono',monospace;color:var(--osv)">CONTACT HEADLINES</span>
+    <div style="padding:20px 22px;border-radius:28px;background:var(--pc);color:var(--opc);font:800 26px/1.1 'Bricolage Grotesque',sans-serif"><span style="font:600 11px 'JetBrains Mono',monospace;display:block;margin-bottom:6px">01 // IN USE</span>Inbox open. Coffee ready. Let's build something.</div>
+    <div style="padding:20px 22px;border-radius:28px;background:var(--sc1);font:800 26px/1.1 'Bricolage Grotesque',sans-serif"><span style="font:600 11px 'JetBrains Mono',monospace;display:block;margin-bottom:6px;color:var(--osv)">02</span>Got an app that deserves better? Let's talk.</div>
+    <div style="padding:20px 22px;border-radius:28px;background:var(--sc1);font:800 26px/1.1 'Bricolage Grotesque',sans-serif"><span style="font:600 11px 'JetBrains Mono',monospace;display:block;margin-bottom:6px;color:var(--osv)">03</span>Your next release needs a friend. Say hi.</div>
+  </div>
+</div></div>
+
+</div></div>
+</div>
+<p class="dv-next">Try next: "swap the tagline for option 3" · "tone down <a class="dv-oid" href="#2k">2k</a> wiggle" · "add an empty state for a project with no screenshots"</p>
+</section>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Two hero directions, desktop 1440 + mobile 390. Both are live: theme, seed colour, whimsy and motion toggles all work.</span></div>
+<p style="margin:0 0 28px;max-width:860px;font:13px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.6);text-wrap:pretty">Assumptions while placeholders are open: Target SDK 36, default seed green for <a class="dv-oid" href="#1a">1a</a> and violet for <a class="dv-oid" href="#1b">1b</a>. Tonal palettes are generated from one seed hue, so any seed maps straight to a Material 3 ColorScheme. The mascot is "Bit", an original droid built only from rounded rects and circles. Tap the tagline on either hero to cycle the three tagline options.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Material You playground. Tonal shapes, chunky Bricolage display, a real pull-down Quick Settings shade.</div>
+<div ref="{{ aRef }}" onPointerMove="{{ a.look }}" style="display:flex;gap:28px;align-items:flex-start;--h:145;--p:oklch(.5 .19 145);--op:oklch(.99 .01 145);--pc:oklch(.91 .09 145);--opc:oklch(.27 .09 145);--s:oklch(.985 .008 145);--sc1:oklch(.96 .014 145);--sc2:oklch(.935 .02 145);--sc3:oklch(.9 .03 145);--os:oklch(.21 .02 145);--osv:oklch(.43 .03 145);--ol:oklch(.72 .03 145);--tc:oklch(.9 .08 215);--otc:oklch(.28 .09 215);--sec:oklch(.92 .04 145);--osec:oklch(.28 .05 145);--inv:oklch(.27 .02 145);--oinv:oklch(.95 .01 145);--t:oklch(.52 .16 215);--spring:cubic-bezier(.34,1.56,.64,1);--dur:.55s">
+
+<div class="dv-card" data-screen-label="1a Desktop" style="position:relative;width:1440px;height:900px;background:var(--s);color:var(--os);font-family:Figtree,sans-serif;transition:background .4s,color .4s;border:0">
+  <div style="height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;font:500 13px 'JetBrains Mono',monospace;color:var(--osv)">
+    <span>9:41</span>
+    <button onClick="{{ a.qsToggle }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;background:var(--sc2);color:var(--osv);border:0;border-radius:999px;padding:6px 16px;cursor:pointer;font:500 12px 'JetBrains Mono',monospace">
+      <span style="width:32px;height:4px;border-radius:2px;background:var(--ol)"></span>pull for quick settings</button>
+    <span>chai 87%</span>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 56px">
+    <div style="display:flex;align-items:center;gap:10px;font:700 22px 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em">
+      <span style="width:34px;height:34px;border-radius:12px;background:var(--p);display:flex;align-items:center;justify-content:center"><span style="width:18px;height:10px;border-radius:5px;background:oklch(.2 .03 var(--h))"></span></span>akshit<span style="color:var(--p)">.kt</span></div>
+    <nav style="display:flex;gap:4px;background:var(--sc1);padding:6px;border-radius:999px;font-weight:600;font-size:15px">
+      <span style="padding:10px 20px;border-radius:999px;background:var(--sec);color:var(--osec)">Work</span>
+      <span style="padding:10px 20px;border-radius:999px;color:var(--osv)">How I build</span>
+      <span style="padding:10px 20px;border-radius:999px;color:var(--osv)">Career</span>
+      <span style="padding:10px 20px;border-radius:999px;color:var(--osv)">Contact</span>
+    </nav>
+    <button onClick="{{ a.qsToggle }}" onPointerDown="{{ ripple }}" aria-label="Quick settings" style="position:relative;overflow:hidden;width:52px;height:52px;border-radius:18px;border:0;background:var(--sc2);color:var(--os);cursor:pointer;display:grid;grid-template-columns:12px 12px;gap:4px;place-content:center">
+      <span style="width:12px;height:12px;border-radius:4px;background:var(--p)"></span><span style="width:12px;height:12px;border-radius:6px;background:var(--osv)"></span><span style="width:12px;height:12px;border-radius:6px;background:var(--osv)"></span><span style="width:12px;height:12px;border-radius:4px;background:var(--osv)"></span>
+    </button>
+  </div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) 500px;gap:32px;padding:20px 56px 0">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="font:500 14px 'JetBrains Mono',monospace;color:var(--p)">0x01 // BOOT_COMPLETE <span style="color:var(--osv)">(took one chai)</span></div>
+      <h1 style="margin:0;font:800 160px/.84 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em">AKSHIT<br><span style="color:var(--p)">NAHATA</span></h1>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:var(--sc2);font-weight:600;font-size:17px"><span style="width:10px;height:10px;border-radius:50%;background:var(--p);box-shadow:0 0 0 4px var(--pc)"></span>Senior Android Engineer at Jaguar Land Rover</span>
+        <span style="padding:10px 18px;border-radius:999px;border:1.5px solid var(--ol);font-weight:500;font-size:17px;color:var(--osv)">Manchester, UK</span>
+      </div>
+      <div onClick="{{ a.tagNext }}" style="cursor:pointer;max-width:660px;display:flex;flex-direction:column;gap:6px">
+        <p style="margin:0;font:500 26px/1.35 Figtree,sans-serif;color:var(--osv);text-wrap:pretty">{{ a.tagline }}</p>
+        <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--ol)">TAGLINE {{ a.tagN }}/3 // tap to swap</span>
+      </div>
+      <div style="display:flex;gap:12px">
+        <button onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:64px;padding:0 34px;border-radius:999px;border:0;background:var(--p);color:var(--op);font:700 18px Figtree,sans-serif;cursor:pointer;transition:transform var(--dur) var(--spring),border-radius var(--dur) var(--spring)" style-hover="transform:scale(1.04);border-radius:22px">See my work →</button>
+        <button onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:64px;padding:0 34px;border-radius:999px;border:0;background:var(--sec);color:var(--osec);font:700 18px Figtree,sans-serif;cursor:pointer;transition:transform var(--dur) var(--spring),border-radius var(--dur) var(--spring)" style-hover="transform:scale(1.04);border-radius:22px">Get in touch</button>
+      </div>
+    </div>
+    <div style="position:relative;height:500px">
+      <div style="position:absolute;inset:20px 10px 30px 30px;border-radius:44% 56% 52% 48% / 50% 44% 56% 50%;background:var(--pc);transition:background .4s"></div>
+      <div style="position:absolute;right:20px;top:10px;width:110px;height:110px;border-radius:36px;background:var(--tc);transform:rotate(14deg)"></div>
+      <div style="position:absolute;left:10px;bottom:30px;width:70px;height:70px;border-radius:50%;background:var(--t)"></div>
+      <div style="position:absolute;left:58px;top:60px;padding:10px 16px;border-radius:20px 20px 20px 6px;background:var(--s);font:500 13px 'JetBrains Mono',monospace;color:var(--os);box-shadow:0 2px 0 var(--sc3)">Hi, I'm Bit. Poke me.</div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+        <div style="width:120px;height:140px;position:relative;transform:scale(2.3)">
+          <div data-bot="1" onClick="{{ a.bot }}" style="position:absolute;inset:0;cursor:pointer">
+            <div style="position:absolute;left:58px;top:6px;width:4px;height:20px;border-radius:2px;background:var(--os)"></div>
+            <div style="position:absolute;left:51px;top:0;width:18px;height:18px;border-radius:50%;background:var(--t)"></div>
+            <div style="position:absolute;left:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+            <div style="position:absolute;right:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+            <div style="position:absolute;left:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+            <div style="position:absolute;right:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+            <div style="position:absolute;left:10px;top:22px;width:100px;height:96px;border-radius:36px;background:var(--p);box-shadow:inset 0 -8px 0 rgba(0,0,0,.14)">
+              <div style="position:absolute;left:12px;top:14px;width:76px;height:50px;border-radius:20px;background:oklch(.2 .03 var(--h));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px">
+                <div data-eyes="1" style="display:flex;gap:18px;transition:transform .15s"><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div></div>
+                <div style="width:14px;height:6px;border-radius:0 0 8px 8px;background:oklch(.9 .14 var(--h))"></div>
+              </div>
+              <div style="position:absolute;left:16px;top:74px;width:12px;height:6px;border-radius:3px;background:var(--tc)"></div>
+              <div style="position:absolute;right:16px;top:74px;width:12px;height:6px;border-radius:3px;background:var(--tc)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;left:56px;right:56px;bottom:36px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px">
+    <div onClick="{{ a.sdkReplay }}" style="cursor:pointer;padding:22px 24px;border-radius:28px;background:var(--sc2);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(-1deg)">
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">TARGET_SDK</span>
+      <span style="font:800 48px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">{{ a.sdk }}</span>
+      <span style="font-size:14px;color:var(--osv)">Always on the latest. Obviously.</span>
+    </div>
+    <div style="padding:22px 24px;border-radius:999px 28px 28px 999px;padding-left:40px;background:var(--pc);color:var(--opc);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(1deg)">
+      <span style="font:500 12px 'JetBrains Mono',monospace">CORE_STACK</span>
+      <span style="font:800 48px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Kotlin</span>
+      <span style="font-size:14px">Fluent. No accent.</span>
+    </div>
+    <div style="padding:22px 24px;border-radius:28px 28px 64px 28px;background:var(--tc);color:var(--otc);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(-1deg)">
+      <span style="font:500 12px 'JetBrains Mono',monospace">UI_ENGINE</span>
+      <span style="font:800 48px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Compose</span>
+      <span style="font-size:14px">Zero XML layouts were harmed.</span>
+    </div>
+    <div onClick="{{ a.chaiTap }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;padding:22px 24px;border-radius:28px;background:var(--inv);color:var(--oinv);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(1deg)">
+      <span style="font:500 12px 'JetBrains Mono',monospace">CHAI_PER_RELEASE</span>
+      <span style="font:800 48px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">{{ a.chai }}</span>
+      <span style="font-size:14px">Tap to refill.</span>
+    </div>
+  </div>
+  <div onClick="{{ a.qsToggle }}" style="position:absolute;inset:0;background:rgba(0,0,0,.32);opacity:{{ a.qsO }};pointer-events:{{ a.qsPE }};transition:opacity .3s"></div>
+  <div style="position:absolute;left:50%;top:0;width:600px;margin-left:-300px;transform:{{ a.qsT }};transition:transform var(--dur) var(--spring);background:var(--sc1);border-radius:0 0 36px 36px;padding:28px 28px 18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:800 40px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">9:41</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">QUICK_SETTINGS // no root required</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button onClick="{{ a.toggleDark }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;text-align:left;border:0;cursor:pointer;padding:16px 20px;border-radius:999px;background:{{ a.dark.bg }};color:{{ a.dark.fg }};transition:background .3s,color .3s"><div style="font-weight:700;font-size:16px">Dark theme</div><div style="font-size:13px;opacity:.85">{{ a.dark.sub }}</div></button>
+      <button onClick="{{ a.toggleWhimsy }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;text-align:left;border:0;cursor:pointer;padding:16px 20px;border-radius:999px;background:{{ a.whimsy.bg }};color:{{ a.whimsy.fg }};transition:background .3s,color .3s"><div style="font-weight:700;font-size:16px">Whimsy mode</div><div style="font-size:13px;opacity:.85">{{ a.whimsy.sub }}</div></button>
+      <button onClick="{{ a.toggleMotion }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;text-align:left;border:0;cursor:pointer;padding:16px 20px;border-radius:999px;background:{{ a.motion.bg }};color:{{ a.motion.fg }};transition:background .3s,color .3s"><div style="font-weight:700;font-size:16px">Reduce motion</div><div style="font-size:13px;opacity:.85">{{ a.motion.sub }}</div></button>
+      <button onClick="{{ a.devTap }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;text-align:left;border:0;cursor:pointer;padding:16px 20px;border-radius:999px;background:var(--sc3);color:var(--osv)"><div style="font-weight:700;font-size:16px">Developer options</div><div style="font-size:13px">Locked</div></button>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 6px 4px">
+      <span style="font-weight:600;font-size:15px">Wallpaper colour <span style="color:var(--osv);font-weight:500">{{ a.seedName }}</span></span>
+      <div style="display:flex;gap:12px">
+        <sc-for list="{{ a.swatches }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.pick }}" aria-label="{{ s.n }}" style="width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;background:{{ s.c }};box-shadow:{{ s.ring }};transition:box-shadow .2s"></button></sc-for>
+      </div>
+    </div>
+    <div style="align-self:center;width:40px;height:4px;border-radius:2px;background:var(--ol)"></div>
+  </div>
+  <div style="position:absolute;left:50%;bottom:28px;transform:{{ a.toastT }};opacity:{{ a.toastO }};transition:transform var(--dur) var(--spring),opacity .25s;pointer-events:none;background:var(--inv);color:var(--oinv);padding:14px 22px;border-radius:14px;font-weight:500;font-size:15px;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.2)">{{ a.toast }}</div>
+</div>
+
+<div class="dv-card" data-screen-label="1a Mobile" style="position:relative;width:390px;min-height:844px;background:var(--s);color:var(--os);font-family:Figtree,sans-serif;transition:background .4s,color .4s;border:0;border-radius:36px;padding-bottom:28px">
+  <div onClick="{{ a.qsToggle }}" style="cursor:pointer;height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font:500 12px 'JetBrains Mono',monospace;color:var(--osv)"><span>9:41</span><span style="width:28px;height:4px;border-radius:2px;background:var(--ol)"></span><span>chai 87%</span></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 20px">
+    <div style="display:flex;align-items:center;gap:8px;font:700 19px 'Bricolage Grotesque',sans-serif"><span style="width:28px;height:28px;border-radius:10px;background:var(--p);display:flex;align-items:center;justify-content:center"><span style="width:14px;height:8px;border-radius:4px;background:oklch(.2 .03 var(--h))"></span></span>akshit<span style="color:var(--p)">.kt</span></div>
+    <button onClick="{{ a.qsToggle }}" onPointerDown="{{ ripple }}" aria-label="Quick settings" style="position:relative;overflow:hidden;width:48px;height:48px;border-radius:16px;border:0;background:var(--sc2);color:var(--os);cursor:pointer;display:grid;grid-template-columns:10px 10px;gap:4px;place-content:center"><span style="width:10px;height:10px;border-radius:3px;background:var(--p)"></span><span style="width:10px;height:10px;border-radius:5px;background:var(--osv)"></span><span style="width:10px;height:10px;border-radius:5px;background:var(--osv)"></span><span style="width:10px;height:10px;border-radius:3px;background:var(--osv)"></span></button>
+  </div>
+  <div style="padding:18px 20px 0;display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <div style="font:500 12px 'JetBrains Mono',monospace;color:var(--p)">0x01 // BOOT_COMPLETE</div>
+      <div style="position:relative;width:96px;height:96px;border-radius:34px;background:var(--pc);display:flex;align-items:center;justify-content:center;margin-bottom:-24px">
+        <div style="width:120px;height:140px;position:relative;transform:scale(.62);flex:none">
+          <div data-bot="1" onClick="{{ a.bot }}" style="position:absolute;inset:0;cursor:pointer">
+            <div style="position:absolute;left:58px;top:6px;width:4px;height:20px;border-radius:2px;background:var(--os)"></div>
+            <div style="position:absolute;left:51px;top:0;width:18px;height:18px;border-radius:50%;background:var(--t)"></div>
+            <div style="position:absolute;left:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+            <div style="position:absolute;right:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+            <div style="position:absolute;left:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+            <div style="position:absolute;right:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+            <div style="position:absolute;left:10px;top:22px;width:100px;height:96px;border-radius:36px;background:var(--p);box-shadow:inset 0 -8px 0 rgba(0,0,0,.14)">
+              <div style="position:absolute;left:12px;top:14px;width:76px;height:50px;border-radius:20px;background:oklch(.2 .03 var(--h));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px">
+                <div data-eyes="1" style="display:flex;gap:18px;transition:transform .15s"><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div></div>
+                <div style="width:14px;height:6px;border-radius:0 0 8px 8px;background:oklch(.9 .14 var(--h))"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 style="margin:0;font:800 80px/.84 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em">AKSHIT<br><span style="color:var(--p)">NAHATA</span></h1>
+    <span style="align-self:flex-start;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:18px;background:var(--sc2);font-weight:600;font-size:14px;line-height:1.3"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:var(--p);box-shadow:0 0 0 3px var(--pc)"></span>Senior Android Engineer at Jaguar Land Rover</span>
+    <div onClick="{{ a.tagNext }}" style="cursor:pointer;display:flex;flex-direction:column;gap:6px">
+      <p style="margin:0;font:500 19px/1.4 Figtree,sans-serif;color:var(--osv);text-wrap:pretty">{{ a.tagline }}</p>
+      <span style="font:500 11px 'JetBrains Mono',monospace;color:var(--ol)">TAGLINE {{ a.tagN }}/3 // tap to swap</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <button onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:56px;border-radius:999px;border:0;background:var(--p);color:var(--op);font:700 17px Figtree,sans-serif;cursor:pointer">See my work →</button>
+      <button onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:56px;border-radius:999px;border:0;background:var(--sec);color:var(--osec);font:700 17px Figtree,sans-serif;cursor:pointer">Get in touch</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px">
+      <div onClick="{{ a.sdkReplay }}" style="cursor:pointer;padding:16px;border-radius:24px;background:var(--sc2);display:flex;flex-direction:column;gap:4px"><span style="font:500 10px 'JetBrains Mono',monospace;color:var(--osv)">TARGET_SDK</span><span style="font:800 34px/1 'Bricolage Grotesque',sans-serif">{{ a.sdk }}</span></div>
+      <div style="padding:16px;border-radius:999px 24px 24px 999px;padding-left:24px;background:var(--pc);color:var(--opc);display:flex;flex-direction:column;gap:4px"><span style="font:500 10px 'JetBrains Mono',monospace">CORE_STACK</span><span style="font:800 34px/1 'Bricolage Grotesque',sans-serif">Kotlin</span></div>
+      <div style="padding:16px;border-radius:24px 24px 48px 24px;background:var(--tc);color:var(--otc);display:flex;flex-direction:column;gap:4px"><span style="font:500 10px 'JetBrains Mono',monospace">UI_ENGINE</span><span style="font:800 34px/1 'Bricolage Grotesque',sans-serif">Compose</span></div>
+      <div onClick="{{ a.chaiTap }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;padding:16px;border-radius:24px;background:var(--inv);color:var(--oinv);display:flex;flex-direction:column;gap:4px"><span style="font:500 10px 'JetBrains Mono',monospace">CHAI_PER_RELEASE</span><span style="font:800 34px/1 'Bricolage Grotesque',sans-serif">{{ a.chai }}</span></div>
+    </div>
+  </div>
+  <div onClick="{{ a.qsToggle }}" style="position:absolute;inset:0;border-radius:36px;background:rgba(0,0,0,.32);opacity:{{ a.qsO }};pointer-events:{{ a.qsPE }};transition:opacity .3s"></div>
+  <div style="position:absolute;left:0;right:0;top:0;transform:{{ a.qsT }};transition:transform var(--dur) var(--spring);background:var(--sc1);border-radius:36px;padding:22px 18px 14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+    <span style="font:800 32px/1 'Bricolage Grotesque',sans-serif">9:41</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <button onClick="{{ a.toggleDark }}" style="text-align:left;border:0;cursor:pointer;padding:14px 16px;border-radius:999px;background:{{ a.dark.bg }};color:{{ a.dark.fg }};font-weight:700;font-size:14px">Dark theme</button>
+      <button onClick="{{ a.toggleWhimsy }}" style="text-align:left;border:0;cursor:pointer;padding:14px 16px;border-radius:999px;background:{{ a.whimsy.bg }};color:{{ a.whimsy.fg }};font-weight:700;font-size:14px">Whimsy</button>
+      <button onClick="{{ a.toggleMotion }}" style="text-align:left;border:0;cursor:pointer;padding:14px 16px;border-radius:999px;background:{{ a.motion.bg }};color:{{ a.motion.fg }};font-weight:700;font-size:14px">Less motion</button>
+      <button onClick="{{ a.devTap }}" style="text-align:left;border:0;cursor:pointer;padding:14px 16px;border-radius:999px;background:var(--sc3);color:var(--osv);font-weight:700;font-size:14px">Dev options</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:8px 4px 2px"><sc-for list="{{ a.swatches }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.pick }}" aria-label="{{ s.n }}" style="width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;background:{{ s.c }};box-shadow:{{ s.ring }}"></button></sc-for></div>
+    <div style="align-self:center;width:36px;height:4px;border-radius:2px;background:var(--ol)"></div>
+  </div>
+  <div style="position:absolute;left:50%;bottom:24px;transform:{{ a.toastT }};opacity:{{ a.toastO }};transition:transform var(--dur) var(--spring),opacity .25s;pointer-events:none;background:var(--inv);color:var(--oinv);padding:12px 18px;border-radius:12px;font-weight:500;font-size:14px;width:300px;text-align:center">{{ a.toast }}</div>
+</div>
+
+<div style="width:300px;display:flex;flex-direction:column;gap:18px;font:12px/1.55 'JetBrains Mono',monospace;color:#3a3a3a">
+  <div><div style="font-weight:700;margin-bottom:6px">TRY</div>Pull the status bar handle. Poke Bit. Tap the chai tile, the SDK tile, the tagline. Change wallpaper colour.</div>
+  <div><div style="font-weight:700;margin-bottom:6px">COMPOSE MAP</div>Theme: dynamicColorScheme(seed) via a tonal palette generator, MaterialTheme(colorScheme)<br>QS shade: AnimatedVisibility + slideInVertically(spring(dampingRatio = 0.6f))<br>Tiles: FlowRow of Card with custom RoundedCornerShape per tile<br>SDK count: animateIntAsState<br>Tagline: AnimatedContent<br>Ripple: ripple() indication<br>Bit eyes: pointerInput + graphicsLayer translation<br>Blob: Material 3 Expressive shape morph (RoundedPolygon)</div>
+  <div><div style="font-weight:700;margin-bottom:6px">WHY THIS</div>Feels like a Pixel home screen that got excited. Shapes and colour do the talking, so copy stays short and scannable.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Retro OS meets modern Android. Chunky outlined windows, hard shadows, Archivo Expanded, a Control Panel instead of a shade.</div>
+<div ref="{{ bRef }}" onPointerMove="{{ b.look }}" style="display:flex;gap:28px;align-items:flex-start;--h:295;--p:oklch(.82 .13 295);--op:oklch(.26 .09 295);--pc:oklch(.38 .12 295);--opc:oklch(.93 .06 295);--s:oklch(.165 .012 295);--sc1:oklch(.2 .015 295);--sc2:oklch(.235 .02 295);--sc3:oklch(.28 .025 295);--os:oklch(.93 .012 295);--osv:oklch(.78 .025 295);--ol:oklch(.5 .03 295);--tc:oklch(.38 .1 5);--otc:oklch(.93 .06 5);--sec:oklch(.3 .04 295);--osec:oklch(.92 .03 295);--inv:oklch(.92 .012 295);--oinv:oklch(.22 .02 295);--t:oklch(.8 .12 5);--spring:cubic-bezier(.34,1.56,.64,1);--dur:.55s">
+
+<div class="dv-card" data-screen-label="1b Desktop" style="position:relative;width:1440px;height:900px;background-color:var(--s);background-image:radial-gradient(var(--sc3) 1.6px,transparent 1.6px);background-size:26px 26px;color:var(--os);font-family:Archivo,sans-serif;transition:background-color .4s,color .4s;border:0">
+  <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:var(--sc1);border-bottom:2px solid var(--os);font:500 14px 'IBM Plex Mono',monospace">
+    <div style="display:flex;align-items:center;gap:22px">
+      <span style="display:flex;align-items:center;gap:8px;font:800 15px Archivo,sans-serif;font-stretch:125%"><span style="width:16px;height:16px;border-radius:5px;background:var(--p);border:2px solid var(--os)"></span>akshitOS 16</span>
+      <span>Work</span><span>Build</span><span>Career</span><span>Contact</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:18px">
+      <span style="display:flex;align-items:center;gap:8px;color:var(--osv)">:app:assembleHero<span style="width:90px;height:10px;border:1.5px solid var(--os);border-radius:4px;overflow:hidden;display:flex"><span style="width:18%;background:var(--p)"></span></span>18%</span>
+      <span>9:41</span>
+      <button onClick="{{ b.qsToggle }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;padding:5px 12px;border:2px solid var(--os);border-radius:8px;background:var(--p);color:var(--op);font:600 13px 'IBM Plex Mono',monospace">Control panel</button>
+    </div>
+  </div>
+  <div style="position:absolute;left:56px;top:84px;width:880px;border:2px solid var(--os);border-radius:20px;background:var(--sc1);box-shadow:8px 8px 0 var(--os);overflow:hidden">
+    <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px;background:var(--p);color:var(--op);border-bottom:2px solid var(--os);font:600 14px 'IBM Plex Mono',monospace"><span>hello_world.kt</span><span style="display:flex;gap:8px"><span style="width:18px;height:18px;border-radius:6px;border:2px solid var(--op)"></span><span style="width:18px;height:18px;border-radius:6px;border:2px solid var(--op)"></span><span style="width:18px;height:18px;border-radius:50%;background:var(--op)"></span></span></div>
+    <div style="padding:30px 40px 38px;display:flex;flex-direction:column;gap:18px">
+      <span style="font:500 16px 'IBM Plex Mono',monospace;color:var(--osv)">&gt; whoami</span>
+      <h1 style="margin:0;font:900 128px/.86 Archivo,sans-serif;font-stretch:125%;letter-spacing:-.03em">AKSHIT<br><span style="color:var(--p)">NAHATA</span></h1>
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font:500 16px 'IBM Plex Mono',monospace;color:var(--osv)">&gt; cat role.txt</span><span style="font:700 26px Archivo,sans-serif">Senior Android Engineer at Jaguar Land Rover <span style="font-weight:500;color:var(--osv)">in Manchester, UK</span></span></div>
+      <div onClick="{{ b.tagNext }}" style="cursor:pointer;display:flex;flex-direction:column;gap:4px">
+        <span style="font:500 16px 'IBM Plex Mono',monospace;color:var(--osv)">&gt; cat tagline_{{ b.tagN }}.txt <span style="color:var(--ol)">// tap for another</span></span>
+        <p style="margin:0;font:500 24px/1.35 Archivo,sans-serif;max-width:740px;text-wrap:pretty">{{ b.tagline }}<span style="display:inline-block;width:12px;height:24px;margin-left:6px;vertical-align:-4px;background:var(--p)"></span></p>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:6px">
+        <button onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;height:60px;padding:0 30px;border:2px solid var(--os);border-radius:14px;background:var(--p);color:var(--op);font:800 18px Archivo,sans-serif;font-stretch:115%;box-shadow:5px 5px 0 var(--os);transition:transform .12s,box-shadow .12s" style-active="transform:translate(5px,5px);box-shadow:0 0 0 var(--os)">See my work →</button>
+        <button onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;height:60px;padding:0 30px;border:2px solid var(--os);border-radius:14px;background:var(--sc2);color:var(--os);font:800 18px Archivo,sans-serif;font-stretch:115%;box-shadow:5px 5px 0 var(--os);transition:transform .12s,box-shadow .12s" style-active="transform:translate(5px,5px);box-shadow:0 0 0 var(--os)">Get in touch</button>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;left:984px;top:84px;width:400px;border:2px solid var(--os);border-radius:20px;background:var(--pc);box-shadow:8px 8px 0 var(--os);overflow:hidden">
+    <div style="height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:var(--sc1);border-bottom:2px solid var(--os);font:600 13px 'IBM Plex Mono',monospace"><span>bit.apk</span><span style="color:var(--osv)">status: vibing</span></div>
+    <div style="height:250px;display:flex;align-items:center;justify-content:center;position:relative">
+      <div style="width:120px;height:140px;position:relative;transform:scale(1.45)">
+        <div data-bot="1" onClick="{{ b.bot }}" style="position:absolute;inset:0;cursor:pointer">
+          <div style="position:absolute;left:58px;top:6px;width:4px;height:20px;border-radius:2px;background:var(--os)"></div>
+          <div style="position:absolute;left:51px;top:0;width:18px;height:18px;border-radius:50%;background:var(--t)"></div>
+          <div style="position:absolute;left:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+          <div style="position:absolute;right:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+          <div style="position:absolute;left:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+          <div style="position:absolute;right:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+          <div style="position:absolute;left:10px;top:22px;width:100px;height:96px;border-radius:36px;background:var(--p);border:2px solid var(--os);box-sizing:border-box">
+            <div style="position:absolute;left:10px;top:12px;width:76px;height:50px;border-radius:20px;background:oklch(.2 .03 var(--h));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px">
+              <div data-eyes="1" style="display:flex;gap:18px;transition:transform .15s"><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div></div>
+              <div style="width:14px;height:6px;border-radius:0 0 8px 8px;background:oklch(.9 .14 var(--h))"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span style="position:absolute;left:14px;bottom:12px;font:500 12px 'IBM Plex Mono',monospace;color:var(--opc)">click to poke</span>
+    </div>
+  </div>
+  <div style="position:absolute;left:984px;top:400px;width:400px;display:grid;grid-template-columns:1fr 1fr;gap:18px">
+    <div onClick="{{ b.sdkReplay }}" style="cursor:pointer;padding:16px;border:2px solid var(--os);border-radius:16px;background:var(--sc2);box-shadow:4px 4px 0 var(--os);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translate(-3px,-3px)"><span style="font:500 12px 'IBM Plex Mono',monospace;color:var(--osv)">target_sdk.int</span><span style="font:900 46px/1 Archivo,sans-serif;font-stretch:125%">{{ b.sdk }}</span><span style="font-size:13px;color:var(--osv)">Latest, always.</span></div>
+    <div style="padding:16px;border:2px solid var(--os);border-radius:16px;background:var(--tc);color:var(--otc);box-shadow:4px 4px 0 var(--os);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translate(-3px,-3px)"><span style="font:500 12px 'IBM Plex Mono',monospace">core_stack.kt</span><span style="font:900 30px/1.2 Archivo,sans-serif;font-stretch:125%">Kotlin</span><span style="font-size:13px">Fluent. No accent.</span></div>
+    <div style="padding:16px;border:2px solid var(--os);border-radius:16px;background:var(--sec);color:var(--osec);box-shadow:4px 4px 0 var(--os);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translate(-3px,-3px)"><span style="font:500 12px 'IBM Plex Mono',monospace">ui_engine.kt</span><span style="font:900 30px/1.2 Archivo,sans-serif;font-stretch:125%">Compose</span><span style="font-size:13px">XML retired with honours.</span></div>
+    <div onClick="{{ b.chaiTap }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;padding:16px;border:2px solid var(--os);border-radius:16px;background:var(--p);color:var(--op);box-shadow:4px 4px 0 var(--os);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translate(-3px,-3px)"><span style="font:500 12px 'IBM Plex Mono',monospace">chai_per_release</span><span style="font:900 46px/1 Archivo,sans-serif;font-stretch:125%">{{ b.chai }}</span><span style="font-size:13px">Click to refill.</span></div>
+  </div>
+  <div style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;gap:8px;padding:8px;border:2px solid var(--os);border-radius:22px;background:var(--sc1);box-shadow:5px 5px 0 var(--os);font:700 15px Archivo,sans-serif">
+    <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px;background:var(--p);color:var(--op)"><span style="width:12px;height:12px;border-radius:4px;background:var(--op)"></span>Work</span>
+    <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px"><span style="width:12px;height:12px;border-radius:50%;background:var(--t)"></span>How I build</span>
+    <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px"><span style="width:12px;height:12px;border-radius:4px;background:var(--osv)"></span>Career</span>
+    <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px"><span style="width:12px;height:12px;border-radius:50%;background:var(--osv)"></span>Contact</span>
+  </div>
+  <div onClick="{{ b.qsToggle }}" style="position:absolute;inset:44px 0 0 0;opacity:0;pointer-events:{{ b.qsPE }}"></div>
+  <div style="position:absolute;right:20px;top:56px;width:380px;transform:{{ b.cpT }};opacity:{{ b.qsO }};pointer-events:{{ b.qsPE }};transform-origin:top right;transition:transform var(--dur) var(--spring),opacity .2s;border:2px solid var(--os);border-radius:18px;background:var(--sc1);box-shadow:8px 8px 0 var(--os);overflow:hidden">
+    <div style="height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 18px;background:var(--p);color:var(--op);border-bottom:2px solid var(--os);font:600 13px 'IBM Plex Mono',monospace"><span>control_panel.exe</span><button onClick="{{ b.qsToggle }}" aria-label="Close" style="width:18px;height:18px;border-radius:50%;border:0;background:var(--op);cursor:pointer"></button></div>
+    <div style="padding:16px 18px;display:flex;flex-direction:column;gap:8px;font:600 16px Archivo,sans-serif">
+      <button onClick="{{ b.toggleDark }}" style="display:flex;align-items:center;gap:12px;background:none;border:0;color:var(--os);cursor:pointer;padding:6px 0;font:600 16px Archivo,sans-serif"><span style="width:22px;height:22px;border:2px solid var(--os);border-radius:7px;background:{{ b.dark.box }};transition:background .2s"></span>Dark theme</button>
+      <button onClick="{{ b.toggleWhimsy }}" style="display:flex;align-items:center;gap:12px;background:none;border:0;color:var(--os);cursor:pointer;padding:6px 0;font:600 16px Archivo,sans-serif"><span style="width:22px;height:22px;border:2px solid var(--os);border-radius:7px;background:{{ b.whimsy.box }};transition:background .2s"></span>Whimsy mode</button>
+      <button onClick="{{ b.toggleMotion }}" style="display:flex;align-items:center;gap:12px;background:none;border:0;color:var(--os);cursor:pointer;padding:6px 0;font:600 16px Archivo,sans-serif"><span style="width:22px;height:22px;border:2px solid var(--os);border-radius:7px;background:{{ b.motion.box }};transition:background .2s"></span>Reduce motion</button>
+      <div style="height:2px;background:var(--sc3);margin:6px 0"></div>
+      <span style="font:500 13px 'IBM Plex Mono',monospace;color:var(--osv)">wallpaper_seed = {{ b.seedName }}</span>
+      <div style="display:flex;gap:10px"><sc-for list="{{ b.swatches }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.pick }}" aria-label="{{ s.n }}" style="width:44px;height:44px;border-radius:12px;border:2px solid var(--os);cursor:pointer;background:{{ s.c }};box-shadow:{{ s.hard }};transition:box-shadow .15s"></button></sc-for></div>
+      <button onClick="{{ b.devTap }}" style="margin-top:6px;text-align:left;background:none;border:0;cursor:pointer;color:var(--osv);font:500 13px 'IBM Plex Mono',monospace;padding:4px 0">developer_options: locked</button>
+    </div>
+  </div>
+  <div style="position:absolute;left:50%;bottom:110px;transform:{{ b.toastT }};opacity:{{ b.toastO }};transition:transform var(--dur) var(--spring),opacity .25s;pointer-events:none;background:var(--inv);color:var(--oinv);padding:14px 20px;border:2px solid var(--os);border-radius:14px;box-shadow:5px 5px 0 var(--os);font:500 14px 'IBM Plex Mono',monospace;white-space:nowrap">{{ b.toast }}</div>
+</div>
+
+<div class="dv-card" data-screen-label="1b Mobile" style="position:relative;width:390px;min-height:844px;background-color:var(--s);background-image:radial-gradient(var(--sc3) 1.4px,transparent 1.4px);background-size:22px 22px;color:var(--os);font-family:Archivo,sans-serif;transition:background-color .4s,color .4s;border:0;border-radius:36px;padding-bottom:110px">
+  <div style="height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 16px 0 20px;background:var(--sc1);border-bottom:2px solid var(--os);font:500 13px 'IBM Plex Mono',monospace">
+    <span style="display:flex;align-items:center;gap:8px;font:800 14px Archivo,sans-serif;font-stretch:125%"><span style="width:14px;height:14px;border-radius:4px;background:var(--p);border:2px solid var(--os)"></span>akshitOS</span>
+    <span style="display:flex;align-items:center;gap:12px">9:41<button onClick="{{ b.qsToggle }}" aria-label="Control panel" style="width:44px;height:34px;border:2px solid var(--os);border-radius:8px;background:var(--p);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px"><span style="width:6px;height:6px;border-radius:2px;background:var(--op)"></span><span style="width:6px;height:6px;border-radius:2px;background:var(--op)"></span><span style="width:6px;height:6px;border-radius:2px;background:var(--op)"></span></button></span>
+  </div>
+  <div style="margin:20px 16px 0;border:2px solid var(--os);border-radius:18px;background:var(--sc1);box-shadow:6px 6px 0 var(--os);overflow:hidden">
+    <div style="height:38px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 16px;background:var(--p);color:var(--op);border-bottom:2px solid var(--os);font:600 12px 'IBM Plex Mono',monospace"><span>hello_world.kt</span><span style="width:14px;height:14px;border-radius:50%;background:var(--op)"></span></div>
+    <div style="padding:20px 18px 22px;display:flex;flex-direction:column;gap:12px">
+      <span style="font:500 13px 'IBM Plex Mono',monospace;color:var(--osv)">&gt; whoami</span>
+      <h1 style="margin:0;font:900 60px/.88 Archivo,sans-serif;font-stretch:125%;letter-spacing:-.03em">AKSHIT<br><span style="color:var(--p)">NAHATA</span></h1>
+      <span style="font:700 18px/1.3 Archivo,sans-serif">Senior Android Engineer at Jaguar Land Rover</span>
+      <p onClick="{{ b.tagNext }}" style="cursor:pointer;margin:0;font:500 17px/1.4 Archivo,sans-serif;color:var(--osv);text-wrap:pretty">{{ b.tagline }}<span style="display:inline-block;width:9px;height:17px;margin-left:4px;vertical-align:-3px;background:var(--p)"></span></p>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:6px">
+        <button onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;height:54px;border:2px solid var(--os);border-radius:12px;background:var(--p);color:var(--op);font:800 17px Archivo,sans-serif;box-shadow:4px 4px 0 var(--os)" style-active="transform:translate(4px,4px);box-shadow:0 0 0 var(--os)">See my work →</button>
+        <button onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;height:54px;border:2px solid var(--os);border-radius:12px;background:var(--sc2);color:var(--os);font:800 17px Archivo,sans-serif;box-shadow:4px 4px 0 var(--os)" style-active="transform:translate(4px,4px);box-shadow:0 0 0 var(--os)">Get in touch</button>
+      </div>
+    </div>
+  </div>
+  <div style="margin:22px 16px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="grid-column:span 2;display:flex;align-items:center;gap:6px;padding:4px 14px 4px 0;border:2px solid var(--os);border-radius:16px;background:var(--pc);color:var(--opc);box-shadow:4px 4px 0 var(--os);overflow:hidden">
+      <div style="width:110px;height:110px;flex:none;display:flex;align-items:center;justify-content:center"><div style="width:120px;height:140px;position:relative;transform:scale(.68);flex:none">
+        <div data-bot="1" onClick="{{ b.bot }}" style="position:absolute;inset:0;cursor:pointer">
+          <div style="position:absolute;left:58px;top:6px;width:4px;height:20px;border-radius:2px;background:var(--os)"></div>
+          <div style="position:absolute;left:51px;top:0;width:18px;height:18px;border-radius:50%;background:var(--t)"></div>
+          <div style="position:absolute;left:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+          <div style="position:absolute;right:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+          <div style="position:absolute;left:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+          <div style="position:absolute;right:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+          <div style="position:absolute;left:10px;top:22px;width:100px;height:96px;border-radius:36px;background:var(--p);border:2px solid var(--os);box-sizing:border-box">
+            <div style="position:absolute;left:10px;top:12px;width:76px;height:50px;border-radius:20px;background:oklch(.2 .03 var(--h));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px">
+              <div data-eyes="1" style="display:flex;gap:18px;transition:transform .15s"><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div></div>
+              <div style="width:14px;height:6px;border-radius:0 0 8px 8px;background:oklch(.9 .14 var(--h))"></div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 12px 'IBM Plex Mono',monospace">bit.apk</span><span style="font:700 16px/1.3 Archivo,sans-serif">Hi, I'm Bit. Tap me, I don't bite. I byte.</span></div>
+    </div>
+    <div onClick="{{ b.sdkReplay }}" style="cursor:pointer;padding:14px;border:2px solid var(--os);border-radius:14px;background:var(--sc2);box-shadow:4px 4px 0 var(--os);display:flex;flex-direction:column;gap:4px"><span style="font:500 11px 'IBM Plex Mono',monospace;color:var(--osv)">target_sdk</span><span style="font:900 34px/1 Archivo,sans-serif;font-stretch:125%">{{ b.sdk }}</span></div>
+    <div onClick="{{ b.chaiTap }}" style="cursor:pointer;padding:14px;border:2px solid var(--os);border-radius:14px;background:var(--p);color:var(--op);box-shadow:4px 4px 0 var(--os);display:flex;flex-direction:column;gap:4px"><span style="font:500 11px 'IBM Plex Mono',monospace">chai_per_release</span><span style="font:900 34px/1 Archivo,sans-serif;font-stretch:125%">{{ b.chai }}</span></div>
+    <div style="padding:14px;border:2px solid var(--os);border-radius:14px;background:var(--tc);color:var(--otc);box-shadow:4px 4px 0 var(--os);display:flex;flex-direction:column;gap:4px"><span style="font:500 11px 'IBM Plex Mono',monospace">core_stack</span><span style="font:900 22px/1.2 Archivo,sans-serif;font-stretch:125%">Kotlin</span></div>
+    <div style="padding:14px;border:2px solid var(--os);border-radius:14px;background:var(--sec);color:var(--osec);box-shadow:4px 4px 0 var(--os);display:flex;flex-direction:column;gap:4px"><span style="font:500 11px 'IBM Plex Mono',monospace">ui_engine</span><span style="font:900 22px/1.2 Archivo,sans-serif;font-stretch:125%">Compose</span></div>
+  </div>
+  <div style="position:absolute;left:16px;right:16px;bottom:20px;display:flex;justify-content:space-between;padding:6px;border:2px solid var(--os);border-radius:20px;background:var(--sc1);box-shadow:4px 4px 0 var(--os);font:700 13px Archivo,sans-serif">
+    <span style="padding:12px 14px;border-radius:14px;background:var(--p);color:var(--op)">Work</span><span style="padding:12px 10px">Build</span><span style="padding:12px 10px">Career</span><span style="padding:12px 10px">Contact</span>
+  </div>
+  <div style="position:absolute;left:12px;right:12px;top:58px;transform:{{ b.cpT }};opacity:{{ b.qsO }};pointer-events:{{ b.qsPE }};transform-origin:top right;transition:transform var(--dur) var(--spring),opacity .2s;border:2px solid var(--os);border-radius:16px;background:var(--sc1);box-shadow:6px 6px 0 var(--os);overflow:hidden">
+    <div style="height:38px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 16px;background:var(--p);color:var(--op);border-bottom:2px solid var(--os);font:600 12px 'IBM Plex Mono',monospace"><span>control_panel.exe</span><button onClick="{{ b.qsToggle }}" aria-label="Close" style="width:16px;height:16px;border-radius:50%;border:0;background:var(--op);cursor:pointer"></button></div>
+    <div style="padding:12px 16px 16px;display:flex;flex-direction:column;gap:4px">
+      <button onClick="{{ b.toggleDark }}" style="display:flex;align-items:center;gap:12px;background:none;border:0;color:var(--os);cursor:pointer;min-height:44px;font:600 16px Archivo,sans-serif"><span style="width:22px;height:22px;border:2px solid var(--os);border-radius:7px;background:{{ b.dark.box }}"></span>Dark theme</button>
+      <button onClick="{{ b.toggleWhimsy }}" style="display:flex;align-items:center;gap:12px;background:none;border:0;color:var(--os);cursor:pointer;min-height:44px;font:600 16px Archivo,sans-serif"><span style="width:22px;height:22px;border:2px solid var(--os);border-radius:7px;background:{{ b.whimsy.box }}"></span>Whimsy mode</button>
+      <button onClick="{{ b.toggleMotion }}" style="display:flex;align-items:center;gap:12px;background:none;border:0;color:var(--os);cursor:pointer;min-height:44px;font:600 16px Archivo,sans-serif"><span style="width:22px;height:22px;border:2px solid var(--os);border-radius:7px;background:{{ b.motion.box }}"></span>Reduce motion</button>
+      <div style="display:flex;justify-content:space-between;margin-top:8px"><sc-for list="{{ b.swatches }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.pick }}" aria-label="{{ s.n }}" style="width:48px;height:48px;border-radius:12px;border:2px solid var(--os);cursor:pointer;background:{{ s.c }};box-shadow:{{ s.hard }}"></button></sc-for></div>
+    </div>
+  </div>
+  <div style="position:absolute;left:50%;bottom:100px;transform:{{ b.toastT }};opacity:{{ b.toastO }};transition:transform var(--dur) var(--spring),opacity .25s;pointer-events:none;background:var(--inv);color:var(--oinv);padding:12px 16px;border:2px solid var(--os);border-radius:12px;font:500 13px 'IBM Plex Mono',monospace;width:300px;text-align:center">{{ b.toast }}</div>
+</div>
+
+<div style="width:300px;display:flex;flex-direction:column;gap:18px;font:12px/1.55 'IBM Plex Mono',monospace;color:#3a3a3a">
+  <div><div style="font-weight:700;margin-bottom:6px">TRY</div>Open Control panel (top right). Swap seeds and themes. Press a button and hold to feel the hard shadow collapse. Poke Bit.</div>
+  <div><div style="font-weight:700;margin-bottom:6px">COMPOSE MAP</div>Windows: Surface(shape, border = BorderStroke(2.dp)) with offset shadow drawn in drawBehind<br>Pressed CTA: interactionSource.collectIsPressedAsState + animateDpAsState offset<br>Control panel: Popup + AnimatedVisibility(scaleIn(spring, TransformOrigin(1f, 0f)))<br>Dot grid: Canvas drawCircle in a tiled loop<br>Dock: custom NavigationBar<br>Gradle bar: LinearProgressIndicator tied to scroll state</div>
+  <div><div style="font-weight:700;margin-bottom:6px">WHY THIS</div>More character, more memorable, and the windows give every section a natural container. Slightly louder; Whimsy off calms it a lot.</div>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "go with <a class="dv-oid" href="#1a">1a</a>" · "<a class="dv-oid" href="#1a">1a</a> layout with the outlined windows and hard shadows from <a class="dv-oid" href="#1b">1b</a>" · "<a class="dv-oid" href="#1b">1b</a> but light theme by default"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SEEDS=[{n:'Android green',h:145},{n:'Electric violet',h:295},{n:'Tangerine',h:45},{n:'Ocean',h:240},{n:'Bubblegum',h:350}];
+const TAGS=["I build Android apps that feel effortless on the outside and are beautifully engineered on the inside.","Smooth on the screen, solid under the hood. I make Android apps people love and engineers trust.","Apps that feel like magic. Code that still makes sense at 3am."];
+const BOT=["Beep boop. I'm Bit.","Stop poking, I'm compiling.","Fun fact: I'm 100% Compose.","Try the Work section. Totally unbiased.","onPause() called. Just kidding."];
+const CHAI=["Chai level: optimal.","Release confidence +12%.","Gradle is still faster than the kettle.","Okay, that's a lot of chai.","Shipping to production. On caffeine."];
+function roles(h,d){const t=(h+70)%360,o=(l,c,x)=>`oklch(${l} ${c} ${x==null?h:x})`;
+return d?{p:o(.82,.13),op:o(.26,.09),pc:o(.38,.12),opc:o(.93,.06),s:o(.165,.012),sc1:o(.2,.015),sc2:o(.235,.02),sc3:o(.28,.025),os:o(.93,.012),osv:o(.78,.025),ol:o(.5,.03),tc:o(.38,.1,t),otc:o(.93,.06,t),sec:o(.3,.04),osec:o(.92,.03),inv:o(.92,.012),oinv:o(.22,.02),t:o(.8,.12,t)}
+:{p:o(.5,.19),op:o(.99,.01),pc:o(.91,.09),opc:o(.27,.09),s:o(.985,.008),sc1:o(.96,.014),sc2:o(.935,.02),sc3:o(.9,.03),os:o(.21,.02),osv:o(.43,.03),ol:o(.72,.03),tc:o(.9,.08,t),otc:o(.28,.09,t),sec:o(.92,.04),osec:o(.28,.05),inv:o(.27,.02),oinv:o(.95,.01),t:o(.52,.16,t)};}
+const base={whimsy:true,motion:false,qs:false,chai:3,tag:0,sdk:0,toast:'',toastOn:false,bot:0,ci:0};
+class Component extends DCLogic{
+  state={a:{...base,seed:145,dark:false},b:{...base,seed:295,dark:true}};
+  aRef=React.createRef(); bRef=React.createRef();
+  upd(k,p){this.setState(s=>({[k]:{...s[k],...(typeof p==='function'?p(s[k]):p)}}))}
+  apply(){for(const k of['a','b']){const el=this[k+'Ref'].current;if(!el)continue;const st=this.state[k];const r=roles(st.seed,st.dark);for(const n in r)el.style.setProperty('--'+n,r[n]);el.style.setProperty('--h',st.seed);const m=st.motion?['linear','.15s']:st.whimsy?['cubic-bezier(.34,1.56,.64,1)','.55s']:['cubic-bezier(.2,0,0,1)','.3s'];el.style.setProperty('--spring',m[0]);el.style.setProperty('--dur',m[1]);}}
+  componentDidMount(){this.apply();this.count('a');this.count('b');this.blinkT=setInterval(()=>this.blink(),3400);}
+  componentDidUpdate(){this.apply()}
+  componentWillUnmount(){clearInterval(this.blinkT)}
+  count(k){if(this.state[k].motion){this.upd(k,{sdk:36});return}const t0=performance.now();const f=now=>{const p=Math.min(1,(now-t0)/1100);this.upd(k,{sdk:Math.round(36*(1-Math.pow(1-p,3)))});if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+  blink(){for(const k of['a','b']){const st=this.state[k];if(!st.whimsy||st.motion)continue;const el=this[k+'Ref'].current;if(!el)continue;el.querySelectorAll('[data-eye]').forEach(e=>{e.style.transform='scaleY(.1)';setTimeout(()=>{e.style.transform=''},130)})}}
+  look(k,e){const el=this[k+'Ref'].current;const st=this.state[k];if(!el||!st.whimsy||st.motion)return;el.querySelectorAll('[data-eyes]').forEach(g=>{const r=g.getBoundingClientRect();const dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);const d=Math.hypot(dx,dy)||1;const m=Math.min(6,d/40);g.style.transform=`translate(${dx/d*m}px,${dy/d*m*.7}px)`})}
+  toast(k,text){clearTimeout(this['tt'+k]);this.upd(k,{toast:text,toastOn:true});this['tt'+k]=setTimeout(()=>this.upd(k,{toastOn:false}),2600)}
+  ripple=(e)=>{const t=e.currentTarget;const r=t.getBoundingClientRect();const sc=t.offsetWidth/(r.width||1);const x=(e.clientX-r.left)*sc,y=(e.clientY-r.top)*sc;const size=Math.max(t.offsetWidth,t.offsetHeight)*2.2;const s=document.createElement('span');Object.assign(s.style,{position:'absolute',left:x-size/2+'px',top:y-size/2+'px',width:size+'px',height:size+'px',borderRadius:'50%',background:'currentColor',pointerEvents:'none',opacity:'0'});t.appendChild(s);s.animate([{transform:'scale(0)',opacity:.26},{transform:'scale(1)',opacity:0}],{duration:650,easing:'cubic-bezier(.2,0,0,1)'}).onfinish=()=>s.remove();};
+  bounce(el,jump){const st=this.state;if(!el)return;el.animate(jump?[{transform:'translateY(0)'},{transform:'translateY(-22px) rotate(-6deg)'},{transform:'translateY(0)'}]:[{transform:'scale(1)'},{transform:'scale(.93)'},{transform:'scale(1.05)'},{transform:'scale(1)'}],{duration:jump?650:480,easing:'cubic-bezier(.34,1.56,.64,1)'})}
+  renderVals(){
+    const mk=k=>{const st=this.state[k];const tile=on=>({bg:on?'var(--p)':'var(--sc3)',fg:on?'var(--op)':'var(--os)',sub:on?'On':'Off',box:on?'var(--p)':'transparent'});
+      return{
+        tagline:TAGS[st.tag],tagN:st.tag+1,sdk:st.sdk,chai:st.chai,toast:st.toast,
+        toastO:st.toastOn?1:0,toastT:st.toastOn?'translate(-50%,0)':'translate(-50%,24px)',
+        qsO:st.qs?1:0,qsPE:st.qs?'auto':'none',qsT:st.qs?'translateY(0)':'translateY(-105%)',cpT:st.qs?'scale(1)':'scale(.6)',
+        dark:tile(st.dark),whimsy:tile(st.whimsy),motion:tile(st.motion),
+        seedName:(SEEDS.find(s=>s.h===st.seed)||{}).n,
+        swatches:SEEDS.map(s=>({n:s.n,c:`oklch(.64 .19 ${s.h})`,ring:s.h===st.seed?'0 0 0 3px var(--sc1), 0 0 0 6px var(--os)':'none',hard:s.h===st.seed?'4px 4px 0 var(--os)':'none',pick:()=>{this.upd(k,{seed:s.h});this.toast(k,`Wallpaper set to ${s.n}. Re-theming everything.`)}})),
+        qsToggle:()=>this.upd(k,{qs:!st.qs}),
+        toggleDark:()=>{this.upd(k,{dark:!st.dark});this.toast(k,st.dark?'Light theme. Hello, sunshine.':'Dark theme on. Easy on the eyes.')},
+        toggleWhimsy:()=>{this.upd(k,{whimsy:!st.whimsy});this.toast(k,st.whimsy?'Whimsy off. Calm, professional, slightly sad.':'Whimsy back on. Springs restored.')},
+        toggleMotion:()=>{this.upd(k,{motion:!st.motion});this.toast(k,st.motion?'Motion back to normal.':'Reduce motion on. Everything just fades now.')},
+        devTap:()=>this.toast(k,"Locked. Tap Build number 7 times. You know the drill."),
+        tagNext:()=>this.upd(k,{tag:(st.tag+1)%3}),
+        sdkReplay:()=>this.count(k),
+        chaiTap:(e)=>{this.bounce(e.currentTarget);this.upd(k,{chai:st.chai+1,ci:st.ci+1});this.toast(k,CHAI[st.ci%CHAI.length])},
+        bot:(e)=>{if(!st.motion)this.bounce(e.currentTarget,true);this.upd(k,{bot:st.bot+1});this.toast(k,BOT[st.bot%BOT.length])},
+        look:(e)=>this.look(k,e)
+      }};
+    const RN=[['p','primary'],['op','onPrimary'],['pc','primaryContainer'],['opc','onPrimaryContainer'],['sec','secondaryContainer'],['osec','onSecondaryContainer'],['t','tertiary'],['tc','tertiaryContainer'],['otc','onTertiaryContainer'],['s','surface'],['sc1','surfaceContainerLow'],['sc2','surfaceContainer'],['sc3','surfaceContainerHigh'],['os','onSurface'],['osv','onSurfaceVariant'],['ol','outline'],['inv','inverseSurface'],['oinv','inverseOnSurface']];
+    const L=roles(145,false),D=roles(145,true);
+    return{a:mk('a'),b:mk('b'),aRef:this.aRef,bRef:this.bRef,ripple:this.ripple,tok:RN.map(([k,n])=>({n,l:L[k],d:D[k],lv:L[k].replace('oklch',''),dv:D[k].replace('oklch','')}))};
+  }
+}
+</script>
+</body>
+</html>

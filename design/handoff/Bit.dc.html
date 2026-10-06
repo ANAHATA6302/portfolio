@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position:relative;width:{{ w }}px;height:{{ hgt }}px;flex:none">
+<div style="position:absolute;left:0;top:0;width:120px;height:140px;transform:scale({{ s }});transform-origin:0 0">
+  <div style="position:absolute;left:58px;top:6px;width:4px;height:20px;border-radius:2px;background:var(--os)"></div>
+  <sc-if value="{{ ball }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:51px;top:0;width:18px;height:18px;border-radius:50%;background:var(--t)"></div></sc-if>
+  <sc-if value="{{ hat }}"><div style="position:absolute;left:42px;top:-22px;width:36px;height:40px;clip-path:polygon(50% 0,100% 100%,0 100%);background:var(--t)"></div><div style="position:absolute;left:54px;top:-30px;width:12px;height:12px;border-radius:50%;background:var(--pc)"></div></sc-if>
+  <div style="position:absolute;left:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os)"></div>
+  <div style="position:absolute;right:0;top:56px;width:14px;height:34px;border-radius:7px;background:var(--os);transform:{{ armR }};transform-origin:50% 7px"></div>
+  <div style="position:absolute;left:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+  <div style="position:absolute;right:28px;top:112px;width:22px;height:20px;border-radius:6px 6px 10px 10px;background:var(--os)"></div>
+  <div style="position:absolute;left:10px;top:22px;width:100px;height:96px;border-radius:36px;background:var(--p);box-shadow:inset 0 -8px 0 rgba(0,0,0,.14)">
+    <div style="position:absolute;left:12px;top:14px;width:76px;height:50px;border-radius:20px;background:oklch(.2 .03 var(--h));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px">
+      <sc-if value="{{ eyesNormal }}" hint-placeholder-val="{{ true }}"><div data-eyes="1" style="display:flex;gap:18px;transition:transform .15s"><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div><div data-eye="1" style="width:11px;height:18px;border-radius:6px;background:oklch(.9 .14 var(--h));transition:transform .1s"></div></div></sc-if>
+      <sc-if value="{{ eyesSleep }}"><div style="display:flex;gap:16px;padding:7px 0"><div style="width:14px;height:4px;border-radius:2px;background:oklch(.9 .14 var(--h))"></div><div style="width:14px;height:4px;border-radius:2px;background:oklch(.9 .14 var(--h))"></div></div></sc-if>
+      <sc-if value="{{ eyesLoad }}"><div data-load="1" style="display:flex;gap:7px;padding:5px 0"><div style="width:8px;height:8px;border-radius:50%;background:oklch(.9 .14 var(--h))"></div><div style="width:8px;height:8px;border-radius:50%;background:oklch(.9 .14 var(--h));opacity:.6"></div><div style="width:8px;height:8px;border-radius:50%;background:oklch(.9 .14 var(--h));opacity:.3"></div></div></sc-if>
+      <sc-if value="{{ eyesAnr }}"><div style="display:flex;gap:16px;padding:2px 0"><div style="width:14px;height:14px;border-radius:50%;border:3px solid oklch(.9 .14 var(--h));box-sizing:border-box"></div><div style="width:14px;height:14px;border-radius:50%;border:3px solid oklch(.9 .14 var(--h));box-sizing:border-box"></div></div></sc-if>
+      <sc-if value="{{ smile }}" hint-placeholder-val="{{ true }}"><div style="width:14px;height:6px;border-radius:0 0 8px 8px;background:oklch(.9 .14 var(--h))"></div></sc-if>
+      <sc-if value="{{ flat }}"><div style="width:14px;height:3px;border-radius:2px;background:oklch(.9 .14 var(--h))"></div></sc-if>
+    </div>
+    <sc-if value="{{ glasses }}"><div style="position:absolute;left:8px;top:22px;width:84px;height:22px;display:flex;align-items:center;justify-content:space-between"><div style="width:34px;height:20px;border-radius:6px 6px 12px 12px;background:#111"></div><div style="flex:1;height:4px;background:#111"></div><div style="width:34px;height:20px;border-radius:6px 6px 12px 12px;background:#111"></div></div></sc-if>
+    <div style="position:absolute;left:16px;top:74px;width:12px;height:6px;border-radius:3px;background:var(--tc)"></div>
+    <div style="position:absolute;right:16px;top:74px;width:12px;height:6px;border-radius:3px;background:var(--tc)"></div>
+  </div>
+  <sc-if value="{{ zzz }}"><div style="position:absolute;left:100px;top:-4px;font:700 18px 'JetBrains Mono',monospace;color:var(--osv);line-height:1">z<span style="font-size:13px;vertical-align:10px">z</span></div></sc-if>
+  <sc-if value="{{ sweat }}"><div style="position:absolute;left:100px;top:20px;width:12px;height:12px;border-radius:50% 0 50% 50%;background:var(--t);transform:rotate(-45deg)"></div></sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:200,&quot;height&quot;:220},&quot;pose&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;idle&quot;,&quot;wave&quot;,&quot;sleep&quot;,&quot;loading&quot;,&quot;dev&quot;,&quot;anr&quot;],&quot;default&quot;:&quot;idle&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;size&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:120,&quot;min&quot;:40,&quot;max&quot;:400,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const pose = this.props.pose ?? 'idle';
+    const w = this.props.size ?? 120;
+    return {
+      w, hgt: Math.round(w * 140 / 120), s: w / 120,
+      ball: pose !== 'dev', hat: pose === 'dev', glasses: pose === 'dev',
+      eyesNormal: ['idle', 'wave', 'dev'].includes(pose), eyesSleep: pose === 'sleep', eyesLoad: pose === 'loading', eyesAnr: pose === 'anr',
+      smile: ['idle', 'wave', 'dev', 'sleep'].includes(pose), flat: pose === 'loading' || pose === 'anr',
+      armR: pose === 'wave' ? 'rotate(-150deg)' : 'none',
+      zzz: pose === 'sleep', sweat: pose === 'anr'
+    };
+  }
+}
+</script>
+</body>
+</html>

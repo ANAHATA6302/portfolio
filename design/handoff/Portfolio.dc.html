@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"><style>body{margin:0}a{color:inherit;text-decoration:none}a:hover{opacity:.85}button{font:inherit}</style></helmet>
+<div ref="{{ rootRef }}" onPointerMove="{{ look }}" style="position:relative;container-type:inline-size;min-height:100%;background:var(--s);color:var(--os);font-family:Figtree,sans-serif;transition:background .4s,color .4s;overflow:hidden;--h:145;--p:oklch(.5 .19 145);--op:oklch(.99 .01 145);--pc:oklch(.91 .09 145);--opc:oklch(.27 .09 145);--s:oklch(.985 .008 145);--sc1:oklch(.96 .014 145);--sc2:oklch(.935 .02 145);--sc3:oklch(.9 .03 145);--os:oklch(.21 .02 145);--osv:oklch(.43 .03 145);--ol:oklch(.72 .03 145);--tc:oklch(.9 .08 215);--otc:oklch(.28 .09 215);--sec:oklch(.92 .04 145);--osec:oklch(.28 .05 145);--inv:oklch(.27 .02 145);--oinv:oklch(.95 .01 145);--t:oklch(.52 .16 215);--spring:cubic-bezier(.34,1.56,.64,1);--dur:.55s">
+
+<sc-if value="{{ show.chrome }}" hint-placeholder-val="{{ true }}">
+  <div style="height:40px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 clamp(16px,2cqw,28px);font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">
+    <span>9:41</span>
+    <button onClick="{{ qsToggle }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;background:var(--sc2);color:var(--osv);border:0;border-radius:999px;padding:6px 14px;cursor:pointer;font:500 12px 'JetBrains Mono',monospace;white-space:nowrap"><span style="width:28px;height:4px;border-radius:2px;background:var(--ol)"></span>{{ qsHint }}</button>
+    <span style="white-space:nowrap">{{ buildText }}</span>
+  </div>
+  <div style="height:4px;background:var(--sc2)"><div style="height:4px;width:{{ pctW }};background:var(--p);border-radius:0 2px 2px 0;transition:width .2s"></div></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4cqw,56px)">
+    <div style="display:flex;align-items:center;gap:10px;font:700 22px 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em"><span style="width:34px;height:34px;border-radius:12px;background:var(--p);display:flex;align-items:center;justify-content:center"><span style="width:18px;height:10px;border-radius:5px;background:oklch(.2 .03 var(--h))"></span></span>akshit<span style="color:var(--p);margin-left:-10px">.kt</span></div>
+    <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:4px;background:var(--sc1);padding:6px;border-radius:999px;font-weight:600;font-size:15px">
+        <button onClick="{{ go.work }}" style="border:0;cursor:pointer;padding:10px 20px;border-radius:999px;background:var(--sec);color:var(--osec);font-weight:600" style-hover="background:var(--sc3)">Work</button>
+        <button onClick="{{ go.build }}" style="border:0;cursor:pointer;padding:10px 20px;border-radius:999px;background:transparent;color:var(--osv);font-weight:600" style-hover="background:var(--sc2)">How I build</button>
+        <button onClick="{{ go.career }}" style="border:0;cursor:pointer;padding:10px 20px;border-radius:999px;background:transparent;color:var(--osv);font-weight:600" style-hover="background:var(--sc2)">Career</button>
+        <button onClick="{{ go.contact }}" style="border:0;cursor:pointer;padding:10px 20px;border-radius:999px;background:transparent;color:var(--osv);font-weight:600" style-hover="background:var(--sc2)">Contact</button>
+      </nav>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button onClick="{{ qsToggle }}" onPointerDown="{{ ripple }}" aria-label="Quick settings" style="position:relative;overflow:hidden;width:52px;height:52px;border-radius:18px;border:0;background:var(--sc2);cursor:pointer;display:grid;grid-template-columns:12px 12px;gap:4px;place-content:center"><span style="width:12px;height:12px;border-radius:4px;background:var(--p)"></span><span style="width:12px;height:12px;border-radius:6px;background:var(--osv)"></span><span style="width:12px;height:12px;border-radius:6px;background:var(--osv)"></span><span style="width:12px;height:12px;border-radius:4px;background:var(--osv)"></span></button>
+    </div>
+  </div>
+  <sc-if value="{{ m }}">
+    <div style="display:flex;gap:8px;overflow-x:auto;padding:0 16px 6px;font-weight:600;font-size:14px">
+      <button onClick="{{ go.work }}" style="flex:none;border:0;padding:12px 16px;border-radius:999px;background:var(--sec);color:var(--osec);font-weight:600">Work</button>
+      <button onClick="{{ go.build }}" style="flex:none;border:0;padding:12px 16px;border-radius:999px;background:var(--sc1);color:var(--osv);font-weight:600">How I build</button>
+      <button onClick="{{ go.career }}" style="flex:none;border:0;padding:12px 16px;border-radius:999px;background:var(--sc1);color:var(--osv);font-weight:600">Career</button>
+      <button onClick="{{ go.contact }}" style="flex:none;border:0;padding:12px 16px;border-radius:999px;background:var(--sc1);color:var(--osv);font-weight:600">Contact</button>
+    </div>
+  </sc-if>
+</sc-if>
+
+<sc-if value="{{ show.hero }}" hint-placeholder-val="{{ true }}">
+<section data-sec="hero" data-screen-label="Hero" style="position:relative;max-width:1328px;margin:0 auto;padding:clamp(20px,2.5cqw,32px) clamp(16px,4cqw,56px) 0;display:flex;flex-direction:column;gap:clamp(28px,3cqw,44px)">
+  <div style="display:flex;gap:32px;align-items:center">
+    <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(16px,1.6cqw,24px)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px">
+        <div style="flex:1 1 auto;min-width:0;font:500 clamp(12px,1cqw,14px) 'JetBrains Mono',monospace;color:var(--p)">0x01 // BOOT_COMPLETE <span style="color:var(--osv)">(took one coffee)</span></div>
+        <sc-if value="{{ m }}"><div onClick="{{ bot }}" style="flex:none;width:96px;height:96px;border-radius:34px;background:var(--pc);display:flex;align-items:center;justify-content:center;margin-bottom:-30px;cursor:pointer"><dc-import name="Bit" pose="{{ botPose }}" size="64" hint-size="64px,75px"></dc-import></div></sc-if>
+      </div>
+      <h1 style="margin:0;font:800 clamp(76px,11.2cqw,164px)/.84 'Bricolage Grotesque',sans-serif;letter-spacing:-.05em">AKSHIT<br><span style="color:var(--p)">NAHATA</span></h1>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:var(--sc2);font-weight:600;font-size:clamp(15px,1.2cqw,17px)"><span style="flex:none;width:10px;height:10px;border-radius:50%;background:var(--p);box-shadow:0 0 0 4px var(--pc)"></span>Android Engineer at Jaguar Land Rover</span>
+        <span style="padding:10px 18px;border-radius:999px;border:1.5px solid var(--ol);font-weight:500;font-size:clamp(15px,1.2cqw,17px);color:var(--osv)">Manchester, UK</span>
+      </div>
+      <p style="margin:0;max-width:660px;font:500 clamp(19px,1.8cqw,26px)/1.38 Figtree,sans-serif;color:var(--osv);text-wrap:pretty">I build Android apps that feel effortless on the outside and are beautifully engineered on the inside.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button onClick="{{ go.work }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;flex:1 1 auto;max-width:260px;height:clamp(56px,4.4cqw,64px);padding:0 32px;border-radius:999px;border:0;background:var(--p);color:var(--op);font:700 18px Figtree,sans-serif;cursor:pointer;transition:transform var(--dur) var(--spring),border-radius var(--dur) var(--spring)" style-hover="transform:scale(1.04);border-radius:22px">See my work →</button>
+        <button onClick="{{ go.contact }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;flex:1 1 auto;max-width:260px;height:clamp(56px,4.4cqw,64px);padding:0 32px;border-radius:999px;border:0;background:var(--sec);color:var(--osec);font:700 18px Figtree,sans-serif;cursor:pointer;transition:transform var(--dur) var(--spring),border-radius var(--dur) var(--spring)" style-hover="transform:scale(1.04);border-radius:22px">Get in touch</button>
+      </div>
+    </div>
+    <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;flex:0 0 clamp(380px,34cqw,480px);aspect-ratio:1">
+        <div style="position:absolute;inset:4% 2% 6% 6%;border-radius:44% 56% 52% 48% / 50% 44% 56% 50%;background:var(--pc);transition:background .4s"></div>
+        <div style="position:absolute;right:4%;top:2%;width:22%;aspect-ratio:1;border-radius:36px;background:var(--tc);transform:rotate(14deg)"></div>
+        <div style="position:absolute;left:2%;bottom:6%;width:14%;aspect-ratio:1;border-radius:50%;background:var(--t)"></div>
+        <div style="position:absolute;left:2%;top:3%;padding:10px 16px;border-radius:20px 20px 20px 6px;background:var(--s);font:500 13px 'JetBrains Mono',monospace;box-shadow:0 2px 0 var(--sc3)">{{ bubble }}</div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div onClick="{{ bot }}" style="cursor:pointer"><dc-import name="Bit" pose="{{ botPose }}" size="250" hint-size="250px,292px"></dc-import></div></div>
+      </div>
+    </sc-if>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:clamp(10px,1.2cqw,16px)">
+    <div onClick="{{ sdkReplay }}" style="cursor:pointer;padding:clamp(16px,1.6cqw,22px);border-radius:28px;background:var(--sc2);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(-1deg)"><span style="font:500 11px 'JetBrains Mono',monospace;color:var(--osv)">TARGET_SDK</span><span style="font:800 clamp(34px,3.3cqw,48px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">{{ sdk }}</span><span style="font-size:14px;color:var(--osv)">Always the latest.</span></div>
+    <div style="padding:clamp(16px,1.6cqw,22px) clamp(16px,1.6cqw,22px) clamp(16px,1.6cqw,22px) clamp(22px,2.6cqw,38px);border-radius:999px 28px 28px 999px;background:var(--pc);color:var(--opc);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(1deg)"><span style="font:500 11px 'JetBrains Mono',monospace">CORE_STACK</span><span style="font:800 clamp(30px,3.3cqw,48px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Kotlin</span><span style="font-size:14px">Fluent. No accent.</span></div>
+    <div style="padding:clamp(16px,1.6cqw,22px);border-radius:28px 28px 64px 28px;background:var(--tc);color:var(--otc);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(-1deg)"><span style="font:500 11px 'JetBrains Mono',monospace">UI_ENGINE</span><span style="font:800 clamp(30px,3.3cqw,48px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">Compose</span><span style="font-size:14px">Zero XML harmed.</span></div>
+    <div onClick="{{ coffeeTap }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;padding:clamp(16px,1.6cqw,22px);border-radius:28px;background:var(--inv);color:var(--oinv);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(1deg)"><span style="font:500 11px 'JetBrains Mono',monospace">COFFEE_PER_RELEASE</span><span style="font:800 clamp(34px,3.3cqw,48px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">{{ coffee }}</span><span style="font-size:14px">Tap to refill.</span></div>
+    <div onClick="{{ go.more }}" style="cursor:pointer;padding:clamp(16px,1.6cqw,22px);border-radius:28px 64px 28px 28px;background:var(--sec);color:var(--osec);display:flex;flex-direction:column;gap:6px;transition:transform var(--dur) var(--spring)" style-hover="transform:translateY(-6px) rotate(-1deg)"><span style="font:500 11px 'JetBrains Mono',monospace">APPS_ON_PLAY</span><span style="font:800 clamp(34px,3.3cqw,48px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">4</span><span style="font-size:14px">Personal, and counting.</span></div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ show.work }}" hint-placeholder-val="{{ true }}">
+<section data-sec="work" data-screen-label="Work" style="max-width:1328px;margin:0 auto;padding:clamp(72px,9cqw,140px) clamp(16px,4cqw,56px) 0;display:flex;flex-direction:column;gap:clamp(16px,1.8cqw,24px)">
+  <div data-reveal="1" style="display:flex;flex-direction:column;gap:12px;margin-bottom:clamp(8px,1.5cqw,20px)">
+    <span style="font:500 clamp(12px,1cqw,14px) 'JetBrains Mono',monospace;color:var(--p)">0x02 // SELECTED_REPOS <span style="color:var(--osv)">(the ones I show my mum)</span></span>
+    <h2 style="margin:0;font:800 clamp(44px,5.6cqw,80px)/.92 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">Things I've shipped</h2>
+    <p style="margin:0;font-size:clamp(17px,1.4cqw,20px);color:var(--osv);max-width:620px;text-wrap:pretty">Four apps of my own on Google Play, and one that lives inside some very nice cars.</p>
+  </div>
+
+  <article data-reveal="1" data-screen-label="Vantage Point" style="border-radius:clamp(32px,3.4cqw,48px);background:var(--sc1);padding:clamp(22px,3.4cqw,48px);display:flex;flex-wrap:wrap;gap:clamp(24px,3cqw,48px);align-items:center">
+    <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;font:600 13px 'JetBrains Mono',monospace">
+        <span style="padding:8px 14px;border-radius:999px;background:var(--p);color:var(--op)">FLAGSHIP</span>
+        <span style="padding:8px 14px;border-radius:999px;background:var(--sc3)">Live on Google Play</span>
+        <span style="padding:8px 14px;border-radius:999px;background:var(--tc);color:var(--otc)">★ 5.0 rating</span>
+      </div>
+      <h3 style="margin:0;font:800 clamp(48px,6cqw,88px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.045em">Vantage Point</h3>
+      <p style="margin:0;font:500 clamp(19px,1.7cqw,24px)/1.4 Figtree,sans-serif;color:var(--osv);text-wrap:pretty">Bury a memory at a real place. A time capsule you find, not scroll.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+        <div style="padding:16px 18px;border-radius:24px;background:var(--pc);color:var(--opc)"><div style="font-weight:700;font-size:16px">On-device E2E encryption</div><div style="font-size:14px;margin-top:4px;line-height:1.4">Per-capsule keys in Android Keystore, with recovery phrase escrow.</div></div>
+        <div style="padding:16px 18px;border-radius:24px;background:var(--sc2)"><div style="font-weight:700;font-size:16px">Scan an object to unlock</div><div style="font-size:14px;margin-top:4px;line-height:1.4;color:var(--osv)">ML Kit recognition with a composite scoring model.</div></div>
+        <div style="padding:16px 18px;border-radius:24px;background:var(--sc2)"><div style="font-weight:700;font-size:16px">No background location</div><div style="font-size:14px;margin-top:4px;line-height:1.4;color:var(--osv)">A custom geometry engine, while-in-use only.</div></div>
+        <div style="padding:16px 18px;border-radius:24px;background:var(--sec);color:var(--osec)"><div style="font-weight:700;font-size:16px">Server-enforced time locks</div><div style="font-size:14px;margin-top:4px;line-height:1.4">Cloud Functions decide when a capsule opens. Not your phone's clock.</div></div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="https://play.google.com/store/apps/details?id=com.akshit.vantagepoint" target="_blank" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:56px;display:flex;align-items:center;padding:0 28px;border-radius:999px;background:var(--p);color:var(--op);font-weight:700;font-size:17px">View on Google Play</a>
+        <button onClick="{{ specToggle }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:56px;padding:0 28px;border-radius:999px;border:0;background:var(--sec);color:var(--osec);font-weight:700;font-size:17px;cursor:pointer">{{ specLabel }}</button>
+      </div>
+    </div>
+    <sc-if value="{{ specOff }}" hint-placeholder-val="{{ true }}">
+      <div onPointerMove="{{ tilt }}" onPointerLeave="{{ untilt }}" style="flex:1 1 420px;min-width:0;perspective:1200px">
+        <div data-tilt="1" style="display:flex;gap:clamp(14px,1.6cqw,22px);justify-content:center;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 24px;transition:transform .4s cubic-bezier(.34,1.56,.64,1)">
+          <div style="flex:none;width:clamp(190px,18cqw,260px);aspect-ratio:9/19.5;border-radius:38px;background:#0e0f0e;padding:8px;box-shadow:0 30px 60px -24px rgba(0,0,0,.45);scroll-snap-align:center;transform:rotate(-3deg) translateY(10px)"><img src="assets/vantage-home.jpg" alt="Vantage Point map of capsules" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:30px;display:block"></div>
+          <div style="flex:none;width:clamp(190px,18cqw,260px);aspect-ratio:9/19.5;border-radius:38px;background:#0e0f0e;padding:8px;box-shadow:0 30px 60px -24px rgba(0,0,0,.45);scroll-snap-align:center;transform:rotate(3deg) translateY(-10px)"><img src="assets/vantage-create.webp" alt="Vantage Point new capsule screen" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:30px;display:block"></div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ specOn }}">
+      <div style="flex:1 1 420px;min-width:0;border-radius:32px;background:oklch(.2 .03 var(--h));color:oklch(.95 .02 var(--h));padding:clamp(18px,2.2cqw,28px);display:flex;flex-direction:column;gap:10px;font:500 13px 'JetBrains Mono',monospace">
+        <div style="display:flex;justify-content:space-between;color:oklch(.8 .12 var(--h))"><span>SPEC_SHEET // architecture</span><span>multi-module</span></div>
+        <div style="padding:14px;border-radius:16px;background:oklch(.32 .06 var(--h));text-align:center"><b>:app</b> Compose UI, navigation, Koin graph</div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+          <div style="padding:12px 8px;border-radius:16px;background:oklch(.85 .12 var(--h));color:oklch(.22 .06 var(--h));text-align:center"><b>:feature:home</b></div>
+          <div style="padding:12px 8px;border-radius:16px;background:oklch(.85 .12 var(--h));color:oklch(.22 .06 var(--h));text-align:center"><b>:feature:recovery</b></div>
+          <div style="padding:12px 8px;border-radius:16px;background:oklch(.85 .12 var(--h));color:oklch(.22 .06 var(--h));text-align:center"><b>:feature:sharing</b></div>
+        </div>
+        <div style="padding:12px;border-radius:16px;border:1.5px solid oklch(.5 .06 var(--h));text-align:center"><b>:core:domain</b> use cases, pure Kotlin, zero Android imports</div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+          <div style="padding:12px;border-radius:16px;background:oklch(.28 .04 var(--h))"><b>:core:data</b><br>Firestore, Storage, Auth</div>
+          <div style="padding:12px;border-radius:16px;background:oklch(.28 .04 var(--h))"><b>:core:crypto</b><br>Keystore, per-capsule keys, timed key erasure</div>
+          <div style="padding:12px;border-radius:16px;background:oklch(.28 .04 var(--h))"><b>:core:geo</b><br>in-process proximity engine</div>
+          <div style="padding:12px;border-radius:16px;background:oklch(.28 .04 var(--h))"><b>:core:billing</b><br>RevenueCat headless, custom paywall</div>
+        </div>
+        <div style="padding:12px;border-radius:16px;background:oklch(.78 .1 calc(var(--h) + 70));color:oklch(.22 .06 calc(var(--h) + 70))"><b>Cloud Functions (TypeScript)</b> time locks, webhook entitlements, server authoritative</div>
+        <div style="color:oklch(.8 .03 var(--h));line-height:1.5">CI: GitHub Actions running ktlint, detekt, JVM unit tests, Koin wiring tests and Firestore emulator tests. Red builds don't merge.</div>
+      </div>
+    </sc-if>
+  </article>
+
+  <article data-reveal="1" data-screen-label="Range Rover App" style="border-radius:clamp(32px,3.4cqw,48px);background:oklch(.17 .012 var(--h));color:oklch(.95 .01 var(--h));padding:clamp(22px,3.4cqw,48px);display:flex;flex-wrap:wrap;gap:clamp(24px,3cqw,48px);align-items:center">
+    <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;font:600 13px 'JetBrains Mono',monospace">
+        <span style="padding:8px 14px;border-radius:999px;background:oklch(.95 .01 var(--h));color:oklch(.17 .012 var(--h))">ENTERPRISE</span>
+        <span style="padding:8px 14px;border-radius:999px;border:1.5px solid oklch(.45 .02 var(--h))">Jaguar Land Rover</span>
+      </div>
+      <div>
+        <h3 style="margin:0;font:800 clamp(44px,5.4cqw,80px)/.92 'Bricolage Grotesque',sans-serif;letter-spacing:-.045em">Range Rover App</h3>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:oklch(.75 .02 var(--h))">known internally as OneApp</span>
+      </div>
+      <p style="margin:0;font:500 clamp(18px,1.5cqw,22px)/1.45 Figtree,sans-serif;color:oklch(.85 .015 var(--h));text-wrap:pretty">The companion app for Range Rover Electric and Range Rover Sport Electric. Lock it, warm it up, find it, charge it, and track your order, all from your phone.</p>
+      <div style="padding:18px 20px;border-radius:24px;background:oklch(.24 .015 var(--h));display:flex;flex-direction:column;gap:6px">
+        <span style="font:500 12px 'JetBrains Mono',monospace;color:oklch(.8 .12 var(--h))">MY_ROLE</span>
+        <span style="font-size:16px;line-height:1.5">I own remote connectivity: every action sent to the car and every bit of data coming back. I'm also the team's security champion, running threat models, API reviews and dependency scans.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+        <sc-for list="{{ carActs }}" as="a" hint-placeholder-count="4"><button onClick="{{ a.tap }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;border:0;cursor:pointer;padding:14px 6px;border-radius:{{ a.rad }};background:{{ a.bg }};color:{{ a.fg }};display:flex;flex-direction:column;align-items:center;gap:8px;font-weight:600;font-size:13px;transition:background .3s,border-radius var(--dur) var(--spring),transform var(--dur) var(--spring)" style-hover="transform:translateY(-4px)"><span style="width:14px;height:14px;border-radius:{{ a.dotRad }};background:{{ a.dot }};transition:border-radius var(--dur) var(--spring)"></span>{{ a.label }}</button></sc-for>
+      </div>
+      <a href="https://play.google.com/store/apps/details?id=com.jaguarlandrover.rangerover.app" target="_blank" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;align-self:flex-start;height:56px;display:flex;align-items:center;padding:0 28px;border-radius:999px;background:oklch(.95 .01 var(--h));color:oklch(.17 .012 var(--h));font-weight:700;font-size:17px">View on Google Play</a>
+    </div>
+    <div onPointerMove="{{ tilt }}" onPointerLeave="{{ untilt }}" style="flex:1 1 420px;min-width:0;perspective:1200px">
+      <div data-tilt="1" style="display:flex;gap:16px;justify-content:center;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 12px;transition:transform .4s cubic-bezier(.34,1.56,.64,1)">
+        <img src="assets/oneapp-home.jpg" alt="Range Rover App home screen" style="flex:none;width:clamp(180px,17cqw,250px);aspect-ratio:620/1344;object-fit:cover;border-radius:28px;scroll-snap-align:center;display:block">
+        <img src="assets/oneapp-remote.jpg" alt="Range Rover App remote actions" style="flex:none;width:clamp(180px,17cqw,250px);aspect-ratio:620/1344;object-fit:cover;border-radius:28px;scroll-snap-align:center;display:block">
+      </div>
+    </div>
+  </article>
+
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(16px,1.8cqw,24px)">
+    <article data-reveal="1" data-screen-label="Roamio" style="flex:1 1 520px;min-width:0;border-radius:clamp(32px,3.4cqw,48px);background:var(--tc);color:var(--otc);padding:clamp(22px,3cqw,40px);display:flex;flex-direction:column;gap:16px">
+      <span style="align-self:flex-start;padding:8px 14px;border-radius:999px;background:var(--s);color:var(--os);font:600 13px 'JetBrains Mono',monospace">PERSONAL</span>
+      <h3 style="margin:0;font:800 clamp(40px,4.4cqw,64px)/.92 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">Roamio</h3>
+      <p style="margin:0;font-size:clamp(17px,1.4cqw,20px);line-height:1.45;text-wrap:pretty">An offline-first travel planner. Your itinerary still works on the plane, in the tunnel, and in that one café with no signal.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;font-weight:600;font-size:14px">
+        <span style="padding:8px 14px;border-radius:999px;border:1.5px solid currentColor">Firebase Auth</span><span style="padding:8px 14px;border-radius:999px;border:1.5px solid currentColor">DataStore</span><span style="padding:8px 14px;border-radius:999px;border:1.5px solid currentColor">Build flavours</span><span style="padding:8px 14px;border-radius:999px;border:1.5px solid currentColor">Daily automated Play releases</span>
+      </div>
+      <div onPointerMove="{{ tilt }}" onPointerLeave="{{ untilt }}" style="perspective:1200px;margin-top:auto">
+        <div data-tilt="1" style="display:flex;gap:14px;justify-content:center;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 4px;transition:transform .4s cubic-bezier(.34,1.56,.64,1)">
+          <div style="flex:none;width:clamp(170px,14cqw,210px);aspect-ratio:600/1150;border-radius:34px;background:#0e0f0e;padding:7px;scroll-snap-align:center;box-shadow:0 24px 50px -24px rgba(0,0,0,.4)"><img src="assets/roamio-home.webp" alt="Roamio home" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:27px;display:block"></div>
+          <div style="flex:none;width:clamp(170px,14cqw,210px);aspect-ratio:600/1150;border-radius:34px;background:#0e0f0e;padding:7px;scroll-snap-align:center;box-shadow:0 24px 50px -24px rgba(0,0,0,.4)"><img src="assets/roamio-activity.webp" alt="Roamio activity" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:27px;display:block"></div>
+        </div>
+      </div>
+      <a href="https://play.google.com/store/apps/details?id=com.akshit.roamio" target="_blank" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;align-self:flex-start;height:52px;display:flex;align-items:center;padding:0 24px;border-radius:999px;background:var(--otc);color:var(--tc);font-weight:700;font-size:16px">View on Google Play</a>
+    </article>
+    <article data-reveal="1" data-screen-label="This portfolio" style="flex:1 1 420px;min-width:0;border-radius:clamp(32px,3.4cqw,48px) clamp(32px,3.4cqw,48px) clamp(32px,3.4cqw,48px) 120px;background:var(--p);color:var(--op);padding:clamp(22px,3cqw,40px);display:flex;flex-direction:column;gap:16px">
+      <span style="align-self:flex-start;padding:8px 14px;border-radius:999px;background:var(--op);color:var(--p);font:600 13px 'JetBrains Mono',monospace">META</span>
+      <h3 style="margin:0;font:800 clamp(40px,4.4cqw,64px)/.92 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">This portfolio</h3>
+      <p style="margin:0;font:600 clamp(20px,1.8cqw,26px)/1.3 Figtree,sans-serif">You're looking at it. Yes, this is Kotlin.</p>
+      <p style="margin:0;font-size:17px;line-height:1.5;opacity:.9;text-wrap:pretty">Kotlin Multiplatform and Compose for Web, rendered to a canvas, hosted on Netlify. Every bounce you've felt so far is a Compose spring().</p>
+      <div style="padding:16px 18px;border-radius:20px;background:oklch(.2 .03 var(--h));color:oklch(.9 .1 var(--h));font:500 14px/1.6 'JetBrains Mono',monospace;overflow-x:auto;white-space:pre">fun main() = ComposeViewport {
+    Portfolio(whimsy = true)
+}</div>
+      <button onClick="{{ qsToggle }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;margin-top:auto;align-self:flex-start;height:52px;padding:0 24px;border-radius:999px;border:0;background:var(--op);color:var(--p);font-weight:700;font-size:16px;cursor:pointer">Open Quick Settings</button>
+    </article>
+  </div>
+
+  <div data-sec="more" data-reveal="1" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:18px clamp(18px,2cqw,28px);border-radius:32px;background:var(--sc1)">
+    <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--osv);margin-right:8px">MORE_ON_PLAY</span>
+    <a href="https://play.google.com/store/apps/details?id=com.akshit.potterpedia" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:999px;background:var(--sc3);font-weight:700"><span style="width:28px;height:28px;border-radius:10px;background:var(--t)"></span>PotterPedia</a>
+    <a href="https://play.google.com/store/apps/developer?id=Akshit+Nahata" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:999px;background:var(--sc3);font-weight:700"><span style="width:28px;height:28px;border-radius:50%;background:var(--p)"></span>HangMan</a>
+    <a href="https://play.google.com/store/apps/developer?id=Akshit+Nahata" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:999px;background:var(--sc3);font-weight:700"><span style="width:28px;height:28px;border-radius:10px 50% 50% 50%;background:var(--tc)"></span>Find My Colors</a>
+    <a href="https://play.google.com/store/apps/developer?id=Akshit+Nahata" target="_blank" style="margin-left:auto;font-weight:700;color:var(--p);padding:10px 4px">See all on Google Play →</a>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ show.build }}" hint-placeholder-val="{{ true }}">
+<section data-sec="build" data-screen-label="How I build" style="max-width:1328px;margin:0 auto;padding:clamp(72px,9cqw,140px) clamp(16px,4cqw,56px) 0;display:flex;flex-direction:column;gap:clamp(20px,2.4cqw,32px)">
+  <div data-reveal="1" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font:500 clamp(12px,1cqw,14px) 'JetBrains Mono',monospace;color:var(--p)">0x03 // HOW_I_BUILD <span style="color:var(--osv)">(long press to rearrange)</span></span>
+      <h2 style="margin:0;font:800 clamp(44px,5.6cqw,80px)/.92 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">How I build</h2>
+      <p style="margin:0;font-size:clamp(17px,1.4cqw,20px);color:var(--osv);max-width:560px;text-wrap:pretty">The boring bits, done properly, so the fun bits can ship.</p>
+    </div>
+    <sc-if value="{{ wiggle }}"><button onClick="{{ wiggleDone }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:52px;padding:0 26px;border-radius:999px;border:0;background:var(--p);color:var(--op);font-weight:700;font-size:16px;cursor:pointer">Done</button></sc-if>
+  </div>
+  <div onPointerDown="{{ pressStart }}" onPointerUp="{{ pressEnd }}" onPointerLeave="{{ pressEnd }}" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));grid-auto-rows:clamp(150px,12cqw,176px);grid-auto-flow:dense;gap:clamp(10px,1.2cqw,16px);touch-action:manipulation">
+    <sc-for list="{{ widgets }}" as="w" hint-placeholder-count="9">
+      <div data-widget="1" onClick="{{ w.tap }}" style="grid-column:{{ w.gc }};grid-row:{{ w.gr }};background:{{ w.bg }};color:{{ w.fg }};border-radius:{{ w.rad }};box-shadow:{{ w.ring }};padding:clamp(16px,1.6cqw,22px);display:flex;flex-direction:column;justify-content:space-between;gap:10px;cursor:pointer;user-select:none;overflow:hidden;transition:box-shadow .2s,transform var(--dur) var(--spring)" style-hover="transform:scale(1.025)">
+        <span style="font:500 11px 'JetBrains Mono',monospace;opacity:.85">{{ w.label }}</span>
+        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;line-height:1.02;letter-spacing:-.02em;font-size:{{ w.fs }}">{{ w.title }}</div><div style="font-size:14px;line-height:1.4;opacity:.88;margin-top:6px">{{ w.sub }}</div></div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ show.career }}" hint-placeholder-val="{{ true }}">
+<section data-sec="career" data-screen-label="Career" style="max-width:1328px;margin:0 auto;padding:clamp(72px,9cqw,140px) clamp(16px,4cqw,56px) 0;display:flex;flex-wrap:wrap;gap:clamp(24px,4cqw,64px)">
+  <div data-reveal="1" style="flex:1 1 340px;display:flex;flex-direction:column;gap:12px">
+    <span style="font:500 clamp(12px,1cqw,14px) 'JetBrains Mono',monospace;color:var(--p)">0x04 // RUNTIME_HISTORY</span>
+    <h2 style="margin:0;font:800 clamp(44px,5.6cqw,80px)/.92 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">Career, as an Activity</h2>
+    <p style="margin:0;font-size:clamp(17px,1.4cqw,20px);color:var(--osv);max-width:420px;text-wrap:pretty">Every good app has a lifecycle. Here's mine, newest first. Lifecycle purists, look away.</p>
+  </div>
+  <div style="flex:2 1 560px;min-width:0;display:flex;flex-direction:column">
+    <sc-for list="{{ career }}" as="c" hint-placeholder-count="4">
+      <div style="display:grid;grid-template-columns:clamp(40px,4cqw,56px) minmax(0,1fr);gap:clamp(12px,2cqw,24px)">
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <div style="width:clamp(40px,4cqw,56px);aspect-ratio:1;border-radius:{{ c.nodeRad }};background:{{ c.nodeBg }};display:flex;align-items:center;justify-content:center;transition:border-radius var(--dur) var(--spring),background .3s"><div style="width:14px;height:14px;border-radius:50%;background:{{ c.dot }}"></div></div>
+          <div style="flex:1;width:3px;border-radius:2px;background:var(--sc3);opacity:{{ c.lineO }}"></div>
+        </div>
+        <div role="button" tabindex="0" onClick="{{ c.toggle }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;cursor:pointer;border-radius:32px;background:{{ c.cardBg }};padding:clamp(18px,2cqw,26px) clamp(18px,2.2cqw,30px);margin-bottom:14px;transition:background .3s">
+          <div style="display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;font:500 13px 'JetBrains Mono',monospace">
+            <span style="color:var(--p);font-weight:700">{{ c.cb }}</span>
+            <span style="display:flex;gap:10px;align-items:center;color:var(--osv)">{{ c.when }}<sc-if value="{{ c.current }}"><span style="padding:4px 10px;border-radius:999px;background:var(--p);color:var(--op);font-weight:700">RESUMED</span></sc-if></span>
+          </div>
+          <div style="font:800 clamp(24px,2.6cqw,36px)/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;margin-top:10px">{{ c.role }}</div>
+          <div style="font-size:clamp(16px,1.3cqw,18px);color:var(--osv);margin-top:4px">{{ c.org }}</div>
+          <sc-if value="{{ c.open }}">
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ c.lines }}" as="l"><div style="display:flex;gap:12px;font-size:clamp(16px,1.3cqw,17px);line-height:1.5"><span style="flex:none;width:8px;height:8px;border-radius:3px;background:var(--p);margin-top:9px"></span><span>{{ l }}</span></div></sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ show.contact }}" hint-placeholder-val="{{ true }}">
+<section data-sec="contact" data-screen-label="Contact" style="max-width:1328px;margin:0 auto;padding:clamp(72px,9cqw,140px) clamp(16px,4cqw,56px) 0">
+  <div data-reveal="1" style="border-radius:clamp(36px,4cqw,56px);background:var(--pc);color:var(--opc);padding:clamp(24px,4.4cqw,64px);display:flex;flex-wrap:wrap;gap:clamp(28px,4cqw,56px);align-items:center">
+    <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:20px">
+      <span style="font:500 clamp(12px,1cqw,14px) 'JetBrains Mono',monospace">0x05 // SAY_HELLO</span>
+      <h2 style="margin:0;font:800 clamp(48px,6.4cqw,96px)/.9 'Bricolage Grotesque',sans-serif;letter-spacing:-.045em;text-wrap:balance">Inbox open. Coffee ready. Let's build something.</h2>
+      <p style="margin:0;font-size:clamp(17px,1.5cqw,21px);line-height:1.45;max-width:560px;text-wrap:pretty">Hiring, collaborating, or just want to talk Compose? I reply faster than a cold Gradle build.</p>
+      <button onClick="{{ copyEmail }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;align-self:flex-start;max-width:100%;display:flex;align-items:center;gap:14px;padding:10px 10px 10px clamp(18px,2cqw,26px);border-radius:999px;border:0;background:var(--s);color:var(--os);cursor:pointer;font:600 clamp(16px,1.5cqw,20px) Figtree,sans-serif;transition:transform var(--dur) var(--spring)" style-hover="transform:scale(1.03)"><span style="overflow:hidden;text-overflow:ellipsis">account@akshitnahata.com</span><span style="flex:none;padding:12px 18px;border-radius:999px;background:var(--p);color:var(--op);font-size:15px;font-weight:700">Copy</span></button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.linkedin.com/in/akshit-nahata" target="_blank" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:52px;display:flex;align-items:center;padding:0 22px;border-radius:999px;border:1.5px solid var(--opc);font-weight:700">LinkedIn</a>
+        <a href="https://github.com/ANAHATA6302" target="_blank" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:52px;display:flex;align-items:center;padding:0 22px;border-radius:999px;border:1.5px solid var(--opc);font-weight:700">GitHub</a>
+        <a href="https://www.instagram.com/ak__it/" target="_blank" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;height:52px;display:flex;align-items:center;padding:0 22px;border-radius:999px;border:1.5px solid var(--opc);font-weight:700">Instagram</a>
+      </div>
+      <span style="font:500 13px 'JetBrains Mono',monospace">Based in Manchester, UK. Open to relocating.</span>
+    </div>
+    <div style="flex:0 1 380px;min-width:240px;margin:0 auto;position:relative">
+      <img src="assets/akshit-sm.jpg" alt="Akshit Nahata" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:48% 48% 40px 40px;display:block">
+      <div onClick="{{ bot }}" style="position:absolute;right:-6px;bottom:-14px;cursor:pointer;padding:14px;border-radius:36px;background:var(--s)"><dc-import name="Bit" pose="{{ botPoseWave }}" size="84" hint-size="84px,98px"></dc-import></div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ show.footer }}" hint-placeholder-val="{{ true }}">
+<footer data-screen-label="Footer" style="max-width:1328px;margin:0 auto;padding:clamp(48px,6cqw,80px) clamp(16px,4cqw,56px) clamp(28px,3cqw,40px);display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;font-size:15px;color:var(--osv)">
+  <div style="display:flex;align-items:center;gap:14px"><dc-import name="Bit" pose="{{ botPoseFoot }}" size="44" hint-size="44px,52px"></dc-import><span>© 2026 Akshit Nahata. Built with Compose Multiplatform.</span></div>
+  <button onClick="{{ buildTap }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;border:0;background:var(--sc1);color:var(--osv);padding:12px 18px;border-radius:16px;cursor:pointer;text-align:left;font:500 13px 'JetBrains Mono',monospace"><span style="display:block;color:var(--os);font-weight:700">Build number</span>2026.10.06 (release)</button>
+</footer>
+</sc-if>
+
+<div ref="{{ confRef }}" style="position:{{ pos }};inset:0;pointer-events:none;overflow:hidden;z-index:40"></div>
+
+<div onClick="{{ qsToggle }}" style="position:{{ pos }};inset:0;z-index:50;background:rgba(0,0,0,.32);opacity:{{ qsO }};pointer-events:{{ qsPE }};transition:opacity .3s"></div>
+<div style="position:{{ pos }};left:50%;top:0;z-index:51;width:min(600px,100%);transform:{{ qsT }};transition:transform var(--dur) var(--spring);background:var(--sc1);color:var(--os);border-radius:0 0 36px 36px;padding:clamp(18px,2cqw,28px);box-sizing:border-box;display:flex;flex-direction:column;gap:14px;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:800 clamp(32px,3cqw,40px)/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.03em">9:41</span><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv)">QUICK_SETTINGS // no root required</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <button onClick="{{ toggleDark }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;text-align:left;border:0;cursor:pointer;padding:14px 20px;min-height:64px;border-radius:999px;background:{{ tDark.bg }};color:{{ tDark.fg }};transition:background .3s,color .3s"><div style="font-weight:700;font-size:15px">Dark theme</div><div style="font-size:13px;opacity:.85">{{ tDark.sub }}</div></button>
+    <button onClick="{{ toggleWhimsy }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;text-align:left;border:0;cursor:pointer;padding:14px 20px;min-height:64px;border-radius:999px;background:{{ tWhimsy.bg }};color:{{ tWhimsy.fg }};transition:background .3s,color .3s"><div style="font-weight:700;font-size:15px">Whimsy mode</div><div style="font-size:13px;opacity:.85">{{ tWhimsy.sub }}</div></button>
+    <button onClick="{{ toggleMotion }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;text-align:left;border:0;cursor:pointer;padding:14px 20px;min-height:64px;border-radius:999px;background:{{ tMotion.bg }};color:{{ tMotion.fg }};transition:background .3s,color .3s"><div style="font-weight:700;font-size:15px">Reduce motion</div><div style="font-size:13px;opacity:.85">{{ tMotion.sub }}</div></button>
+    <button onClick="{{ devTile }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;text-align:left;border:0;cursor:pointer;padding:14px 20px;min-height:64px;border-radius:999px;background:{{ tDev.bg }};color:{{ tDev.fg }};transition:background .3s,color .3s"><div style="font-weight:700;font-size:15px">Developer options</div><div style="font-size:13px;opacity:.85">{{ tDev.sub2 }}</div></button>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:8px 6px 2px">
+    <span style="font-weight:600;font-size:15px">Wallpaper colour <span style="color:var(--osv);font-weight:500">{{ seedName }}</span></span>
+    <div style="display:flex;gap:12px"><sc-for list="{{ swatches }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.pick }}" aria-label="{{ s.n }}" style="width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;background:{{ s.c }};box-shadow:{{ s.ring }};transition:box-shadow .2s"></button></sc-for></div>
+  </div>
+  <div style="align-self:center;width:40px;height:4px;border-radius:2px;background:var(--ol)"></div>
+</div>
+
+<div style="position:{{ pos }};left:50%;bottom:24px;z-index:60;transform:{{ toastT }};opacity:{{ toastO }};pointer-events:{{ toastPE }};transition:transform var(--dur) var(--spring),opacity .25s;background:var(--inv);color:var(--oinv);padding:8px 8px 8px 20px;min-height:48px;box-sizing:border-box;border-radius:14px;display:flex;align-items:center;gap:16px;font-weight:500;font-size:15px;width:max-content;max-width:min(560px,calc(100% - 32px));box-shadow:0 6px 20px rgba(0,0,0,.2)">
+  <span style="padding:6px 0">{{ toast }}</span>
+  <sc-if value="{{ toastAct }}"><button onClick="{{ toastAction }}" style="flex:none;border:0;background:transparent;color:oklch(.85 .13 var(--h));font-weight:700;font-size:15px;padding:10px 12px;border-radius:10px;cursor:pointer">{{ toastAct }}</button></sc-if>
+</div>
+
+<sc-if value="{{ isBoot }}">
+  <div data-screen-label="Boot" style="position:{{ pos }};inset:0;z-index:80;background:var(--s);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:24px">
+    <button onClick="{{ skipBoot }}" style="position:absolute;top:20px;right:20px;border:0;background:var(--sc2);color:var(--os);padding:12px 20px;border-radius:999px;font-weight:700;cursor:pointer">Skip</button>
+    <div style="width:180px;height:180px;border-radius:64px;background:var(--pc);display:flex;align-items:center;justify-content:center"><dc-import name="Bit" pose="loading" size="110" hint-size="110px,128px"></dc-import></div>
+    <div style="width:min(320px,100%);display:flex;flex-direction:column;gap:6px;font:500 13px/1.5 'JetBrains Mono',monospace;color:var(--osv)">
+      <sc-for list="{{ bootLines }}" as="b"><span>{{ b }}</span></sc-for>
+      <div style="height:8px;border-radius:4px;background:var(--sc3);margin-top:10px;overflow:hidden"><div style="height:8px;border-radius:4px;background:var(--p);width:{{ bootW }}"></div></div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isAnr }}">
+  <div data-screen-label="404 ANR" style="position:{{ pos }};inset:0;z-index:80;background:rgba(0,0,0,.42);display:flex;align-items:center;justify-content:center;padding:20px">
+    <div role="dialog" style="width:min(440px,100%);border-radius:28px;background:var(--sc2);color:var(--os);padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+      <div style="align-self:center;width:120px;height:120px;border-radius:44px;background:var(--pc);display:flex;align-items:center;justify-content:center"><dc-import name="Bit" pose="anr" size="74" hint-size="74px,86px"></dc-import></div>
+      <span style="font:500 12px 'JetBrains Mono',monospace;color:var(--osv);text-align:center">ERROR 404 // PAGE_NOT_FOUND</span>
+      <h2 style="margin:0;font:800 28px/1.1 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em">Akshit's Portfolio isn't responding</h2>
+      <p style="margin:0;font-size:16px;line-height:1.5;color:var(--osv)">This page doesn't exist. Bit checked everywhere, even behind the sofa.</p>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:4px">
+        <button onClick="{{ anrWait }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;border:0;background:transparent;color:var(--p);font-weight:700;font-size:15px;padding:12px 18px;border-radius:999px;cursor:pointer">Wait</button>
+        <button onClick="{{ anrClose }}" onPointerDown="{{ ripple }}" style="position:relative;overflow:hidden;border:0;background:var(--p);color:var(--op);font-weight:700;font-size:15px;padding:12px 22px;border-radius:999px;cursor:pointer">Close app</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;seed&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Android green&quot;,&quot;Electric violet&quot;,&quot;Tangerine&quot;,&quot;Ocean&quot;,&quot;Bubblegum&quot;],&quot;default&quot;:&quot;Android green&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;whimsy&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;site&quot;,&quot;boot&quot;,&quot;404&quot;],&quot;default&quot;:&quot;site&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;section&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;embedded&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;boolean&quot;},&quot;qsOpen&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;boolean&quot;},&quot;devUnlocked&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;boolean&quot;},&quot;specOpen&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;boolean&quot;},&quot;wiggle&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;boolean&quot;},&quot;careerOpen&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;number&quot;},&quot;toast&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;toastAction&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;progress&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;number&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const SEEDS=[{n:'Android green',h:145},{n:'Electric violet',h:295},{n:'Tangerine',h:45},{n:'Ocean',h:240},{n:'Bubblegum',h:350}];
+const BOT=["Beep boop. I'm Bit.","Stop poking, I'm compiling.","Fun fact: I'm 100% Compose.","Try the Work section. Totally unbiased.","onPause() called. Just kidding."];
+const COFFEE=["Coffee level: optimal.","Release confidence +12%.","Gradle is still faster than the kettle.","Okay, that's a lot of coffee.","Shipping to production. On caffeine."];
+const BUBBLES=["Hi, I'm Bit. Poke me.","Psst. Pull the status bar.","I run on coffee and coroutines."];
+const WIDGETS=[
+ {id:'sec',label:'SECURITY_CHAMPION',title:'Security champion',sub:'Threat modelling. API reviews. Dependency vulnerability scanning. Someone has to be the friendly paranoid one.',c:2,r:2,bg:'oklch(.2 .03 var(--h))',fg:'oklch(.95 .02 var(--h))',rad:'40px',fs:'clamp(30px,3.4cqw,46px)'},
+ {id:'arch',label:'ARCHITECTURE',title:'MVVM and MVI',sub:'On Clean Architecture. Layers that stay in their lane.',c:2,r:1,bg:'var(--pc)',fg:'var(--opc)',rad:'36px',fs:'clamp(24px,2.2cqw,32px)'},
+ {id:'flow',label:'ASYNC',title:'Coroutines and Flow',sub:'Structured and cancellable.',c:1,r:1,bg:'var(--tc)',fg:'var(--otc)',rad:'32px 32px 64px 32px',fs:'22px'},
+ {id:'di',label:'DI',title:'Koin and Hilt',sub:'Whichever fits.',c:1,r:1,bg:'var(--sec)',fg:'var(--osec)',rad:'80px 80px 32px 32px',fs:'22px'},
+ {id:'kmp',label:'MULTIPLATFORM',title:'Kotlin Multiplatform',sub:'Shared logic, native feel. Also: this website.',c:2,r:1,bg:'var(--sc2)',fg:'var(--os)',rad:'999px 36px 36px 999px',fs:'clamp(24px,2.2cqw,32px)'},
+ {id:'ktor',label:'NETWORKING',title:'Ktor',sub:'Typed clients everywhere.',c:1,r:1,bg:'var(--sc3)',fg:'var(--os)',rad:'32px',fs:'26px'},
+ {id:'fb',label:'BACKEND',title:'Firebase',sub:'Auth, Firestore, Storage, Functions.',c:1,r:1,bg:'var(--pc)',fg:'var(--opc)',rad:'32px 64px 32px 32px',fs:'24px'},
+ {id:'test',label:'TESTING',title:'WireMock and friends',sub:'JVM unit tests, wiring tests, emulator tests.',c:2,r:1,bg:'var(--inv)',fg:'var(--oinv)',rad:'36px',fs:'clamp(24px,2.2cqw,32px)'},
+ {id:'ci',label:'CI_CD',title:'GitHub Actions',sub:'ktlint and detekt on every PR. Red builds don\u2019t merge.',c:2,r:1,bg:'var(--p)',fg:'var(--op)',rad:'36px 36px 80px 36px',fs:'clamp(24px,2.2cqw,32px)'}
+];
+const CAREER=[
+ {cb:'onResume()',when:'Apr 2023 to now',role:'Android Engineer',org:'Jaguar Land Rover, Manchester',current:true,lines:['Building the Range Rover App in Kotlin, Compose and Clean Architecture.','Own remote connectivity: every command to the car and every byte of data back.','Team security champion: threat models, API reviews, dependency scans.']},
+ {cb:'onStart()',when:'Sep to Dec 2022',role:'Contract Android Developer',org:'IDS Logic',lines:['Built a frictionless checkout with Google One Tap and Google Pay, cutting checkout latency by 50%.','Integrated ExoPlayer for adaptive streaming and rebuilt the in-app purchase pipeline.','Fixed tricky production bugs while keeping the codebase modular and testable.']},
+ {cb:'onCreate()',when:'Oct 2021 to Aug 2022',role:'Android Engineer',org:'Freelance',lines:['Built and published Android apps for clients.','Shipped my own apps to Google Play along the way.']}
+];
+const ACTS=[{id:'unlock',l:'Unlock',on:'Unlocked',t:"Unlocked. Relax, it's not your car."},{id:'beep',l:'Beep',on:'Beeped',t:'Beep beep. Somewhere a neighbour sighs.'},{id:'climate',l:'Climate',on:'21°C',t:'Pre-conditioning to 21°C. Toasty.'},{id:'locate',l:'Locate',on:'Found',t:'Found it. Exactly where you parked it.'}];
+function roles(h,d){const t=(h+70)%360,o=(l,c,x)=>`oklch(${l} ${c} ${x==null?h:x})`;
+return d?{p:o(.82,.13),op:o(.26,.09),pc:o(.38,.12),opc:o(.93,.06),s:o(.165,.012),sc1:o(.2,.015),sc2:o(.235,.02),sc3:o(.28,.025),os:o(.93,.012),osv:o(.78,.025),ol:o(.5,.03),tc:o(.38,.1,t),otc:o(.93,.06,t),sec:o(.3,.04),osec:o(.92,.03),inv:o(.92,.012),oinv:o(.22,.02),t:o(.8,.12,t)}
+:{p:o(.5,.19),op:o(.99,.01),pc:o(.91,.09),opc:o(.27,.09),s:o(.985,.008),sc1:o(.96,.014),sc2:o(.935,.02),sc3:o(.9,.03),os:o(.21,.02),osv:o(.43,.03),ol:o(.72,.03),tc:o(.9,.08,t),otc:o(.28,.09,t),sec:o(.92,.04),osec:o(.28,.05),inv:o(.27,.02),oinv:o(.95,.01),t:o(.52,.16,t)};}
+const B=v=>v===true||v==='true';
+const seedOf=v=>{if(v==null)return 145;const f=SEEDS.find(s=>s.n===v);return f?f.h:(+v||145)};
+const BOOT=['akshitOS 16 booting','> loading coroutines... ok','> inflating whimsy... ok','> BOOT_COMPLETE'];
+class Component extends DCLogic{
+  rootRef=React.createRef(); confRef=React.createRef();
+  state={m:false,seed:seedOf(this.props.seed),dark:B(this.props.dark),whimsy:this.props.whimsy==null?true:B(this.props.whimsy),motion:B(this.props.reduceMotion),
+    qs:B(this.props.qsOpen),dev:B(this.props.devUnlocked),spec:B(this.props.specOpen),wiggle:B(this.props.wiggle),sel:null,order:WIDGETS.map(w=>w.id),
+    car:this.props.careerOpen!=null?+this.props.careerOpen:0,coffee:3,ci:0,bi:0,sdk:36,taps:0,act:{},
+    toast:this.props.toast||'',toastAct:this.props.toastAction||'',toastOn:!!this.props.toast,
+    screen:this.props.screen||'site',bootN:this.props.screen==='boot'?3:0,bootP:this.props.screen==='boot'?.72:0,pct:this.props.progress!=null?+this.props.progress:0,bubble:0};
+  get emb(){return B(this.props.embedded)}
+  apply(){const el=this.rootRef.current;if(!el)return;const st=this.state;const r=roles(st.seed,st.dark);for(const n in r)el.style.setProperty('--'+n,r[n]);el.style.setProperty('--h',st.seed);const m=st.motion?['linear','.15s']:st.whimsy?['cubic-bezier(.34,1.56,.64,1)','.55s']:['cubic-bezier(.2,0,0,1)','.3s'];el.style.setProperty('--spring',m[0]);el.style.setProperty('--dur',m[1]);}
+  componentDidMount(){
+    this.apply();const el=this.rootRef.current;
+    if(el&&window.ResizeObserver){this.ro=new ResizeObserver(es=>{const w=es[0].contentRect.width;const m=w<760;if(m!==this.state.m)this.setState({m})});this.ro.observe(el);}
+    this.blinkT=setInterval(()=>this.blink(),3400);
+    this.bubT=setInterval(()=>this.setState(s=>({bubble:(s.bubble+1)%BUBBLES.length})),5000);
+    if(this.state.wiggle)setTimeout(()=>this.syncWiggle(),50);
+    if(!this.emb){
+      this.onScroll=()=>{const h=document.documentElement;const max=h.scrollHeight-innerHeight;const pct=max>0?Math.round(Math.min(1,scrollY/max)*100):0;if(pct!==this.state.pct)this.setState({pct})};
+      addEventListener('scroll',this.onScroll,{passive:true});
+      this.count();this.reveal();
+      let seen=false;try{seen=localStorage.getItem('akshit-boot-seen')==='1'}catch(e){}
+      if(!seen&&this.state.screen==='site')this.boot();
+    }
+  }
+  componentDidUpdate(pp,ps){const p=this.props,u={};if(pp.seed!==p.seed)u.seed=seedOf(p.seed);if(pp.dark!==p.dark)u.dark=B(p.dark);if(pp.whimsy!==p.whimsy)u.whimsy=p.whimsy==null?true:B(p.whimsy);if(pp.screen!==p.screen)u.screen=p.screen||'site';if(Object.keys(u).length){this.setState(u);return}this.apply();if(ps.wiggle!==this.state.wiggle||ps.order!==this.state.order)this.syncWiggle();}
+  componentWillUnmount(){clearInterval(this.blinkT);clearInterval(this.bubT);this.ro&&this.ro.disconnect();this.onScroll&&removeEventListener('scroll',this.onScroll);this.io&&this.io.disconnect();(this.bootTs||[]).forEach(clearTimeout);}
+  boot(){this.setState({screen:'boot',bootN:0,bootP:0});const ts=[];BOOT.forEach((_,i)=>ts.push(setTimeout(()=>this.setState({bootN:i+1}),200+i*330)));
+    const t0=performance.now();const f=n=>{if(this.state.screen!=='boot')return;const p=Math.min(1,(n-t0)/1500);this.setState({bootP:p});if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);
+    ts.push(setTimeout(()=>this.skipBoot(),1750));this.bootTs=ts;}
+  skipBoot=()=>{(this.bootTs||[]).forEach(clearTimeout);try{localStorage.setItem('akshit-boot-seen','1')}catch(e){}this.setState({screen:'site'})};
+  count(){if(this.state.motion){this.setState({sdk:36});return}const t0=performance.now();const f=n=>{const p=Math.min(1,(n-t0)/1100);this.setState({sdk:Math.round(36*(1-Math.pow(1-p,3)))});if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+  reveal(){const el=this.rootRef.current;if(!el||!window.IntersectionObserver||this.state.motion)return;const items=[...el.querySelectorAll('[data-reveal]')].filter(n=>n.getBoundingClientRect().top>innerHeight);
+    items.forEach(n=>{n.style.opacity='0';n.style.transform='translateY(48px)'});
+    this.io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const n=e.target;this.io.unobserve(n);const sp=this.state.whimsy?'cubic-bezier(.34,1.56,.64,1)':'cubic-bezier(.2,0,0,1)';n.style.transition=`opacity .5s ease, transform .7s ${sp}`;n.style.opacity='1';n.style.transform='none'}}),{threshold:.12});items.forEach(n=>this.io.observe(n));}
+  blink(){const st=this.state;if(!st.whimsy||st.motion)return;const el=this.rootRef.current;if(!el)return;el.querySelectorAll('[data-eye]').forEach(e=>{e.style.transform='scaleY(.1)';setTimeout(()=>{e.style.transform=''},130)})}
+  look=(e)=>{if(this.raf)return;const x=e.clientX,y=e.clientY;this.raf=requestAnimationFrame(()=>{this.raf=null;const el=this.rootRef.current;const st=this.state;if(!el||!st.whimsy||st.motion)return;el.querySelectorAll('[data-eyes]').forEach(g=>{const r=g.getBoundingClientRect();const dx=x-(r.left+r.width/2),dy=y-(r.top+r.height/2);const d=Math.hypot(dx,dy)||1;const m=Math.min(6,d/40);g.style.transform=`translate(${dx/d*m}px,${dy/d*m*.7}px)`})})};
+  tilt=(e)=>{const st=this.state;if(!st.whimsy||st.motion)return;const c=e.currentTarget;const t=c.querySelector('[data-tilt]');if(!t)return;const r=c.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;t.style.transform=`rotateY(${px*10}deg) rotateX(${-py*8}deg)`};
+  untilt=(e)=>{const t=e.currentTarget.querySelector('[data-tilt]');if(t)t.style.transform=''};
+  toast(text,act){clearTimeout(this.tt);this.setState({toast:text,toastAct:act||'',toastOn:true});this.tt=setTimeout(()=>this.setState({toastOn:false}),act?4200:2800)}
+  ripple=(e)=>{const t=e.currentTarget;const r=t.getBoundingClientRect();const sc=t.offsetWidth/(r.width||1);const x=(e.clientX-r.left)*sc,y=(e.clientY-r.top)*sc;const size=Math.max(t.offsetWidth,t.offsetHeight)*2.2;const s=document.createElement('span');Object.assign(s.style,{position:'absolute',left:x-size/2+'px',top:y-size/2+'px',width:size+'px',height:size+'px',borderRadius:'50%',background:'currentColor',pointerEvents:'none',opacity:'0'});t.appendChild(s);s.animate([{transform:'scale(0)',opacity:.24},{transform:'scale(1)',opacity:0}],{duration:this.state.motion?300:650,easing:'cubic-bezier(.2,0,0,1)'}).onfinish=()=>s.remove();};
+  bounce(el,jump){if(!el||this.state.motion)return;el.animate(jump?[{transform:'translateY(0)'},{transform:'translateY(-22px) rotate(-6deg)'},{transform:'translateY(0)'}]:[{transform:'scale(1)'},{transform:'scale(.93)'},{transform:'scale(1.05)'},{transform:'scale(1)'}],{duration:jump?650:480,easing:'cubic-bezier(.34,1.56,.64,1)'})}
+  syncWiggle(){const el=this.rootRef.current;if(!el)return;(this.wAnims||[]).forEach(a=>a.cancel());this.wAnims=[];if(!this.state.wiggle||this.state.motion)return;el.querySelectorAll('[data-widget]').forEach((n,i)=>{this.wAnims.push(n.animate([{transform:'rotate(-1.4deg)'},{transform:'rotate(1.4deg)'}],{duration:180+(i%3)*30,direction:'alternate',iterations:Infinity,easing:'ease-in-out'}))})}
+  confetti(){const host=this.confRef.current;if(!host||this.state.motion)return;const W=host.offsetWidth,H=Math.min(host.offsetHeight,this.emb?host.offsetHeight:innerHeight);const cols=['var(--p)','var(--t)','var(--tc)','var(--pc)','var(--sec)','var(--inv)'];
+    for(let i=0;i<90;i++){const s=document.createElement('span');const w=6+Math.random()*8;Object.assign(s.style,{position:'absolute',left:Math.random()*W+'px',top:'-20px',width:w+'px',height:w*(Math.random()>.5?1:2.2)+'px',borderRadius:Math.random()>.5?'50%':'3px',background:cols[i%cols.length]});host.appendChild(s);
+      const dx=(Math.random()-.5)*200;s.animate([{transform:'translate(0,0) rotate(0)'},{transform:`translate(${dx}px,${H+40}px) rotate(${Math.random()*720}deg)`}],{duration:1400+Math.random()*1400,delay:Math.random()*300,easing:'cubic-bezier(.25,.6,.4,1)',fill:'forwards'}).onfinish=()=>s.remove();}}
+  scrollTo(sec){const el=this.rootRef.current;const t=el&&el.querySelector(`[data-sec="${sec}"]`);if(!t)return;if(this.emb){return}window.scrollTo({top:t.getBoundingClientRect().top+scrollY-12,behavior:this.state.motion?'auto':'smooth'})}
+  renderVals(){
+    const st=this.state;const tile=on=>({bg:on?'var(--p)':'var(--sc3)',fg:on?'var(--op)':'var(--os)',sub:on?'On':'Off',sub2:on?'Unlocked':'Locked'});
+    const sec=(this.props.section||'all').split(',').map(s=>s.trim());const all=sec.includes('all');const has=k=>all||sec.includes(k);
+    const order=st.order.map(id=>WIDGETS.find(w=>w.id===id));
+    const m=st.m;const pos=this.emb?'absolute':'fixed';
+    return{
+      rootRef:this.rootRef,confRef:this.confRef,ripple:this.ripple,look:this.look,tilt:this.tilt,untilt:this.untilt,
+      m,desk:!m,pos,
+      show:{chrome:has('hero'),hero:has('hero'),work:has('work'),build:has('build'),career:has('career'),contact:has('contact'),footer:has('footer')},
+      qsHint:m?'pull':'pull for quick settings',
+      buildText:st.pct>=100?'BUILD SUCCESSFUL in 4s':(m?`${st.pct}%`:`:app:assembleRelease ${st.pct}%`),pctW:st.pct+'%',
+      sdk:st.sdk,coffee:st.coffee,bubble:BUBBLES[st.bubble],
+      botPose:st.dev?'dev':'idle',botPoseWave:st.dev?'dev':'wave',botPoseFoot:st.dev?'dev':'sleep',
+      go:{work:()=>this.scrollTo('work'),build:()=>this.scrollTo('build'),career:()=>this.scrollTo('career'),contact:()=>this.scrollTo('contact'),more:()=>this.scrollTo('more')},
+      sdkReplay:()=>this.count(),
+      coffeeTap:(e)=>{this.bounce(e.currentTarget);this.setState(s=>({coffee:s.coffee+1,ci:s.ci+1}));this.toast(COFFEE[st.ci%COFFEE.length])},
+      bot:(e)=>{this.bounce(e.currentTarget,true);this.setState(s=>({bi:s.bi+1}));this.toast(st.dev?'Nice shades, right? Developer perks.':BOT[st.bi%BOT.length])},
+      specOn:st.spec,specOff:!st.spec,specLabel:st.spec?'Back to screenshots':'Flip to spec sheet',specToggle:()=>this.setState({spec:!st.spec}),
+      carActs:ACTS.map(a=>{const on=!!st.act[a.id];return{label:on?a.on:a.l,bg:on?'oklch(.85 .12 var(--h))':'oklch(.24 .015 var(--h))',fg:on?'oklch(.2 .05 var(--h))':'oklch(.95 .01 var(--h))',rad:on?'28px':'20px',dot:on?'oklch(.3 .08 var(--h))':'oklch(.8 .12 var(--h))',dotRad:on?'50%':'4px',tap:()=>{this.setState(s=>({act:{...s.act,[a.id]:!on}}));if(!on)this.toast(a.t)}}}),
+      wiggle:st.wiggle,wiggleDone:()=>this.setState({wiggle:false,sel:null}),
+      pressStart:()=>{clearTimeout(this.lp);this.lp=setTimeout(()=>{if(!this.state.wiggle){this.setState({wiggle:true});this.toast('Edit mode. Tap two widgets to swap them.')}},480)},
+      pressEnd:()=>clearTimeout(this.lp),
+      widgets:order.map(w=>({...w,gc:`span ${m?Math.min(w.c,2):w.c}`,gr:`span ${w.r}`,ring:st.sel===w.id?'0 0 0 4px var(--s), 0 0 0 7px var(--p)':'none',
+        tap:(e)=>{if(!this.state.wiggle){this.bounce(e.currentTarget);return}if(!st.sel){this.setState({sel:w.id});return}if(st.sel===w.id){this.setState({sel:null});return}
+          const o=[...st.order];const i=o.indexOf(st.sel),j=o.indexOf(w.id);[o[i],o[j]]=[o[j],o[i]];this.setState({order:o,sel:null})}})),
+      career:CAREER.map((c,i)=>{const open=st.car===i;return{...c,open,current:!!c.current,nodeRad:open?'18px':'50%',nodeBg:open?'var(--p)':'var(--sc2)',dot:open?'var(--op)':'var(--ol)',lineO:i===CAREER.length-1?0:1,cardBg:open?'var(--sc2)':'var(--sc1)',toggle:()=>this.setState({car:open?-1:i})}}),
+      copyEmail:()=>{try{navigator.clipboard&&navigator.clipboard.writeText('account@akshitnahata.com').catch(()=>{})}catch(e){}this.toast('Email copied to clipboard','Undo')},
+      toast:st.toast,toastAct:st.toastAct,toastO:st.toastOn?1:0,toastPE:st.toastOn?'auto':'none',toastT:st.toastOn?'translate(-50%,0)':'translate(-50%,32px)',
+      toastAction:()=>{if(st.toastAct==='Undo')this.toast("Undo failed. It's in your clipboard forever now, like a good commit.");else this.setState({toastOn:false})},
+      buildTap:()=>{if(st.dev){this.toast('No need, you are already a developer.');return}const n=st.taps+1;this.setState({taps:n});
+        if(n>=7){this.setState({dev:true});this.toast('You are now a developer!');this.confetti()}else if(n>=3)this.toast(`You are now ${7-n} step${7-n===1?'':'s'} away from being a developer.`)},
+      qsO:st.qs?1:0,qsPE:st.qs?'auto':'none',qsT:st.qs?'translate(-50%,0)':'translate(-50%,calc(-100% - 60px))',qsToggle:()=>this.setState({qs:!st.qs}),
+      tDark:tile(st.dark),tWhimsy:tile(st.whimsy),tMotion:tile(st.motion),tDev:tile(st.dev),
+      toggleDark:()=>{this.setState({dark:!st.dark});this.toast(st.dark?'Light theme. Hello, sunshine.':'Dark theme on. Easy on the eyes.')},
+      toggleWhimsy:()=>{this.setState({whimsy:!st.whimsy});this.toast(st.whimsy?'Whimsy off. Calm, professional, slightly sad.':'Whimsy back on. Springs restored.')},
+      toggleMotion:()=>{this.setState({motion:!st.motion});this.toast(st.motion?'Motion back to normal.':'Reduce motion on. Everything just fades now.')},
+      devTile:()=>{if(st.dev)this.confetti();this.toast(st.dev?'Developer options: confetti on demand.':'Locked. Tap Build number 7 times. You know the drill.')},
+      seedName:(SEEDS.find(s=>s.h===st.seed)||{}).n,
+      swatches:SEEDS.map(s=>({n:s.n,c:`oklch(.64 .19 ${s.h})`,ring:s.h===st.seed?'0 0 0 3px var(--sc1), 0 0 0 6px var(--os)':'none',pick:()=>{this.setState({seed:s.h});this.toast(`Wallpaper set to ${s.n}. Re-theming everything.`)}})),
+      isBoot:st.screen==='boot',skipBoot:this.skipBoot,bootLines:BOOT.slice(0,st.bootN),bootW:Math.round(st.bootP*100)+'%',
+      isAnr:st.screen==='404',anrWait:()=>this.toast('Still waiting. Bit is checking again.'),anrClose:()=>this.setState({screen:'site'})
+    };
+  }
+}
+</script>
+</body>
+</html>

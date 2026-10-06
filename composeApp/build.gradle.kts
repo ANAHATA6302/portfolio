@@ -35,7 +35,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("org.jetbrains.kotlinx:kotlinx-browser:0.5.0")
-            implementation("cafe.adriel.voyager:voyager-navigator:1.1.0-beta02")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
