@@ -271,7 +271,7 @@ class AppState(private val scope: CoroutineScope, val scroll: ScrollState) {
 
     fun devTile() {
         if (dev) fireConfetti()
-        toast(if (dev) "Developer options: confetti on demand." else "Locked. Tap Build number 7 times. You know the drill.")
+        toast(if (dev) "Developer options: confetti on demand." else "Locked. Tap Build number below 7 times. You know the drill.")
     }
 
     fun pickSeed(h: Float) {

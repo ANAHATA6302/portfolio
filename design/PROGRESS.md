@@ -5,7 +5,7 @@ Spec: `design/handoff/README.md`, plus `design/handoff/Portfolio.dc.html` (the s
 
 ## Status: feature complete, verified against the screenshots
 Everything in the plan is built and checked in a real browser at 1440 and 390, light and dark, against `design/handoff/screenshots`:
-- Status bar, app bar, nav, Hero, Work (Vantage + spec sheet, Range Rover + car actions, Roamio, This portfolio, More on Play), How I build (long press, wiggle, select, swap, Done), Career accordion, Contact (copy + Undo snackbar), Footer (7 taps: toast, confetti, dev Bit everywhere, QS tile Unlocked).
+- Status bar, app bar, nav, Hero, Work (Vantage + spec sheet, Range Rover + car actions, Roamio, This portfolio, More on Play), How I build (long press, wiggle, select, swap, Done), Career accordion, Contact (copy + Undo snackbar), Footer, Build number in Quick Settings (7 taps: toast, confetti, dev Bit everywhere, QS tile Unlocked).
 - Overlays: toast/snackbar, Quick Settings (all tiles and swatches, scrim closes it), confetti, boot intro (first visit, Skip), 404 ANR (any path but `/`).
 - Seeds re-theme everything (checked violet light and tangerine dark). State persists in localStorage.
 - `webTest/OklchTest.kt` checks the OKLCH conversion against the README hex tables (runs in CI).
@@ -27,6 +27,7 @@ Everything in the plan is built and checked in a real browser at 1440 and 390, l
 - CSS never breaks inside a word; Compose does. `T()` measures at least the longest word wide and lets it overflow.
 - Content-box widths: section max 1328 and the ANR dialog 440 exclude padding.
 - The nav pill selection is static: "Work" is always selected. Status bar and app bar scroll with the page.
+- Build number lives in Quick Settings (under the tiles), not the footer, with a "Tap 7 times" hint that counts down.
 - After a widget long press, releasing still fires click, which selects that widget (matches the reference).
 - Wiggle duration is 180 + (i%3)*30 ms, alternating ±1.4°, starting at -1.4. It stops with whimsy off or reduce motion (README rule, over the prototype), and so does confetti.
 - Headless Chrome needs an explicit locale or Compose throws "Incorrect locale information provided" at startup.

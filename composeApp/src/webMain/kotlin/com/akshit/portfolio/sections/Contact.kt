@@ -135,20 +135,9 @@ fun Footer() {
     val f = LocalFluid.current
     val fonts = LocalFonts.current
     Section(top = f.c(48, 6, 80), bottom = f.c(28, 3, 40)) {
-        FlexWrap(gap = 28.dp, rowGap = 16.dp, justify = Justify.SpaceBetween, align = Align.Center) {
-            Row(horizontalArrangement = Arrangement.spacedBy(14.dp), verticalAlignment = Alignment.CenterVertically) {
-                Bit(if (app.dev) Pose.Dev else Pose.Sleep, 44)
-                T("© 2026 Akshit Nahata. Built with Compose Multiplatform.", fonts.body(15.sp), color = p.osv)
-            }
-            Column(
-                Modifier
-                    .tap(css(16.dp), p.osv, label = "Build number") { app.buildTap() }
-                    .background(p.sc1, css(16.dp))
-                    .padding(vertical = 12.dp, horizontal = 18.dp),
-            ) {
-                T("Build number", fonts.mono(13.sp, 700), color = p.os)
-                T("2026.10.06 (release)", fonts.mono(13.sp).copy(textAlign = TextAlign.Start), color = p.osv)
-            }
+        Row(horizontalArrangement = Arrangement.spacedBy(14.dp), verticalAlignment = Alignment.CenterVertically) {
+            Bit(if (app.dev) Pose.Dev else Pose.Sleep, 44)
+            T("© 2026 Akshit Nahata. Built with Compose Multiplatform.", fonts.body(15.sp), color = p.osv)
         }
     }
 }

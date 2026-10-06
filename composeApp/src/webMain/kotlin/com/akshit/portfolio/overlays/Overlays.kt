@@ -151,6 +151,7 @@ fun QuickSettings() {
                     QsTile("Reduce motion", if (app.reduceMotion) "On" else "Off", app.reduceMotion) { app.toggleMotion() }
                     QsTile("Developer options", if (app.dev) "Unlocked" else "Locked", app.dev) { app.devTile() }
                 }
+                BuildNumber()
                 FlexWrap(
                     Modifier.padding(start = 6.dp, end = 6.dp, top = 8.dp, bottom = 2.dp),
                     gap = 12.dp, justify = Justify.SpaceBetween, align = Align.Center,
@@ -192,6 +193,39 @@ private fun QsTile(title: String, sub: String, on: Boolean, onClick: () -> Unit)
     ) {
         T(title, fonts.body(15.sp, 700), color = fg)
         T(sub, fonts.body(13.sp), color = fg.copy(alpha = fg.alpha * .85f))
+    }
+}
+
+/** Android's "About phone > Build number": tap it 7 times to unlock developer options. */
+@Composable
+private fun BuildNumber() {
+    val app = LocalApp.current
+    val p = LocalPalette.current
+    val fonts = LocalFonts.current
+    val left = 7 - app.buildTaps
+    val hint = when {
+        app.dev -> "You're a developer"
+        app.buildTaps == 0 -> "Tap 7 times"
+        else -> "$left more tap${if (left == 1) "" else "s"}"
+    }
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .heightIn(min = 64.dp)
+            .tap(Pill, p.os, label = "Build number. $hint") { app.buildTap() }
+            .background(p.sc2, Pill)
+            .padding(start = 20.dp, end = 10.dp, top = 10.dp, bottom = 10.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            T("Build number", fonts.body(15.sp, 700), color = p.os)
+            T("2026.10.06 (release)", fonts.mono(13.sp), color = p.osv)
+        }
+        val on = app.dev
+        Box(
+            Modifier.background(animatedColor(if (on) p.p else p.sc3), Pill).padding(vertical = 10.dp, horizontal = 14.dp),
+        ) { T(hint, fonts.mono(12.sp, 600), color = animatedColor(if (on) p.op else p.os), maxLines = 1) }
     }
 }
 
