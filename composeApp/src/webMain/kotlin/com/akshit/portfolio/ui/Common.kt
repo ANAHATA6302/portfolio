@@ -57,6 +57,7 @@ import com.akshit.portfolio.theme.MAX_CONTENT
 import com.akshit.portfolio.theme.body
 import com.akshit.portfolio.theme.mono
 import kotlin.math.min
+import kotlin.math.roundToInt
 
 /** CSS `color` inheritance (currentColor). */
 val LocalFg = compositionLocalOf { Color.Black }
@@ -74,18 +75,44 @@ fun T(
     color: Color = Color.Unspecified,
     maxLines: Int = Int.MAX_VALUE,
     ellipsis: Boolean = false,
+) = T(AnnotatedString(text), style, modifier, color, maxLines, ellipsis)
+
+@Composable
+fun T(
+    text: AnnotatedString,
+    style: TextStyle,
+    modifier: Modifier = Modifier,
+    color: Color = Color.Unspecified,
+    maxLines: Int = Int.MAX_VALUE,
+    ellipsis: Boolean = false,
 ) {
     val c = if (color.isSpecified) color else LocalFg.current
+    val lines = remember { IntArray(1) }
     BasicText(
-        text, modifier, style.copy(color = c),
-        maxLines = maxLines, overflow = if (ellipsis) TextOverflow.Ellipsis else TextOverflow.Clip,
+        text, modifier.cssLeading(style, lines), style.copy(color = c),
+        onTextLayout = { lines[0] = it.lineCount },
+        overflow = if (ellipsis) TextOverflow.Ellipsis else TextOverflow.Clip,
+        maxLines = maxLines,
     )
 }
 
-@Composable
-fun T(text: AnnotatedString, style: TextStyle, modifier: Modifier = Modifier, color: Color = Color.Unspecified) {
-    val c = if (color.isSpecified) color else LocalFg.current
-    BasicText(text, modifier, style.copy(color = c))
+/**
+ * CSS line boxes for line heights below the font's natural height. Compose web keeps the first
+ * line's natural top and the last line's natural bottom, so the box is too tall by
+ * (natural - lineHeight). CSS centres the glyphs in the smaller line box and lets them overflow,
+ * so trim half the excess from the top and half from the bottom.
+ */
+private fun Modifier.cssLeading(style: TextStyle, lines: IntArray): Modifier {
+    val lh = style.lineHeight
+    val fs = style.fontSize
+    if (!lh.isEm || !fs.isSp) return this
+    return layout { m, c ->
+        val p = m.measure(c)
+        val box = lh.value * fs.toPx() * lines[0].coerceAtLeast(1)
+        val t = ((p.height - box).coerceAtLeast(0f) / 2f).roundToInt()
+        val h = (p.height - 2 * t).coerceIn(c.minHeight, c.maxHeight)
+        layout(p.width, h) { p.place(0, -t) }
+    }
 }
 
 /**
