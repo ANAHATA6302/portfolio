@@ -5,7 +5,7 @@ Spec: `design/handoff/README.md`, plus `design/handoff/Portfolio.dc.html` (the s
 
 ## Status: feature complete, verified against the screenshots
 Everything in the plan is built and checked in a real browser at 1440 and 390, light and dark, against `design/handoff/screenshots`:
-- Status bar, app bar, nav, Hero, Work (Vantage + spec sheet, Range Rover + car actions, Roamio, This portfolio, More on Play), How I build (long press, wiggle, select, swap, Done), Career accordion, Contact (copy + Undo snackbar), Footer, Build number in Quick Settings (7 taps: toast, confetti, dev Bit everywhere, QS tile Unlocked).
+- Status bar, app bar, nav, Hero, Work (Vantage + spec sheet, Range Rover + car actions, Roamio, This portfolio, More on Play), How I build (long press, wiggle, select, swap, Done), Career accordion (original write-ups from the old site, no RESUMED badge), Contact (copy + Undo snackbar), Footer, Build number in Quick Settings (7 taps: toast, confetti, dev Bit everywhere, QS tile Unlocked).
 - Overlays: toast/snackbar, Quick Settings (all tiles and swatches, scrim closes it), confetti, boot intro (first visit, Skip), 404 ANR (any path but `/`).
 - Seeds re-theme everything (checked violet light and tangerine dark). State persists in localStorage.
 - `webTest/OklchTest.kt` checks the OKLCH conversion against the README hex tables (runs in CI).

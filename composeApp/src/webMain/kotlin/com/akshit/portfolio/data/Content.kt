@@ -61,33 +61,22 @@ data class Job(
     val whenText: String,
     val role: String,
     val org: String,
-    val current: Boolean,
-    val lines: List<String>,
+    /** The original write-up from the previous site, shown when the card is open. */
+    val desc: String,
 )
 
 val CAREER = listOf(
     Job(
-        "onResume()", "Apr 2023 to now", "Android Engineer", "Jaguar Land Rover, Manchester", true,
-        listOf(
-            "Building the Range Rover App in Kotlin, Compose and Clean Architecture.",
-            "Own remote connectivity: every command to the car and every byte of data back.",
-            "Team security champion: threat models, API reviews, dependency scans.",
-        ),
+        "onResume()", "Apr 2023 to now", "Android Engineer", "Jaguar Land Rover, Manchester",
+        "As an Android Engineer at Jaguar Land Rover, I designed and delivered core remote vehicle features, such as door and cabin control, using Jetpack Compose, LiveData, and Koin. I accelerated time-to-market by implementing the first direct vehicle communication feature, which eliminated legacy bottlenecks. I also championed security-first engineering through threat modelling and secure coding practices. Beyond my technical contributions, I acted as the Android representative in cross-platform architecture reviews, partnered with product managers on Agile roadmaps, and created a comprehensive training project to onboard new engineers.",
     ),
     Job(
-        "onStart()", "Sep to Dec 2022", "Contract Android Developer", "IDS Logic", false,
-        listOf(
-            "Built a frictionless checkout with Google One Tap and Google Pay, cutting checkout latency by 50%.",
-            "Integrated ExoPlayer for adaptive streaming and rebuilt the in-app purchase pipeline.",
-            "Fixed tricky production bugs while keeping the codebase modular and testable.",
-        ),
+        "onStart()", "Sep to Dec 2022", "Contract Android Developer", "IDS Logic",
+        "As a Contract Android Engineer at IDS Logic, I collaborated directly with stakeholders, including the Mall of Dubai, to identify and address key user pain points, contributing to a 20% increase in user satisfaction. I streamlined the checkout experience by 50% by implementing Google OneTap Sign-in and Google Pay. My role also involved enhancing overall app performance by optimizing navigation graphs, integrating in-app purchases and ExoPlayer, and resolving production bugs, which included overcoming complex Google Pay API integration challenges to ensure a secure user experience.",
     ),
     Job(
-        "onCreate()", "Oct 2021 to Aug 2022", "Android Engineer", "Freelance", false,
-        listOf(
-            "Built and published Android apps for clients.",
-            "Shipped my own apps to Google Play along the way.",
-        ),
+        "onCreate()", "Oct 2021 to Aug 2022", "Android Engineer", "Freelance",
+        "As a freelance Android Engineer, I successfully developed and launched multiple applications on the Google Play Store, managing the full project lifecycle for diverse clients. I demonstrated technical proficiency by implementing custom features, including WebRTC and ExoPlayer, to enhance user experience. I also leveraged Firebase and the Google Play Console for efficient project management and app delivery.",
     ),
 )
 

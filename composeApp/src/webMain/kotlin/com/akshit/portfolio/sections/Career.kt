@@ -33,7 +33,6 @@ import com.akshit.portfolio.theme.body
 import com.akshit.portfolio.theme.display
 import com.akshit.portfolio.theme.mono
 import com.akshit.portfolio.ui.Align
-import com.akshit.portfolio.ui.Chip
 import com.akshit.portfolio.ui.Circle
 import com.akshit.portfolio.ui.FlexWrap
 import com.akshit.portfolio.ui.Justify
@@ -103,22 +102,15 @@ private fun Entry(i: Int, job: Job) {
             ) {
                 FlexWrap(gap = 14.dp, rowGap = 6.dp, justify = Justify.SpaceBetween, align = Align.Center) {
                     T(job.cb, fonts.mono(13.sp, 700), color = p.p)
-                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
-                        T(job.whenText, fonts.mono(13.sp), color = p.osv, maxLines = 1)
-                        if (job.current) Chip("RESUMED", fonts.mono(13.sp, 700), p.p, p.op, padV = 4.dp, padH = 10.dp)
-                    }
+                    T(job.whenText, fonts.mono(13.sp), color = p.osv, maxLines = 1)
                 }
                 T(job.role, fonts.display(f.sp(24, 2.6, 36), 1.1f, -.02f), Modifier.padding(top = 10.dp), color = p.os)
                 T(job.org, fonts.body(f.sp(16, 1.3, 18)), Modifier.padding(top = 4.dp), color = p.osv)
                 if (open) {
-                    Column(Modifier.padding(top = 16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                        job.lines.forEach { line ->
-                            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                                Box(Modifier.padding(top = 9.dp).size(8.dp).background(p.p, css(3.dp)))
-                                T(line, fonts.body(f.sp(16, 1.3, 17), 400, 1.5f), color = p.os)
-                            }
-                        }
-                    }
+                    T(
+                        job.desc, fonts.body(f.sp(16, 1.3, 17), 400, 1.6f),
+                        Modifier.padding(top = 16.dp), color = p.os,
+                    )
                 }
             }
         }
