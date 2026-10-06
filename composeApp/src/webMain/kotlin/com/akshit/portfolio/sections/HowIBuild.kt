@@ -10,6 +10,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
@@ -44,7 +47,6 @@ import com.akshit.portfolio.theme.mono
 import com.akshit.portfolio.ui.Align
 import com.akshit.portfolio.ui.CssGrid
 import com.akshit.portfolio.ui.CssShape
-import com.akshit.portfolio.ui.cornerPadding
 import com.akshit.portfolio.ui.Fg
 import com.akshit.portfolio.ui.FlexWrap
 import com.akshit.portfolio.ui.Justify
@@ -152,8 +154,9 @@ private fun WidgetTile(w: Widget, index: Int, modifier: Modifier) {
         ).value
     } else 0f
     val selected = app.selected == w.id
+    val density = LocalDensity.current
     Fg(l.fg) {
-        Column(
+        BoxWithConstraints(
             modifier
                 .graphicsLayer { rotationZ = rot }
                 .hoverLift(src, scale = 1.025f)
@@ -162,14 +165,26 @@ private fun WidgetTile(w: Widget, index: Int, modifier: Modifier) {
                 .tap(l.shape, null, src) {
                     if (!app.widgetTap(w.id)) b.play(false, motion.reduce)
                 }
-                .background(l.bg, l.shape)
-                .let { val pad = f.c(16, 1.6, 22); it.cornerPadding(l.shape, pad, pad, pad, pad) },
-            verticalArrangement = Arrangement.SpaceBetween,
+                .background(l.bg, l.shape),
         ) {
-            T(w.label, fonts.mono(11.sp), color = l.fg.copy(alpha = .85f), maxLines = 1)
-            Column {
-                T(w.title, fonts.display(l.fs, 1.02f, -.02f))
-                T(w.sub, fonts.body(14.sp, 400, 1.4f), Modifier.padding(top = 6.dp), color = l.fg.copy(alpha = .88f))
+            // Keep text clear of big curved corners: the label row follows the top corners,
+            // the title and description follow the bottom ones.
+            val pad = f.c(16, 1.6, 22)
+            val rr = l.shape.roundRect(with(density) { Size(maxWidth.toPx(), maxHeight.toPx()) }, density)
+            fun side(r: Float) = maxOf(pad, with(density) { (r * .5f).toDp() })
+            Column(
+                Modifier.fillMaxSize().padding(vertical = pad),
+                verticalArrangement = Arrangement.SpaceBetween,
+            ) {
+                T(
+                    w.label, fonts.mono(11.sp),
+                    Modifier.padding(start = side(rr.topLeftCornerRadius.x), end = side(rr.topRightCornerRadius.x)),
+                    color = l.fg.copy(alpha = .85f), maxLines = 1,
+                )
+                Column(Modifier.padding(start = side(rr.bottomLeftCornerRadius.x), end = side(rr.bottomRightCornerRadius.x))) {
+                    T(w.title, fonts.display(l.fs, 1.02f, -.02f))
+                    T(w.sub, fonts.body(14.sp, 400, 1.4f), Modifier.padding(top = 6.dp), color = l.fg.copy(alpha = .88f))
+                }
             }
         }
     }

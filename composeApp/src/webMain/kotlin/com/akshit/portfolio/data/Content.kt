@@ -53,7 +53,7 @@ val WIDGETS = listOf(
     Widget("ktor", "NETWORKING", "Ktor", "Typed clients everywhere.", 1, 1),
     Widget("fb", "BACKEND", "Firebase", "Auth, Firestore, Storage, Functions.", 1, 1),
     Widget("test", "TESTING", "WireMock and friends", "JVM unit tests, wiring tests, emulator tests.", 2, 1),
-    Widget("ci", "CI_CD", "GitHub Actions", "ktlint and detekt on every PR. Red builds don’t merge.", 2, 1),
+    Widget("ci", "CI_CD", "GitHub Actions", "Lint, detekt and tests gate every PR. Green builds ship themselves to Play and Netlify.", 2, 1),
 )
 
 data class Job(
