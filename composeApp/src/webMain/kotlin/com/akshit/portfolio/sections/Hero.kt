@@ -85,7 +85,7 @@ fun BitTap(pose: Pose, size: Int, modifier: Modifier = Modifier, bg: Color? = nu
     Box(
         modifier
             .bounce(b)
-            .tap(shape, label = "Poke Bit") { b.play(true, motion.reduce); app.botTap() }
+            .tap(shape, label = "Poke Bit", clip = false) { b.play(true, motion.reduce); app.botTap() }
             .let { if (bg != null) it.background(bg, shape) else it }
             .padding(pad),
         contentAlignment = Alignment.Center,

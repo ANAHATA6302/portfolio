@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathOperation
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.graphics.drawscope.translate
@@ -133,7 +134,7 @@ private fun DrawScope.drawBit(
     if (pose == Pose.Dev) {
         val tri = Path().apply { moveTo(60f, -22f); lineTo(78f, 18f); lineTo(42f, 18f); close() }
         drawPath(tri, t)
-        drawCircle(pc, 6f, Offset(60f, -24f))
+        drawCircle(tc, 6f, Offset(60f, -24f)) // pom: tertiaryContainer reads on the hat and on the primaryContainer blob
     } else {
         drawCircle(t, 9f, Offset(60f, 9f))
     }
@@ -162,7 +163,8 @@ private fun DrawScope.drawBit(
     // Screen
     rr(22f, 36f, 76f, 50f, 20f, ink)
     when (pose) {
-        Pose.Idle, Pose.Wave, Pose.Dev -> {
+        Pose.Dev -> smile(glyph) // the shades cover the eyes
+        Pose.Idle, Pose.Wave -> {
             translate(ex, ey) {
                 for (x in floatArrayOf(40f, 69f)) {
                     scale(1f, blink, pivot = Offset(x + 5.5f, 55.5f)) { rr(x, 46.5f, 11f, 18f, 6f, glyph) }
@@ -188,7 +190,9 @@ private fun DrawScope.drawBit(
         }
     }
     if (pose == Pose.Dev) {
-        val shades = Color(0xFF111111)
+        // Mirrored lenses in the tertiary colour (like the party hat) with a light glint, so they
+        // read against the dark screen in every theme and seed.
+        val shades = t
         for (x in floatArrayOf(18f, 68f)) {
             val lens = Path().apply {
                 addRoundRect(
@@ -200,6 +204,10 @@ private fun DrawScope.drawBit(
                 )
             }
             drawPath(lens, shades)
+            clipPath(lens) {
+                drawLine(Color.White.copy(alpha = .7f), Offset(x + 6f, 60f), Offset(x + 16f, 47f), strokeWidth = 3f)
+                drawLine(Color.White.copy(alpha = .45f), Offset(x + 13f, 63f), Offset(x + 21f, 52f), strokeWidth = 2f)
+            }
         }
         drawRect(shades, Offset(52f, 53f), Size(16f, 4f))
     }

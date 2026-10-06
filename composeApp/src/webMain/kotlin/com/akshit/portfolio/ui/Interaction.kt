@@ -111,6 +111,7 @@ fun Modifier.tap(
     interaction: MutableInteractionSource? = null,
     role: Role = Role.Button,
     label: String? = null,
+    clip: Boolean = true,
     onClick: () -> Unit,
 ): Modifier {
     val src = interaction ?: remember { MutableInteractionSource() }
@@ -122,7 +123,7 @@ fun Modifier.tap(
     val ripple = rippleColor?.let { c -> remember(c, reduce) { CssRipple({ c }, reduce) } }
     return this
         .focusRing(focused, shape, p.p)
-        .clip(shape)
+        .let { if (clip) it.clip(shape) else it }
         .pointerHoverIcon(PointerIcon.Hand)
         .clickable(src, ripple, role = role, onClickLabel = label, onClick = onClick)
 }
