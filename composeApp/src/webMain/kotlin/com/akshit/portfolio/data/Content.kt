@@ -98,6 +98,7 @@ val BOOT = listOf(
 
 object Links {
     const val VANTAGE = "https://play.google.com/store/apps/details?id=com.akshit.vantagepoint"
+    const val LEVEL_SHOES = "https://play.google.com/store/apps/details?id=com.levelshoes"
     const val RANGE_ROVER = "https://play.google.com/store/apps/details?id=com.jaguarlandrover.rangerover.app"
     const val ROAMIO = "https://play.google.com/store/apps/details?id=com.akshit.roamio"
     const val POTTERPEDIA = "https://play.google.com/store/apps/details?id=com.akshit.potterpedia"

@@ -79,6 +79,8 @@ import com.akshit.portfolio.ui.tap
 import com.akshit.portfolio.ui.tilted
 import com.akshit.portfolio.ui.tiltSource
 import portfolio.composeapp.generated.resources.Res
+import portfolio.composeapp.generated.resources.levelshoes_checkout
+import portfolio.composeapp.generated.resources.levelshoes_collections
 import portfolio.composeapp.generated.resources.oneapp_home
 import portfolio.composeapp.generated.resources.oneapp_remote
 import portfolio.composeapp.generated.resources.roamio_activity
@@ -109,11 +111,12 @@ fun Work() {
         Column(verticalArrangement = Arrangement.spacedBy(f.c(16, 1.8, 24))) {
             SectionHeader(
                 "0x02 // SELECTED_REPOS", "(the ones I show my mum)", "Things I've shipped",
-                "Four apps of my own on Google Play, and the companion app for some very nice cars.", 620.dp,
+                "Four apps of my own on Google Play, plus the ones I built for Jaguar Land Rover and Level Shoes.", 620.dp,
                 Modifier.reveal().margin(bottom = f.c(8, 1.5, 20)),
             )
             Vantage()
             RangeRover()
+            LevelShoes()
             FlexWrap(gap = f.c(16, 1.8, 24)) {
                 Roamio(Modifier.flex(grow = 1f, basis = 520.dp, min = 0.dp))
                 ThisPortfolio(Modifier.flex(grow = 1f, basis = 420.dp, min = 0.dp))
@@ -349,6 +352,65 @@ private fun RangeRover() {
                     val w = f.c(180, 17, 250)
                     Shot(Res.drawable.oneapp_home, "Range Rover App home screen", w, 620f / 1344f, 28.dp)
                     Shot(Res.drawable.oneapp_remote, "Range Rover App remote actions", w, 620f / 1344f, 28.dp)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun LevelShoes() {
+    val p = LocalPalette.current
+    val f = LocalFluid.current
+    val fonts = LocalFonts.current
+    Fg(p.os) {
+        FlexWrap(
+            Modifier.reveal().background(p.sc2, css(cardRadius)).padding(f.c(22, 3.4, 48)),
+            gap = f.c(24, 3, 48),
+            align = Align.Center,
+        ) {
+            Column(Modifier.flex(grow = 1f, basis = 440.dp, min = 0.dp), verticalArrangement = Arrangement.spacedBy(18.dp)) {
+                val chip = fonts.mono(13.sp, 600)
+                FlexWrap(gap = 8.dp) {
+                    Chip("CLIENT", chip, p.inv, p.oinv)
+                    Chip("Live on Google Play", chip, p.sc3, p.os)
+                }
+                Column {
+                    T("Level Shoes", fonts.display(f.sp(44, 5.4, 80), .92f, -.045f))
+                    T("luxury footwear, Dubai", fonts.mono(13.sp), color = p.osv)
+                }
+                T(
+                    "The app for Dubai's luxury footwear destination. Exclusive collections and hype collabs up front, and a checkout that gets out of the way.",
+                    fonts.body(f.sp(18, 1.5, 22), 500, 1.45f), color = p.osv,
+                )
+                Column(
+                    Modifier.fillMaxWidth().background(p.sc1, css(24.dp)).padding(vertical = 18.dp, horizontal = 20.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    T("MY_ROLE", fonts.mono(12.sp), color = p.p)
+                    T(
+                        "I streamlined checkout by 50% with Google One Tap and Google Pay, and worked with stakeholders including the Mall of Dubai on real user pain points. I also integrated in-app purchases and ExoPlayer.",
+                        fonts.body(16.sp, 400, 1.5f),
+                    )
+                }
+                Column(
+                    Modifier.fillMaxWidth().background(p.tc, css(24.dp, 24.dp, 24.dp, 6.dp)).padding(vertical = 18.dp, horizontal = 20.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    T(
+                        "\u201CLevel Shoes has blended the worlds of digital and physical to provide seamless experiences to consumers wherever and however they are engaging with the brand.\u201D",
+                        fonts.body(f.sp(17, 1.3, 19), 500, 1.45f), color = p.otc,
+                    )
+                    T("Rania Masri, CTO, Chalhoub Group", fonts.mono(12.sp, 600), color = p.otc)
+                }
+                PillButton("View on Google Play", p.p, p.op, url = Links.LEVEL_SHOES)
+            }
+            val tilt = rememberTilt()
+            Box(Modifier.flex(grow = 1f, basis = 420.dp, min = 0.dp).tiltSource(tilt)) {
+                CenterScrollRow(16.dp, PaddingValues(start = 4.dp, end = 4.dp, top = 6.dp, bottom = 12.dp), Modifier.tilted(tilt)) {
+                    val w = f.c(180, 17, 250)
+                    Shot(Res.drawable.levelshoes_checkout, "Level Shoes shopping bag and secure checkout", w, 1080f / 1920f, 28.dp)
+                    Shot(Res.drawable.levelshoes_collections, "Level Shoes exclusive collections", w, 1080f / 1920f, 28.dp)
                 }
             }
         }
