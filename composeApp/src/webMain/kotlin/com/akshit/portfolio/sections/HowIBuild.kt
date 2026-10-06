@@ -43,6 +43,8 @@ import com.akshit.portfolio.theme.display
 import com.akshit.portfolio.theme.mono
 import com.akshit.portfolio.ui.Align
 import com.akshit.portfolio.ui.CssGrid
+import com.akshit.portfolio.ui.CssShape
+import com.akshit.portfolio.ui.cornerPadding
 import com.akshit.portfolio.ui.Fg
 import com.akshit.portfolio.ui.FlexWrap
 import com.akshit.portfolio.ui.Justify
@@ -60,7 +62,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-private class Look(val bg: Color, val fg: Color, val shape: Shape, val fs: TextUnit)
+private class Look(val bg: Color, val fg: Color, val shape: CssShape, val fs: TextUnit)
 
 @Composable
 private fun look(w: Widget, p: Palette): Look {
@@ -161,7 +163,7 @@ private fun WidgetTile(w: Widget, index: Int, modifier: Modifier) {
                     if (!app.widgetTap(w.id)) b.play(false, motion.reduce)
                 }
                 .background(l.bg, l.shape)
-                .padding(f.c(16, 1.6, 22)),
+                .let { val pad = f.c(16, 1.6, 22); it.cornerPadding(l.shape, pad, pad, pad, pad) },
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             T(w.label, fonts.mono(11.sp), color = l.fg.copy(alpha = .85f), maxLines = 1)

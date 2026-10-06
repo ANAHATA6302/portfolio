@@ -427,9 +427,14 @@ private fun ThisPortfolio(modifier: Modifier) {
     val f = LocalFluid.current
     val fonts = LocalFonts.current
     val r = cardRadius
+    val pad = f.c(22, 3, 40)
+    // The button sits in the 120dp bottom-left curve: keep its bottom-left corner 12dp inside it.
+    val curve = 120f
+    val dy = curve - pad.value
+    val clear = (curve - kotlin.math.sqrt(curve * curve - dy * dy) + 12f - pad.value).coerceAtLeast(0f).dp
     Fg(p.op) {
         Column(
-            modifier.reveal().background(p.p, css(r, r, r, 120.dp)).padding(f.c(22, 3, 40)),
+            modifier.reveal().background(p.p, css(r, r, r, 120.dp)).padding(pad),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Chip("META", fonts.mono(13.sp, 600), p.op, p.p)
@@ -446,7 +451,10 @@ private fun ThisPortfolio(modifier: Modifier) {
                 T("fun main() = ComposeViewport {\n    Portfolio(whimsy = true)\n}", fonts.mono(14.sp, 500, 1.6f), color = p.tint(.9f, .1f), maxLines = 3)
             }
             Box(Modifier.weight(1f), contentAlignment = Alignment.BottomStart) {
-                PillButton("Open Quick Settings", p.op, p.p, height = 52.dp, padX = 24.dp, size = 16.sp) { app.qsOpen = !app.qsOpen }
+                PillButton(
+                    "Open Quick Settings", p.op, p.p, height = 52.dp, padX = 24.dp, size = 16.sp,
+                    modifier = Modifier.padding(start = clear),
+                ) { app.qsOpen = !app.qsOpen }
             }
         }
     }

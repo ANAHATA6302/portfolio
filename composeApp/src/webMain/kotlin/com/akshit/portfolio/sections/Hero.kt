@@ -59,6 +59,7 @@ import com.akshit.portfolio.ui.MorphPill
 import com.akshit.portfolio.ui.Pill
 import com.akshit.portfolio.ui.T
 import com.akshit.portfolio.ui.bounce
+import com.akshit.portfolio.ui.cornerPadding
 import com.akshit.portfolio.ui.css
 import com.akshit.portfolio.ui.flex
 import com.akshit.portfolio.ui.hoverLift
@@ -243,7 +244,7 @@ private class TileSpec(
     val note: String,
     val bg: Color,
     val fg: Color?,
-    val shape: Shape,
+    val shape: CssShape,
     val rot: Float,
     val big: Boolean,
     val padStart: Dp? = null,
@@ -292,7 +293,7 @@ private fun StatTile(t: TileSpec) {
                     } else m
                 }
                 .background(t.bg, t.shape)
-                .padding(start = t.padStart ?: pad, top = pad, end = pad, bottom = pad),
+                .cornerPadding(t.shape, t.padStart ?: pad, pad, pad, pad),
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
             T(t.label, fonts.mono(11.sp), color = if (t.fg == null) p.osv else fg, maxLines = 1)
