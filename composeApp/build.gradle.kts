@@ -32,10 +32,8 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
             implementation("org.jetbrains.kotlinx:kotlinx-browser:0.5.0")
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
         }

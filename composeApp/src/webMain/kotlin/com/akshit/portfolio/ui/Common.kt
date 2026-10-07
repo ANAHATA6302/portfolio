@@ -1,18 +1,12 @@
 package com.akshit.portfolio.ui
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
-import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -157,10 +151,6 @@ fun SectionLabel(main: String, aside: String? = null, color: Color? = null) {
     T(text, fonts.mono(f.sp(12, 1, 14)), color = color ?: p.p)
 }
 
-/** A CSS box: background + shape + padding. */
-fun Modifier.box(bg: Color, shape: Shape, padding: PaddingValues = PaddingValues(0.dp)): Modifier =
-    this.background(bg, shape).padding(padding)
-
 fun Modifier.outline(color: Color, shape: Shape, width: Dp = 1.5.dp): Modifier = this.border(width, color, shape)
 
 /** `box-shadow: x y blur spread color` for floating elements. */
@@ -256,19 +246,3 @@ fun animatedColor(target: Color, ms: Int = 300): Color {
     return c
 }
 
-@Composable
-fun animatedFloat(target: Float, spec: androidx.compose.animation.core.AnimationSpec<Float>): Float {
-    val v by animateFloatAsState(target, spec)
-    return v
-}
-
-@Composable
-fun ColumnGap(gap: Dp, modifier: Modifier = Modifier, content: @Composable ColumnScope.() -> Unit) =
-    Column(modifier, verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(gap), content = content)
-
-@Composable
-fun Stack(modifier: Modifier = Modifier, align: Alignment = Alignment.TopStart, content: @Composable BoxScope.() -> Unit) =
-    Box(modifier, contentAlignment = align, content = content)
-
-/** A Modifier that only applies when hovered, for consumers that need the hoverable too. */
-fun Modifier.hover(src: MutableInteractionSource): Modifier = this.hoverable(src)

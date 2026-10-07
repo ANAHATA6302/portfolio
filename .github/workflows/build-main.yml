@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -19,6 +19,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
+
+      - name: Unit tests
+        run: ./gradlew :composeApp:wasmJsBrowserTest
 
       - name: Build Web Bundle with Gradle
         run: ./gradlew :composeApp:wasmJsBrowserDistribution --stacktrace

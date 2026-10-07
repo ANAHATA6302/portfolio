@@ -79,8 +79,6 @@ fun cssPct(all: Float) = Corner(Len.Pct(all)).let { CssShape(it, it, it, it) }
 val Pill = css(999.dp)
 val Circle = cssPct(50f)
 
-fun Dp.abs(): Len = Len.Abs(this)
-fun pct(v: Float): Len = Len.Pct(v)
 
 /**
  * Padding that keeps content clear of big curved corners: each horizontal side gets at least

@@ -1,7 +1,7 @@
 # Revamp progress and handoff notes
 
-Branches: work happens on `portfolio-revamp-mdhabg` (cloud sessions) which started from `Portfolio-revamp`. Never push or merge to `main` (it is the live Netlify deploy).
-Spec: `design/handoff/README.md`, plus `design/handoff/Portfolio.dc.html` (the source of truth for exact inline values, copy and logic) and `Bit.dc.html`. Plan: `design/PLAN.md`.
+Pushing to `main` deploys the live site (GitHub Actions to Netlify). Do new work on a branch and merge when it's checked.
+Spec: `design/handoff/README.md`, plus `design/handoff/Portfolio.dc.html` (the source of truth for exact inline values, copy and logic) and `Bit.dc.html`.
 
 ## Status: feature complete, verified against the screenshots
 Everything in the plan is built and checked in a real browser at 1440 and 390, light and dark, against `design/handoff/screenshots`:
@@ -12,7 +12,8 @@ Everything in the plan is built and checked in a real browser at 1440 and 390, l
 
 ## Building
 - `./gradlew :composeApp:wasmJsBrowserDevelopmentRun` (or `wasmJsBrowserDistribution`). The `js` target also compiles.
-- CI: `.github/workflows/build-revamp.yml` builds, runs the unit tests and uploads the bundle on revamp branches. It never deploys. `build-main.yml` still deploys `main` only.
+- CI: `.github/workflows/build-main.yml` runs the unit tests, builds the wasm bundle and deploys it to Netlify on every push to `main`. A failing test stops the deploy.
+- Build outputs, Gradle/Kotlin caches, `.idea` and `local.properties` are git-ignored.
 - Cloud sessions need `dl.google.com` allowed in the environment's network settings (Compose 1.9 pulls androidx from Google Maven). If Maven Central rate-limits (HTTP 429), a local `~/.gradle/init.d` script that puts `https://maven-central.storage-download.googleapis.com/maven2` first fixes it.
 
 ## Code map (composeApp/src/webMain/kotlin/com/akshit/portfolio)
@@ -34,5 +35,4 @@ Everything in the plan is built and checked in a real browser at 1440 and 390, l
 - Phone rows on narrow screens start at the first phone and scroll, instead of the reference's centred-overflow clipping (agreed: keep the better behaviour).
 
 ## Left to consider
-- Merge `portfolio-revamp-mdhabg` into `Portfolio-revamp`, then `Portfolio-revamp` into `main` when you're happy (that deploys).
 - Optional polish: per-frame motion comparison against `Portfolio.dc.html` (springs are token-mapped, not keyframe-identical).
